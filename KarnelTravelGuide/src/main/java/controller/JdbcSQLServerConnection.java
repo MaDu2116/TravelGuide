@@ -11,27 +11,26 @@ import java.sql.SQLException;
  *
  */
 public class JdbcSQLServerConnection {
-	 
-    public static void main(String[] args) {
+	  private static String DB_URL = "jdbc:sqlserver://127.0.0.1:1434;"
+	            + "databaseName=TravelGuide;"
+	            + "encrypt=true;trustServerCertificate=true;";
+	    private static String USER_NAME = "sa";
+	    private static String PASSWORD = "123456";
+	    
+    public static void main(String[] args) throws ClassNotFoundException {
  
         Connection conn = null;
  
         try {
- 
-        	  String DB_URL = "jdbc:sqlserver://localhost:1433;"
-     	            + "databaseName=TravelGuide;"
-     	            + "integratedSecurity=true";
-     	     String USER_NAME = "sa";
-     	     String PASSWORD = "123456";
-            conn = DriverManager.getConnection(DB_URL, USER_NAME, PASSWORD);
-            if (conn != null) {
-                DatabaseMetaData dm = (DatabaseMetaData) conn.getMetaData();
-                System.out.println("Driver name: " + dm.getDriverName());
-                System.out.println("Driver version: " + dm.getDriverVersion());
-                System.out.println("Product name: " + dm.getDatabaseProductName());
-                System.out.println("Product version: " + dm.getDatabaseProductVersion());
-            }
- 
+        	conn = getConnection(DB_URL, USER_NAME, PASSWORD);
+        	 if (conn != null) {
+                 DatabaseMetaData dm = (DatabaseMetaData) conn.getMetaData();
+                 System.out.println("Driver name: " + dm.getDriverName());
+                 System.out.println("Driver version: " + dm.getDriverVersion());
+                 System.out.println("Product name: " + dm.getDatabaseProductName());
+                 System.out.println("Product version: " + dm.getDatabaseProductVersion());
+             }
+        	conn.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {
@@ -44,5 +43,18 @@ public class JdbcSQLServerConnection {
             }
         }
         
+    }
+    public static Connection getConnection(String dbURL, String userName, 
+            String password) {
+        Connection conn = null;
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            conn = DriverManager.getConnection(dbURL, userName, password);
+            System.out.println("connect successfully!");
+        } catch (Exception ex) {
+            System.out.println("connect failure!");
+            ex.printStackTrace();
+        }
+        return conn;
     }
 }
