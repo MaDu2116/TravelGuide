@@ -5,8 +5,7 @@
 <!DOCTYPE  html>
 <html lang="en">
 
-<!-- Mirrored from localhost:2012/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 25 Feb 2022 14:11:45 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -187,7 +186,6 @@
     </div>
     
     
-    
 </section><section class="accomodation_area section_gap">
     <div class="container">
         <div class="section_title text-center">
@@ -219,8 +217,6 @@
 </section>
 
 
-
-
 <section class="accomodation_area section_gap">
     <div class="container">
         <div class="section_title text-center">
@@ -229,6 +225,7 @@
         </div>
         <div class="testimonial_slider owl-carousel">
            <c:forEach items="${travelEntityList}" var="travel">
+           <c:out value="${travel.imageTravel}"/>
                 <div class="media testimonial_item">
                     <div class="accomodation_item text-center">
                         <div class="hotel_img">

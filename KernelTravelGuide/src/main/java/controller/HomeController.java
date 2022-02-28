@@ -18,7 +18,7 @@ import entity.TouristSpotsEntity;
 import entity.TravelEntity;
 import logic.HomeLogic;
 
-@WebServlet(name = "KernelTravelGuide", urlPatterns = { "/", "/home" })
+@WebServlet(name = "KernelTravelGuide", urlPatterns = "/home")
 public class HomeController extends HttpServlet {
 	/**
 	 * 
