@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import common.BaseConnection;
+import dto.HotelDto;
+import dto.RestaurantDto;
 import entity.RestaurantEntity;
 
 public class RestaurantDao extends BaseConnection {
@@ -43,5 +45,42 @@ public class RestaurantDao extends BaseConnection {
 			closeConnection();
 		}
 		return restaurantEntityList;
+	}
+
+	public RestaurantDto getRestauranById(String idRestaurant) {
+		RestaurantDto restaurantDto = new RestaurantDto();
+		conn = getConnection();
+		StringBuilder sql = new StringBuilder();
+		sql.append("  SELECT * FROM TRAVELGUIDE.DBO.RESTAURANT AS H");
+		sql.append("  INNER JOIN TRAVELGUIDE.DBO.CITY AS C");
+		sql.append("  ON H.ID_CITY = C.ID_CITY");
+		sql.append("   WHERE ID_RESTAURANT = ?");
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql.toString());
+			stmt.setString(1, idRestaurant);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+
+				restaurantDto.setIdRestaurant(rs.getInt("ID_RESTAURANT"));
+				restaurantDto.setNameRestaurant(rs.getString("NAME_RESTAURANT"));
+				restaurantDto.setIdCity(rs.getString("ID_CITY"));
+				restaurantDto.setTelRestaurant(rs.getString("TEL_RESTAURANT"));
+				restaurantDto.setQualityRestaurant(rs.getInt("QUALITY_RESTAURANT"));
+				restaurantDto.setAvailable(rs.getInt("AVAILABLE"));
+				restaurantDto.setDesRestaurant(rs.getString("DES_RESTAURANT"));
+				restaurantDto.setIntroductRestaurant(rs.getString("INTRODUCE_RESTAURANT"));
+				restaurantDto.setImageRestaurant(rs.getString("IMAGE_RESTAURANT"));
+				restaurantDto.setIsDiscountRes(rs.getInt("ISDISCOUNT_RES"));
+				restaurantDto.setDiscountRes(rs.getInt("DISCOUNT_RES"));
+				restaurantDto.setPriceRestaurant(rs.getInt("PRICE_RESTAURANT"));
+				restaurantDto.setImageDetailRestaurant(rs.getString("IMAGE_DETAIL_RESTAURANT"));
+				restaurantDto.setNameCity(rs.getString("NAME_CITY"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return restaurantDto;
 	}
 }

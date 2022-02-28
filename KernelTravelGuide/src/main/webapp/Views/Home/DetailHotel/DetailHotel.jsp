@@ -1,29 +1,33 @@
-<!DOCUMENT html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.List"%>
+<!DOCTYPE  html>
 <html lang="en">
 
-<!-- Mirrored from localhost:2012/Home/DetailHotel/6 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 25 Feb 2022 14:19:44 GMT -->
+<!-- Mirrored from localhost:2012/Home/DetailHotel/2 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 25 Feb 2022 14:19:30 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" href="../../Content/image/favicon.png" type="image/png">
+    <link rel="icon" href="Content/image/favicon.png" type="image/png">
     <title>Karnel Travel Guild</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../../Content/css/bootstrap.css">
-    <link rel="stylesheet" href="../../Content/vendors/linericon/style.css">
-    <link rel="stylesheet" href="../../Content/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../Content/vendors/owl-carousel/owl.carousel.min.css">
-    <link rel="stylesheet" href="../../Content/vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.css">
-    <link rel="stylesheet" href="../../Content/vendors/nice-select/css/nice-select.css">
-    <link rel="stylesheet" href="../../Content/vendors/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="Content/css/bootstrap.css">
+    <link rel="stylesheet" href="Content/vendors/linericon/style.css">
+    <link rel="stylesheet" href="Content/css/font-awesome.min.css">
+    <link rel="stylesheet" href="Content/vendors/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="Content/vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="Content/vendors/nice-select/css/nice-select.css">
+    <link rel="stylesheet" href="Content/vendors/owl-carousel/owl.carousel.min.css">
     <!-- main css -->
-    <link rel="stylesheet" href="../../Content/css/style.css">
-    <link rel="stylesheet" href="../../Content/css/responsive.css">
+    <link rel="stylesheet" href="Content/css/style.css">
+    <link rel="stylesheet" href="Content/css/responsive.css">
     <!-- Jquery-->
-    <script src="../../Scripts/jquery-3.3.1.min.js"></script>
-    <script src="../../Scripts/pnotify.custom.min.js"></script>
-    <link rel="stylesheet" href="../../Scripts/pnotify.custom.min.css">
+    <script src="Scripts/jquery-3.3.1.min.js"></script>
+    <script src="Scripts/pnotify.custom.min.js"></script>
+    <link rel="stylesheet" href="Scripts/pnotify.custom.min.css">
 </head>
 <body>
     <!--================Header Area =================-->
@@ -31,7 +35,7 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <!-- Brand and toggle get grouped for better mobile display -->
-                <a class="navbar-brand logo_h" href="../../index.html"><img src="../../Content/image/Logo.png" alt=""></a>
+                <a class="navbar-brand logo_h" href="../../index.html"><img src="Content/image/Logo.png" alt=""></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -40,22 +44,22 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                     <ul class="nav navbar-nav menu_nav ml-auto">
-                        <li class="nav-item active"><a class="nav-link" href="../../index.html">Home</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="home">Home</a></li>
                         <li class="nav-item submenu dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Information</a>
                             <ul class="dropdown-menu">
-                                <li class="nav-item"><a class="nav-link" href="../ShowAllTouristSpot.html">Tourist Spots</a></li>
-                                <li class="nav-item"><a class="nav-link" href="../ShowAllHotel.html">Hotel</a></li>
-                                <li class="nav-item"><a class="nav-link" href="../ShowAllRestaurant.html">Restaurant</a></li>
-                                <li class="nav-item"><a class="nav-link" href="../ShowAllResort.html">Resort</a></li>
-                                <li class="nav-item"><a class="nav-link" href="../ShowAllTravel.html">Travel</a></li>
+                                <li class="nav-item"><a class="nav-link" href="ShowAllTouristSpot.html">Tourist Spots</a></li>
+                                <li class="nav-item"><a class="nav-link" href="ShowAllHotel.html">Hotel</a></li>
+                                <li class="nav-item"><a class="nav-link" href="ShowAllRestaurant.html">Restaurant</a></li>
+                                <li class="nav-item"><a class="nav-link" href="ShowAllResort.html">Resort</a></li>
+                                <li class="nav-item"><a class="nav-link" href="ShowAllTravel.html">Travel</a></li>
                             </ul>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="../AboutUs.html">About us</a></li>
                         <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
                         <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                                <li class="nav-item"><a class="nav-link" href="../../Account/Register.html">Register</a></li>
-                                <li class="nav-item"><a class="nav-link" href="../../Account/Login.html">Login</a></li>
+                                <li class="nav-item"><a class="nav-link" href="Account/Register.html">Register</a></li>
+                                <li class="nav-item"><a class="nav-link" href="Account/Login.html">Login</a></li>
 
                     </ul>
                 </div>
@@ -73,7 +77,7 @@
                 <div class="single-post row">
                     <div class="col-lg-12">
                         <div class="feature-img">
-                            <img class="img-fluid" src="../../Content/image/Hotel/details/CT_details_2.jpg" alt="">
+                            <img class="img-fluid" src="${hotelDto.imageDetailHotel}" alt="">
                         </div>
                     </div>
                     <div class="col-lg-3  col-md-3">
@@ -82,11 +86,11 @@
                                 <li>
                                         <a><div type="button" class="btn btn-success">Available</div></a>
                                 </li>
-                                <li><a>209 Street 30/4, Xuan Khanh Street, Ninh Kieu District, Can Tho City<i class="lnr lnr-home"></i></a></li>
-                                <li><a>Can Tho<i class="lnr lnr-map-marker"></i></a></li>
+                                <li><a>${hotelDto.addressHotel}<i class="lnr lnr-home"></i></a></li>
+                                <li><a>${hotelDto.nameCity}<i class="lnr lnr-map-marker"></i></a></li>
                                 <li><a>1.2M Views<i class="lnr lnr-eye"></i></a></li>
-                                <li><a>9/ 10<i class="lnr lnr-star"></i></a></li>
-                                <li><a><h5>$500<small>/night</small></h5></a></li>
+                                <li><a>${hotelDto.qualityHotel}/ 10<i class="lnr lnr-star"></i></a></li>
+                                <li><a><h5>$${hotelDto.priceHotel}<small>/night</small></h5></a></li>
                             </ul>
                             <ul class="social-links">
                                 <li><a><i class="fa fa-facebook"></i></a></li>
@@ -97,12 +101,12 @@
                         </div>
                     </div>
                     <div class="col-lg-9 col-md-9 blog_details">
-                        <h2>Vinpearl Can Tho Hotel</h2>
+                        <h2>${hotelDto.nameHotel}</h2>
                         <p class="excert">
-                            Hotel housed 285 rooms and suites .Hotel also housed 9 conference rooms, a gym and game rooms. There are 2 in house restaurants serving chinese and western cuisine,an executive lounge
+                            ${hotelDto.introductHotel}
                         </p>
                         <p>
-                            Hotel is located in the heart of the historic center of Florence in an extremely characteristic, quite and lively area within short walk distance to all sites and is surrounded by the extraordinary beauty of churches, buildings, shops and monuments.  Hotel is part of a lovingly restored 1800 palace
+                            ${hotelDto.desHotel}
                         </p>
                     </div>
                     <div class="col-lg-12">
@@ -121,37 +125,37 @@
                     <aside class="single_sidebar_widget popular_post_widget">
                         <h3 class="widget_title">Popular Posts</h3>
                         <div class="media post_item">
-                            <img src="../../Content/image/blog/post1.jpg" alt="post">
+                            <img src="Content/image/blog/post1.jpg" alt="post">
                             <div class="media-body">
-                                <a href="blog-details.html"><h3>Space The Final Frontier</h3></a>
+                                <a href="blog-details.jsp"><h3>Space The Final Frontier</h3></a>
                                 <p>02 Hours ago</p>
                             </div>
                         </div>
                         <div class="media post_item">
-                            <img src="../../Content/image/blog/post2.jpg" alt="post">
+                            <img src="Content/image/blog/post2.jpg" alt="post">
                             <div class="media-body">
-                                <a href="blog-details.html"><h3>The Amazing Hubble</h3></a>
+                                <a href="blog-details.jsp"><h3>The Amazing Hubble</h3></a>
                                 <p>02 Hours ago</p>
                             </div>
                         </div>
                         <div class="media post_item">
-                            <img src="../../Content/image/blog/post3.jpg" alt="post">
+                            <img src="Content/image/blog/post3.jpg" alt="post">
                             <div class="media-body">
-                                <a href="blog-details.html"><h3>Astronomy Or Astrology</h3></a>
+                                <a href="blog-details.jsp"><h3>Astronomy Or Astrology</h3></a>
                                 <p>03 Hours ago</p>
                             </div>
                         </div>
                         <div class="media post_item">
-                            <img src="../../Content/image/blog/post4.jpg" alt="post">
+                            <img src="Content/image/blog/post4.jpg" alt="post">
                             <div class="media-body">
-                                <a href="blog-details.html"><h3>Asteroids telescope</h3></a>
+                                <a href="blog-details.jsp"><h3>Asteroids telescope</h3></a>
                                 <p>01 Hours ago</p>
                             </div>
                         </div>
                         <div class="br"></div>
                     </aside>
                     <aside class="single_sidebar_widget ads_widget">
-                        <a href="#"><img class="img-fluid" src="../../Content/image/blog/add.jpg" alt=""></a>
+                        <a href="#"><img class="img-fluid" src="Content/image/blog/add.jpg" alt=""></a>
                         <div class="br"></div>
                     </aside>
                 </div>
@@ -168,7 +172,7 @@
                 <div class="col-lg-3  col-md-6 col-sm-6">
                     <div class="single-footer-widget">
                         <h6 class="footer_title">About Agency</h6>
-                        <p>The world has become so fast paced that people don’t want to stand by reading a page of information, they would much rather look at a presentation and understand the message. It has come to a point </p>
+                        <p>The world has become so fast paced that people donât want to stand by reading a page of information, they would much rather look at a presentation and understand the message. It has come to a point </p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
@@ -260,5 +264,5 @@
 
 </body>
 
-<!-- Mirrored from localhost:2012/Home/DetailHotel/6 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 25 Feb 2022 14:19:47 GMT -->
+<!-- Mirrored from localhost:2012/Home/DetailHotel/2 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 25 Feb 2022 14:19:30 GMT -->
 </html>

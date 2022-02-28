@@ -265,11 +265,11 @@ table tr.alt td, table tr.alt th {
 					<table border="0" cellpadding="0" cellspacing="0">
 						<tr class="alt">
 							<th>Requested URL</th>
-							<td>&nbsp;&nbsp;&nbsp;http://localhost:2012/contact.html</td>
+							<td>&nbsp;&nbsp;&nbsp;http://localhost:2012/Home/DetailHotel/blog-details.html</td>
 						</tr>
 						<tr>
 							<th>Physical Path</th>
-							<td>&nbsp;&nbsp;&nbsp;D:\project\T11707E0_Group4_KarnelTravelGuide\Source\TravelGuide\contact.html</td>
+							<td>&nbsp;&nbsp;&nbsp;D:\project\T11707E0_Group4_KarnelTravelGuide\Source\TravelGuide\Home\DetailHotel\blog-details.html</td>
 						</tr>
 						<tr class="alt">
 							<th>Logon Method</th>

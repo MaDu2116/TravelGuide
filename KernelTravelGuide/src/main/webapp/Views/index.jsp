@@ -101,9 +101,9 @@
                     <div class="accomodation_item text-center">
                         <div class="hotel_img">
                             <img src="<c:out value="${hotel.imageHotel}"/>" style="width: 263px; height: 270px" alt="">
-                            <a href="Home/DetailHotel/1.html" class="btn theme_btn button_hover">Book Now</a>
+                            <a href="./detailHotel?idHotel=${hotel.idHotel}" class="btn theme_btn button_hover">Book Now</a>
                         </div>
-                        <a href="Home/DetailHotel/1.html"><h4 class="sec_h4"> <c:out value="${hotel.nameHotel}"/></h4></a>
+                        <a href="./detailHotel?idHotel=${hotel.idHotel}"><h4 class="sec_h4"> <c:out value="${hotel.nameHotel}"/></h4></a>
                         <h5>$<c:out value="${hotel.priceHotel}"/><small>/night</small></h5>
                     </div>
                     <div class="media-body">
@@ -134,9 +134,9 @@
                     <div class="accomodation_item text-center">
                         <div class="hotel_img">
                             <img src="<c:out value="${restaurant.imageRestaurant}"/>" style="width: 263px; height: 270px" alt="">
-                            <a href="Home/DetailRestaurant/1.html" class="btn theme_btn button_hover">Book Now</a>
+                            <a href="./detailRestaurant?idRestaurant=${restaurant.idRestaurant}" class="btn theme_btn button_hover">Book Now</a>
                         </div>
-                        <a href="Home/DetailRestaurant/1.html"><h4 class="sec_h4"><c:out value="${restaurant.nameRestaurant}"/></h4></a>
+                        <a href="./detailRestaurant?idRestaurant=${restaurant.idRestaurant}"><h4 class="sec_h4"><c:out value="${restaurant.nameRestaurant}"/></h4></a>
                         <h5>$<c:out value="${restaurant.priceRestaurant}"/><small>/night</small></h5>
                     </div>
                     <div class="media-body">
@@ -225,7 +225,6 @@
         </div>
         <div class="testimonial_slider owl-carousel">
            <c:forEach items="${travelEntityList}" var="travel">
-           <c:out value="${travel.imageTravel}"/>
                 <div class="media testimonial_item">
                     <div class="accomodation_item text-center">
                         <div class="hotel_img">
@@ -347,7 +346,7 @@
                 <div class="col-lg-3  col-md-6 col-sm-6">
                     <div class="single-footer-widget">
                         <h6 class="footer_title">About Agency</h6>
-                        <p>The world has become so fast paced that people donât want to stand by reading a page of information, they would much rather look at a presentation and understand the message. It has come to a point </p>
+                        <p>The world has become so fast paced that people donate want to stand by reading a page of information, they would much rather look at a presentation and understand the message. It has come to a point </p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">

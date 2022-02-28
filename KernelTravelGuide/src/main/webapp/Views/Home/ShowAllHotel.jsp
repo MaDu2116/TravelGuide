@@ -1,4 +1,8 @@
-<!DOCUMENT html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.List"%>
+<!DOCTYPE  html>
 <html lang="en">
 
 <!-- Mirrored from localhost:2012/Home/ShowAllHotel by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 25 Feb 2022 14:18:45 GMT -->
@@ -192,7 +196,7 @@
                             </article>
                         </div>
                 <nav class="blog-pagination justify-content-center d-flex">
-                    <div class="pagination-container"><ul class="pagination"><li class="active"><a>1</a></li><li><a href="ShowAllHotel4658.html?page=2">2</a></li><li class="PagedList-skipToNext"><a href="ShowAllHotel4658.html?page=2" rel="next">»</a></li></ul></div>
+                    <div class="pagination-container"><ul class="pagination"><li class="active"><a>1</a></li><li><a href="ShowAllHotel4658.html?page=2">2</a></li><li class="PagedList-skipToNext"><a href="ShowAllHotel4658.html?page=2" rel="next">Â»</a></li></ul></div>
                 </nav>
             </div>
             <div class="col-lg-4">
@@ -401,7 +405,7 @@
                 <div class="col-lg-3  col-md-6 col-sm-6">
                     <div class="single-footer-widget">
                         <h6 class="footer_title">About Agency</h6>
-                        <p>The world has become so fast paced that people don’t want to stand by reading a page of information, they would much rather look at a presentation and understand the message. It has come to a point </p>
+                        <p>The world has become so fast paced that people donât want to stand by reading a page of information, they would much rather look at a presentation and understand the message. It has come to a point </p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
