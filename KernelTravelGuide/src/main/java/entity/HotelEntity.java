@@ -14,7 +14,7 @@ public class HotelEntity {
 	private int priceHotel;
 	private int isDiscountHotel;
 	private int discountHotel;
-	private int imageDetailHotel;
+	private String imageDetailHotel;
 
 	public int getIdHotel() {
 		return idHotel;
@@ -120,11 +120,11 @@ public class HotelEntity {
 		this.discountHotel = discountHotel;
 	}
 
-	public int getImageDetailHotel() {
+	public String getImageDetailHotel() {
 		return imageDetailHotel;
 	}
 
-	public void setImageDetailHotel(int imageDetailHotel) {
+	public void setImageDetailHotel(String imageDetailHotel) {
 		this.imageDetailHotel = imageDetailHotel;
 	}
 

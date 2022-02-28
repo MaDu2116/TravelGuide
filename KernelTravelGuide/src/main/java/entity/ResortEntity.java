@@ -2,6 +2,7 @@ package entity;
 
 public class ResortEntity {
 	private int idResort;
+	private String nameResort;
 	private String idCity;
 	private String addressResort;
 	private String telResort;
@@ -21,6 +22,14 @@ public class ResortEntity {
 
 	public void setIdResort(int idResort) {
 		this.idResort = idResort;
+	}
+
+	public String getNameResort() {
+		return nameResort;
+	}
+
+	public void setNameResort(String nameResort) {
+		this.nameResort = nameResort;
 	}
 
 	public String getIdCity() {

@@ -7,6 +7,7 @@ public class RestaurantEntity {
 	private String idCity;
 	private String addressRestaurant;
 	private String telRestaurant;
+	private int qualityRestaurant;
 	private int available;
 	private String desRestaurant;
 	private String introductRestaurant;
@@ -38,6 +39,14 @@ public class RestaurantEntity {
 
 	public void setIdCity(String idCity) {
 		this.idCity = idCity;
+	}
+
+	public int getQualityRestaurant() {
+		return qualityRestaurant;
+	}
+
+	public void setQualityRestaurant(int qualityRestaurant) {
+		this.qualityRestaurant = qualityRestaurant;
 	}
 
 	public String getAddressRestaurant() {

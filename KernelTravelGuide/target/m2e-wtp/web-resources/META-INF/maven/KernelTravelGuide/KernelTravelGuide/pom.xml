@@ -27,6 +27,19 @@
 			<artifactId>mssql-jdbc</artifactId>
 			<version>9.5.0.jre11-preview</version>
 		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/jstl/jstl -->
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
 
 	</dependencies>
 

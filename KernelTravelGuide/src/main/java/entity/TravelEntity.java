@@ -3,6 +3,7 @@ package entity;
 public class TravelEntity {
 	private int idTravel;
 	private String nameTravel;
+	private String idCity;
 	private String addressTravel;
 	private String telTravel;
 	private int qualityTravel;
@@ -28,6 +29,14 @@ public class TravelEntity {
 
 	public void setNameTravel(String nameTravel) {
 		this.nameTravel = nameTravel;
+	}
+
+	public String getIdCity() {
+		return idCity;
+	}
+
+	public void setIdCity(String idCity) {
+		this.idCity = idCity;
 	}
 
 	public String getAddressTravel() {
