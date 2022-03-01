@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import common.BaseConnection;
-import dto.HotelDto;
 import dto.RestaurantDto;
 import entity.RestaurantEntity;
 

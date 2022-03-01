@@ -166,9 +166,9 @@
                     <div class="accomodation_item text-center">
                         <div class="hotel_img">
                             <img src="<c:out value="${resort.imageResort}"/>" style="width: 263px; height: 270px" alt="">
-                            <a href="Home/DetailResort/1.html" class="btn theme_btn button_hover">Book Now</a>
+                            <a href="./detailResort?idResort=${resort.idResort}" class="btn theme_btn button_hover">Book Now</a>
                         </div>
-                        <a href="Home/DetailResort/1.html"><h4 class="sec_h4"><c:out value="${resort.nameResort}"/></h4></a>
+                        <a href="./detailResort?idResort=${resort.idResort}"><h4 class="sec_h4"><c:out value="${resort.nameResort}"/></h4></a>
                         <h5>$<c:out value="${resort.priceResort}"/><small>/night</small></h5>
                     </div>
                     <div class="media-body">
@@ -198,9 +198,9 @@
                     <div class="accomodation_item text-center">
                         <div class="hotel_img">
                             <img src="<c:out value="${touristSpot.imageTouristSpots}"/>" style="width: 263px; height: 270px" alt="">
-                            <a href="Home/DetailTouristSpot/1.html" class="btn theme_btn button_hover">View Detail</a>
+                            <a href="./detailTouristSpot?idTouristSpot=${touristSpot.idTouristSpot}" class="btn theme_btn button_hover">View Detail</a>
                         </div>
-                        <a href="Home/DetailTouristSpot/1.html"><h4 class="sec_h4"><c:out value="${touristSpot.nameTouristSpot}"/></h4></a>
+                        <a href="./detailTouristSpot?idTouristSpot=${touristSpot.idTouristSpot}"><h4 class="sec_h4"><c:out value="${touristSpot.nameTouristSpot}"/></h4></a>
                     </div>
                     <div class="media-body">
                         <p><c:out value="${touristSpot.introduceTouristSpots}"/></p>
@@ -229,7 +229,7 @@
                     <div class="accomodation_item text-center">
                         <div class="hotel_img">
                             <img src="<c:out value="${travel.imageTravel}"/>" style="width: 263px; height: 270px" alt="">
-                            <a href="Home/DetailTravel/1.html" class="btn theme_btn button_hover">Book Now</a>
+                            <a href="./detailTravel?idTravel=${travel.idTravel}" class="btn theme_btn button_hover">Book Now</a>
                         </div>
                         <a href="Home/DetailTravel/1.html"><h4 class="sec_h4"><c:out value="${travel.nameTravel}"/></h4></a>
                     </div>

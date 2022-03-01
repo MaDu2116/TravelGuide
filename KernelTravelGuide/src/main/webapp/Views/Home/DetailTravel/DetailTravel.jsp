@@ -5,8 +5,11 @@
 <!DOCTYPE  html>
 <html lang="en">
 
+
+
 <jsp:include page="../../header.jsp" />
 <body>
+
 	<section class="blog_area single-post-area">
 		<div class="container">
 			<div class="row">
@@ -15,24 +18,21 @@
 						<div class="col-lg-12">
 							<div class="feature-img">
 								<img class="img-fluid"
-									src="${restaurantDto.imageDetailRestaurant}" alt="">
+									src="${travelDto.imageDetailTravel}" alt="">
 							</div>
 						</div>
 						<div class="col-lg-3  col-md-3">
 							<div class="blog_info text-right">
 								<ul class="blog_meta list_style">
-									<li><a href="#"><div type="button"
-												class="btn btn-success">Available</div></a></li>
-									<li><a href="#">${restaurantDto.addressRestaurant}<i
+
+									<li><a href="#">${travelDto.addressTravel}<i
 											class="lnr lnr-home"></i></a></li>
-									<li><a href="#">${restaurantDto.nameCity}<i
+									<li><a href="#">${travelDto.nameCity}<i
 											class="lnr lnr-map-marker"></i></a></li>
 									<li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
-									<li><a href="#">${restaurantDto.qualityRestaurant}/ 10<i
-											class="lnr lnr-star"></i></a></li>
-									<li><a href="#"><h5>
-												$${restaurantDto.priceRestaurant}<small>/night</small>
-											</h5></a></li>
+									<li><a href="#">${travelDto.qualityTravel}/
+											10<i class="lnr lnr-star"></i>
+									</a></li>
 								</ul>
 								<ul class="social-links">
 									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -43,9 +43,9 @@
 							</div>
 						</div>
 						<div class="col-lg-9 col-md-9 blog_details">
-							<h2>${restaurantDto.nameRestaurant}</h2>
-							<p class="excert">${restaurantDto.introductRestaurant}</p>
-							<p>${restaurantDto.desRestaurant}</p>
+							<h2>${travelDto.nameTravel}</h2>
+							<p class="excert">${touristSpotDto.introductTravel}</p>
+							<p>${travelDto.desTravel}</p>
 						</div>
 						<div class="col-lg-12">
 							<div class="quotes">MCSE boot camps have its supporters and
@@ -55,7 +55,14 @@
 								has the willpower to actually sit through a self-imposed MCSE
 								training.</div>
 							<div class="row">
-								<div class="googleMap"></div>
+								<div class="col-6">
+									<img class="img-fluid" src="Content/image/blog/post-img1.jpg"
+										alt="">
+								</div>
+								<div class="col-6">
+									<img class="img-fluid" src="Content/image/blog/post-img2.jpg"
+										alt="">
+								</div>
 							</div>
 						</div>
 					</div>
@@ -65,7 +72,9 @@
 			</div>
 		</div>
 	</section>
+
 	<jsp:include page="../../footer.jsp" />
+
 </body>
 
 </html>

@@ -9,12 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dto.HotelDto;
+import dto.ResortDto;
 import logic.DetailLogic;
 
-@WebServlet( urlPatterns = "/detailHotel")
-public class DetailHotelController extends HttpServlet {
-
+@WebServlet(urlPatterns = "/detailResort")
+public class DetailResortController extends HttpServlet {
 	/**
 	 * 
 	 */
@@ -22,20 +21,17 @@ public class DetailHotelController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String idHotel = req.getParameter("idHotel");
+		String idResort = req.getParameter("idResort");
 		DetailLogic detailLogic = new DetailLogic();
-		HotelDto hotelDto = new HotelDto();
-		hotelDto = detailLogic.getHotelById(idHotel);
+		ResortDto resortDto = new ResortDto();
 
-		req.setAttribute("hotelDto", hotelDto);
+		resortDto = detailLogic.getResortById(idResort);
 
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/Views/Home/DetailHotel/DetailHotel.jsp");
+		req.setAttribute("resortDto", resortDto);
+
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/Views/Home/DetailResort/DetailResort.jsp");
 		dispatcher.forward(req, resp);
 
 	}
 
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		super.doPost(req, resp);
-	}
 }

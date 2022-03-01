@@ -28,6 +28,7 @@ public class HomeController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HomeLogic homeLogic = new HomeLogic();
+		System.out.println("vao index");
 		// getDataHotel
 		List<HotelEntity> hotelEntityList = new ArrayList<HotelEntity>();
 		hotelEntityList = homeLogic.getHotels();
