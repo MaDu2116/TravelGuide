@@ -83,4 +83,43 @@ public class ResortDao extends BaseConnection {
 		}
 		return resortDto;
 	}
+
+	public List<ResortDto> getAllResort() {
+		List<ResortDto> resortDtoList = new ArrayList<ResortDto>();
+		ResortDto resortDto = new ResortDto();
+		conn = getConnection();
+		StringBuilder sql = new StringBuilder();
+		sql.append("  SELECT * FROM TRAVELGUIDE.DBO.RESORT AS R");
+		sql.append("  INNER JOIN TRAVELGUIDE.DBO.CITY AS C");
+		sql.append("  ON R.ID_CITY = C.ID_CITY");
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql.toString());
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+
+				resortDto.setIdResort(rs.getInt("ID_RESORT"));
+				resortDto.setNameResort(rs.getString("NAME_RESORT"));
+				resortDto.setIdCity(rs.getString("ID_CITY"));
+				resortDto.setAddressResort(rs.getString("ADDRESS_RESORT"));
+				resortDto.setTelResort(rs.getString("TEL_RESORT"));
+				resortDto.setQualityResort(rs.getInt("QUALITY_RESORT"));
+				resortDto.setAvailable(rs.getInt("AVAILABLE"));
+				resortDto.setDesResort(rs.getString("DES_RESORT"));
+				resortDto.setImageResort(rs.getString("IMAGE_RESORT"));
+				resortDto.setIsDiscountResort(rs.getInt("ISDISCOUNT_RESORT"));
+				resortDto.setDiscountResort(rs.getInt("DISCOUNT_RESORT"));
+				resortDto.setPriceResort(rs.getInt("PRICE_RESORT"));
+				resortDto.setImageDetailResort(rs.getString("IMAGE_DETAIL_RESORT"));
+				resortDto.setIntroductResort(rs.getString("INTRODUCE_RESORT"));
+				resortDto.setNameCity(rs.getString("NAME_CITY"));
+
+				resortDtoList.add(resortDto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return resortDtoList;
+	}
 }

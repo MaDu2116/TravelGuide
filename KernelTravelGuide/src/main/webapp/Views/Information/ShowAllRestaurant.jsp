@@ -1,7 +1,11 @@
-<!DOCUMENT html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.List"%>
+<!DOCTYPE  html>
 <html lang="en">
 
-<!-- Mirrored from localhost:2012/Home/ShowAllResort by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 25 Feb 2022 14:18:48 GMT -->
+<!-- Mirrored from localhost:2012/Home/ShowAllRestaurant by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 25 Feb 2022 14:18:45 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
     <!-- Required meta tags -->
@@ -79,7 +83,7 @@
                                             <li>
                                                     <a href="#"><div class="btn btn-success">Available</div></a>
                                             </li>
-                                            <li><a href="#">Ward 1, Bac Lieu<i class="lnr lnr-home"></i></a></li>
+                                            <li><a href="#">128 Vo Thi Sau Street, Zone 2, Ward 8, Bac Lieu City, Vietnam<i class="lnr lnr-home"></i></a></li>
                                             <li><a href="#">Bac Lieu<i class="lnr lnr-map-marker"></i></a></li>
                                             <li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
                                             <li><a href="#">9/ 10<i class="lnr lnr-star"></i></a></li>
@@ -89,13 +93,13 @@
                                 </div>
                                 <div class="col-md-9">
                                     <div class="blog_post">
-                                        <img src="../Content/image/Resort/info/BL_infor_4.jpg" alt="">
+                                        <img src="../Content/image/Restaurant/infor/BL_infor_1.jpg" alt="">
                                         <div class="blog_details">
-                                            <a href="DetailResort/1.html">
-                                                <h2>Ho Nam Resort</h2>
+                                            <a href="DetailRestaurant/1.html">
+                                                <h2>Thuyen Trang Quan</h2>
                                             </a>
-                                            <p>You will enjoy popular activities such as sightseeing, cycling and casual walks around the charming town centre, observing local people trading in the colourful open market</p>
-                                            <a href="DetailResort/1.html" class="view_btn button_hover">View More</a>
+                                            <p>Serving delicious international and local cuisine in a romantic ambience. The delectable buffet spread, together with the amorous setting of both the indoor and terrace seating areas</p>
+                                            <a href="DetailRestaurant/1.html" class="view_btn button_hover">View More</a>
                                         </div>
                                     </div>
                                 </div>
@@ -109,24 +113,23 @@
                                             <li>
                                                     <a href="#"><div class="btn btn-success">Available</div></a>
                                             </li>
-                                            <li><a href="#">Nha Mat Resort, Nha Mat District, Bac Lieu Province<i class="lnr lnr-home"></i></a></li>
-                                            <li><a href="#">Bac Lieu<i class="lnr lnr-map-marker"></i></a></li>
+                                            <li><a href="#">98 C My Thanh An, Ben Tre 83000, Vietnam<i class="lnr lnr-home"></i></a></li>
+                                            <li><a href="#">Ben Tre<i class="lnr lnr-map-marker"></i></a></li>
                                             <li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
-                                            <li><a href="#">8/ 10<i class="lnr lnr-star"></i></a></li>
+                                            <li><a href="#">9/ 10<i class="lnr lnr-star"></i></a></li>
                                             <li><a href="#"><h5>$500<small>/night</small></h5></a></li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="col-md-9">
                                     <div class="blog_post">
-                                        <img src="../Content/image/Resort/info/BL_infor_5.jpg" alt="">
+                                        <img src="../Content/image/Restaurant/infor/DN_infor_2.jpg" alt="">
                                         <div class="blog_details">
-                                            <a href="DetailResort/2.html">
-                                                <h2>Nha Mat Resort</h2>
+                                            <a href="DetailRestaurant/2.html">
+                                                <h2>3D Coffee</h2>
                                             </a>
-                                            <p>
-You will enjoy popular activities such as sightseeing, cycling and casual walks around the charming town centre, observing local people trading in the colourful open market.</p>
-                                            <a href="DetailResort/2.html" class="view_btn button_hover">View More</a>
+                                            <p>Serving delicious international and local cuisine in a romantic ambience. The delectable buffet spread, together with the amorous setting of both the indoor and terrace seating areas</p>
+                                            <a href="DetailRestaurant/2.html" class="view_btn button_hover">View More</a>
                                         </div>
                                     </div>
                                 </div>
@@ -140,23 +143,23 @@ You will enjoy popular activities such as sightseeing, cycling and casual walks 
                                             <li>
                                                     <a href="#"><div class="btn btn-success">Available</div></a>
                                             </li>
-                                            <li><a href="#">708 Nguyen Van Tu Street, Ward 7, Ben Tre, Ben Tre<i class="lnr lnr-home"></i></a></li>
-                                            <li><a href="#">Binh Thuan<i class="lnr lnr-map-marker"></i></a></li>
+                                            <li><a href="#">2 Hai Ba Trung | Tan An, Ninh Kieu, Can Tho 10.029656, Vietnam<i class="lnr lnr-home"></i></a></li>
+                                            <li><a href="#">Can Tho<i class="lnr lnr-map-marker"></i></a></li>
                                             <li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
-                                            <li><a href="#">7/ 10<i class="lnr lnr-star"></i></a></li>
+                                            <li><a href="#">9/ 10<i class="lnr lnr-star"></i></a></li>
                                             <li><a href="#"><h5>$500<small>/night</small></h5></a></li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="col-md-9">
                                     <div class="blog_post">
-                                        <img src="../Content/image/Resort/info/BT_infor_1.jpg" alt="">
+                                        <img src="../Content/image/Restaurant/infor/CT_infor_2.jpg" alt="">
                                         <div class="blog_details">
-                                            <a href="DetailResort/3.html">
-                                                <h2>Ben Tre Riverside Resort</h2>
+                                            <a href="DetailRestaurant/3.html">
+                                                <h2>Caf&#233; Lotus Ninh Kieu</h2>
                                             </a>
-                                            <p>You will enjoy popular activities such as sightseeing, cycling and casual walks around the charming town centre, observing local people trading in the colourful open market</p>
-                                            <a href="DetailResort/3.html" class="view_btn button_hover">View More</a>
+                                            <p>Serving delicious international and local cuisine in a romantic ambience. The delectable buffet spread, together with the amorous setting of both the indoor and terrace seating areas</p>
+                                            <a href="DetailRestaurant/3.html" class="view_btn button_hover">View More</a>
                                         </div>
                                     </div>
                                 </div>
@@ -170,34 +173,34 @@ You will enjoy popular activities such as sightseeing, cycling and casual walks 
                                             <li>
                                                     <a href="#"><div class="btn btn-success">Available</div></a>
                                             </li>
-                                            <li><a href="#">Phu Khuong, Phu Tuc, Chau Thanh, Ben Tre, Phu Tuc, Chau Thanh, Ben Tre<i class="lnr lnr-home"></i></a></li>
-                                            <li><a href="#">Binh Thuan<i class="lnr lnr-map-marker"></i></a></li>
+                                            <li><a href="#">29 Quang Dung Street, Thanh Khe District, Danang<i class="lnr lnr-home"></i></a></li>
+                                            <li><a href="#">Da Nang<i class="lnr lnr-map-marker"></i></a></li>
                                             <li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
-                                            <li><a href="#">6/ 10<i class="lnr lnr-star"></i></a></li>
+                                            <li><a href="#">9/ 10<i class="lnr lnr-star"></i></a></li>
                                             <li><a href="#"><h5>$500<small>/night</small></h5></a></li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="col-md-9">
                                     <div class="blog_post">
-                                        <img src="../Content/image/Resort/info/BT_infor_10.jpg" alt="">
+                                        <img src="../Content/image/Restaurant/infor/DN_infor_1.jpg" alt="">
                                         <div class="blog_details">
-                                            <a href="DetailResort/4.html">
-                                                <h2>Forever Green Resort</h2>
+                                            <a href="DetailRestaurant/4.html">
+                                                <h2>Anchor Beer Club</h2>
                                             </a>
-                                            <p>You will enjoy popular activities such as sightseeing, cycling and casual walks around the charming town centre, observing local people trading in the colourful open market</p>
-                                            <a href="DetailResort/4.html" class="view_btn button_hover">View More</a>
+                                            <p>Serving delicious international and local cuisine in a romantic ambience. The delectable buffet spread, together with the amorous setting of both the indoor and terrace seating areas</p>
+                                            <a href="DetailRestaurant/4.html" class="view_btn button_hover">View More</a>
                                         </div>
                                     </div>
                                 </div>
                             </article>
                         </div>
                 <nav class="blog-pagination justify-content-center d-flex">
-                    <div class="pagination-container"><ul class="pagination"><li class="active"><a>1</a></li><li><a href="ShowAllResort4658.html?page=2">2</a></li><li><a href="ShowAllResort9ba9.html?page=3">3</a></li><li class="PagedList-skipToNext"><a href="ShowAllResort4658.html?page=2" rel="next">»</a></li></ul></div>
+                    <div class="pagination-container"><ul class="pagination"><li class="active"><a>1</a></li><li><a href="ShowAllRestaurant4658.html?page=2">2</a></li><li><a href="ShowAllRestaurant9ba9.html?page=3">3</a></li><li class="PagedList-skipToNext"><a href="ShowAllRestaurant4658.html?page=2" rel="next">Â»</a></li></ul></div>
                 </nav>
             </div>
             <div class="col-lg-4">
-<form action="http://localhost:2012/Home/ShowAllResort" method="post">                    <div class="blog_right_sidebar">
+<form action="http://localhost:2012/Home/ShowAllRestaurant" method="post">                    <div class="blog_right_sidebar">
                         <aside class="single_sidebar_widget search_widget">
                             <div class="input-group">
                                 <input id="SearchString" name="SearchString" type="text" value="" />
@@ -402,7 +405,7 @@ You will enjoy popular activities such as sightseeing, cycling and casual walks 
                 <div class="col-lg-3  col-md-6 col-sm-6">
                     <div class="single-footer-widget">
                         <h6 class="footer_title">About Agency</h6>
-                        <p>The world has become so fast paced that people don’t want to stand by reading a page of information, they would much rather look at a presentation and understand the message. It has come to a point </p>
+                        <p>The world has become so fast paced that people donât want to stand by reading a page of information, they would much rather look at a presentation and understand the message. It has come to a point </p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
@@ -494,5 +497,5 @@ You will enjoy popular activities such as sightseeing, cycling and casual walks 
 
 </body>
 
-<!-- Mirrored from localhost:2012/Home/ShowAllResort by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 25 Feb 2022 14:19:07 GMT -->
+<!-- Mirrored from localhost:2012/Home/ShowAllRestaurant by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 25 Feb 2022 14:18:48 GMT -->
 </html>

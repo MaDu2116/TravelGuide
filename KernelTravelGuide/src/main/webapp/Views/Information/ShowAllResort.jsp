@@ -1,7 +1,11 @@
-<!DOCUMENT html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.List"%>
+<!DOCTYPE  html>
 <html lang="en">
 
-<!-- Mirrored from localhost:2012/Home/ShowAllTouristSpot by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 25 Feb 2022 14:18:43 GMT -->
+<!-- Mirrored from localhost:2012/Home/ShowAllResort by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 25 Feb 2022 14:18:48 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
     <!-- Required meta tags -->
@@ -74,50 +78,28 @@
                         <div class="blog_left_sidebar">
                             <article class="row blog_item">
                                 <div class="col-md-3">
-                                    <div class="blog_info text-right" style="font-size: 30px; ">
+                                    <div class="blog_info text-right">
                                         <ul class="blog_meta list_style">
-                                            <li><a href="#">Vinh Hung A, Vinh Loi, DA NANG<i class="lnr lnr-home"></i></a></li>
-                                            <li><a href="#">Da Nang<i class="lnr lnr-map-marker"></i></a></li>
-                                            <li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
-                                            <li><a href="#">9/ 10<i class="lnr lnr-star"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-md-9">
-                                    <div class="blog_post">
-                                        <img src="../Content/image/Tourist_Spots/info/Panel-5.jpg" alt="">
-                                        <div class="blog_details">
-                                            <a href="DetailTouristSpot/1.html">
-                                                <h2>Vinh Hung ancient tower</h2>
-                                            </a>
-                                            <p>Note that the Students.cs has a StudentPhoto property which is assigned with [Required] attribute. This makes the relation one-to-one between Students and StudentPhotoes tables.</p>
-                                            <a href="DetailTouristSpot/1.html" class="view_btn button_hover">View More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="blog_left_sidebar">
-                            <article class="row blog_item">
-                                <div class="col-md-3">
-                                    <div class="blog_info text-right" style="font-size: 30px; ">
-                                        <ul class="blog_meta list_style">
-                                            <li><a href="#">De Bien, Nha Mat Ward, Bac Lieu<i class="lnr lnr-home"></i></a></li>
+                                            <li>
+                                                    <a href="#"><div class="btn btn-success">Available</div></a>
+                                            </li>
+                                            <li><a href="#">Ward 1, Bac Lieu<i class="lnr lnr-home"></i></a></li>
                                             <li><a href="#">Bac Lieu<i class="lnr lnr-map-marker"></i></a></li>
                                             <li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
                                             <li><a href="#">9/ 10<i class="lnr lnr-star"></i></a></li>
+                                            <li><a href="#"><h5>$500<small>/night</small></h5></a></li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="col-md-9">
                                     <div class="blog_post">
-                                        <img src="../Content/image/Tourist_Spots/info/BL_Phat%20ba%20Nam%20Hai_1.jpg" alt="">
+                                        <img src="../Content/image/Resort/info/BL_infor_4.jpg" alt="">
                                         <div class="blog_details">
-                                            <a href="DetailTouristSpot/2.html">
-                                                <h2>Phat ba Nam Hai</h2>
+                                            <a href="DetailResort/1.html">
+                                                <h2>Ho Nam Resort</h2>
                                             </a>
-                                            <p>Note that the Students.cs has a StudentPhoto property which is assigned with [Required] attribute. This makes the relation one-to-one between Students and StudentPhotoes tables.</p>
-                                            <a href="DetailTouristSpot/2.html" class="view_btn button_hover">View More</a>
+                                            <p>You will enjoy popular activities such as sightseeing, cycling and casual walks around the charming town centre, observing local people trading in the colourful open market</p>
+                                            <a href="DetailResort/1.html" class="view_btn button_hover">View More</a>
                                         </div>
                                     </div>
                                 </div>
@@ -126,24 +108,29 @@
                         <div class="blog_left_sidebar">
                             <article class="row blog_item">
                                 <div class="col-md-3">
-                                    <div class="blog_info text-right" style="font-size: 30px; ">
+                                    <div class="blog_info text-right">
                                         <ul class="blog_meta list_style">
-                                            <li><a href="#">No. 13, Dien Bien Phu, Ward 3, Bac Lieu City, Bac Lieu Province<i class="lnr lnr-home"></i></a></li>
+                                            <li>
+                                                    <a href="#"><div class="btn btn-success">Available</div></a>
+                                            </li>
+                                            <li><a href="#">Nha Mat Resort, Nha Mat District, Bac Lieu Province<i class="lnr lnr-home"></i></a></li>
                                             <li><a href="#">Bac Lieu<i class="lnr lnr-map-marker"></i></a></li>
                                             <li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
-                                            <li><a href="#">9/ 10<i class="lnr lnr-star"></i></a></li>
+                                            <li><a href="#">8/ 10<i class="lnr lnr-star"></i></a></li>
+                                            <li><a href="#"><h5>$500<small>/night</small></h5></a></li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="col-md-9">
                                     <div class="blog_post">
-                                        <img src="../Content/image/Tourist_Spots/info/BL_CONG%20TU%20BAC%20LIEU%20HOUSE_1.jpg" alt="">
+                                        <img src="../Content/image/Resort/info/BL_infor_5.jpg" alt="">
                                         <div class="blog_details">
-                                            <a href="DetailTouristSpot/3.html">
-                                                <h2>Cong Tu Bac Lieu House</h2>
+                                            <a href="DetailResort/2.html">
+                                                <h2>Nha Mat Resort</h2>
                                             </a>
-                                            <p>Note that the Students.cs has a StudentPhoto property which is assigned with [Required] attribute. This makes the relation one-to-one between Students and StudentPhotoes tables.</p>
-                                            <a href="DetailTouristSpot/3.html" class="view_btn button_hover">View More</a>
+                                            <p>
+You will enjoy popular activities such as sightseeing, cycling and casual walks around the charming town centre, observing local people trading in the colourful open market.</p>
+                                            <a href="DetailResort/2.html" class="view_btn button_hover">View More</a>
                                         </div>
                                     </div>
                                 </div>
@@ -152,105 +139,172 @@
                         <div class="blog_left_sidebar">
                             <article class="row blog_item">
                                 <div class="col-md-3">
-                                    <div class="blog_info text-right" style="font-size: 30px; ">
+                                    <div class="blog_info text-right">
                                         <ul class="blog_meta list_style">
-                                            <li><a href="#">TL15, Phu Hiep, Ho Chi Minh<i class="lnr lnr-home"></i></a></li>
-                                            <li><a href="#">Sai Gon<i class="lnr lnr-map-marker"></i></a></li>
+                                            <li>
+                                                    <a href="#"><div class="btn btn-success">Available</div></a>
+                                            </li>
+                                            <li><a href="#">708 Nguyen Van Tu Street, Ward 7, Ben Tre, Ben Tre<i class="lnr lnr-home"></i></a></li>
+                                            <li><a href="#">Binh Thuan<i class="lnr lnr-map-marker"></i></a></li>
                                             <li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
-                                            <li><a href="#">9/ 10<i class="lnr lnr-star"></i></a></li>
+                                            <li><a href="#">7/ 10<i class="lnr lnr-star"></i></a></li>
+                                            <li><a href="#"><h5>$500<small>/night</small></h5></a></li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="col-md-9">
                                     <div class="blog_post">
-                                        <img src="../Content/image/Tourist_Spots/info/Panel-8.jpg" alt="">
+                                        <img src="../Content/image/Resort/info/BT_infor_1.jpg" alt="">
                                         <div class="blog_details">
-                                            <a href="DetailTouristSpot/4.html">
-                                                <h2>Cu Chi Tunnels</h2>
+                                            <a href="DetailResort/3.html">
+                                                <h2>Ben Tre Riverside Resort</h2>
                                             </a>
-                                            <p>Note that the Students.cs has a StudentPhoto property which is assigned with [Required] attribute. This makes the relation one-to-one between Students and StudentPhotoes tables.</p>
-                                            <a href="DetailTouristSpot/4.html" class="view_btn button_hover">View More</a>
+                                            <p>You will enjoy popular activities such as sightseeing, cycling and casual walks around the charming town centre, observing local people trading in the colourful open market</p>
+                                            <a href="DetailResort/3.html" class="view_btn button_hover">View More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="blog_left_sidebar">
+                            <article class="row blog_item">
+                                <div class="col-md-3">
+                                    <div class="blog_info text-right">
+                                        <ul class="blog_meta list_style">
+                                            <li>
+                                                    <a href="#"><div class="btn btn-success">Available</div></a>
+                                            </li>
+                                            <li><a href="#">Phu Khuong, Phu Tuc, Chau Thanh, Ben Tre, Phu Tuc, Chau Thanh, Ben Tre<i class="lnr lnr-home"></i></a></li>
+                                            <li><a href="#">Binh Thuan<i class="lnr lnr-map-marker"></i></a></li>
+                                            <li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
+                                            <li><a href="#">6/ 10<i class="lnr lnr-star"></i></a></li>
+                                            <li><a href="#"><h5>$500<small>/night</small></h5></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="blog_post">
+                                        <img src="../Content/image/Resort/info/BT_infor_10.jpg" alt="">
+                                        <div class="blog_details">
+                                            <a href="DetailResort/4.html">
+                                                <h2>Forever Green Resort</h2>
+                                            </a>
+                                            <p>You will enjoy popular activities such as sightseeing, cycling and casual walks around the charming town centre, observing local people trading in the colourful open market</p>
+                                            <a href="DetailResort/4.html" class="view_btn button_hover">View More</a>
                                         </div>
                                     </div>
                                 </div>
                             </article>
                         </div>
                 <nav class="blog-pagination justify-content-center d-flex">
-                    <div class="pagination-container"><ul class="pagination"><li class="active"><a>1</a></li><li><a href="ShowAllTouristSpot4658.html?page=2">2</a></li><li><a href="ShowAllTouristSpot9ba9.html?page=3">3</a></li><li class="PagedList-skipToNext"><a href="ShowAllTouristSpot4658.html?page=2" rel="next">»</a></li></ul></div>
+                    <div class="pagination-container"><ul class="pagination"><li class="active"><a>1</a></li><li><a href="ShowAllResort4658.html?page=2">2</a></li><li><a href="ShowAllResort9ba9.html?page=3">3</a></li><li class="PagedList-skipToNext"><a href="ShowAllResort4658.html?page=2" rel="next">Â»</a></li></ul></div>
                 </nav>
             </div>
             <div class="col-lg-4">
-<form action="http://localhost:2012/Home/ShowAllTouristSpot" method="post">                <div class="blog_right_sidebar">
-                    <aside class="single_sidebar_widget search_widget">
-                        <div class="input-group">
+<form action="http://localhost:2012/Home/ShowAllResort" method="post">                    <div class="blog_right_sidebar">
+                        <aside class="single_sidebar_widget search_widget">
+                            <div class="input-group">
+                                <input id="SearchString" name="SearchString" type="text" value="" />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default submitButton" type="submit"><i class="lnr lnr-magnifier"></i></button>
+                                </span>
 
-                            <input id="SearchString" name="SearchString" type="text" value="" />
-                            <span class="input-group-btn">
-                                <button class="btn btn-default submitButton" type="submit"><i class="lnr lnr-magnifier"></i></button>
-                            </span>
-                        </div>
-                        <!-- /input-group -->
-                        <div class="br"></div>
-                    </aside>
-                    <aside class="single_sidebar_widget author_widget">
-                        <a class="genric-btn info-border circle arrow advanceSearchButton" data-toggle="collapse" data-target="#advanceSearch">
-                            Advance Search<span class="iconButton lnr lnr-chevron-down"></span>
-                        </a>
-                        <div id="advanceSearch" class="collapse">
-                            <div class="container" style="margin-top: 30px">
-                                <div class="mt-10" style="margin-bottom: 20px">
-                                    <div class="col-lg-12">
-                                        <div class="errorInput alert alert-danger"></div>
+                            </div>
+                            <div class="br"></div>
+                            <!-- /input-group -->
+                        </aside>
+                        <aside class="single_sidebar_widget author_widget">
+                            <a class="genric-btn info-border circle arrow advanceSearchButton" data-toggle="collapse" data-target="#advanceSearch">
+                                Advance Search<span class="iconButton lnr lnr-chevron-down"></span>
+                            </a>
+                            <div id="advanceSearch" class="collapse">
+                                <div class="container" style="margin-top: 30px">
+                                    <div class="mt-10" style="margin-bottom: 20px">
+                                        <div class="col-lg-12">
+                                            <div class="errorInput alert alert-danger"></div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="mt-10" style="margin-bottom: 20px">
-                                    <div class="col-lg-12">
-                                        <div class="input-group-icon mt-10">
-                                            <div class="icon"><i class="fa fa-plane" aria-hidden="true"></i></div>
-                                            <div class="form-select" id="citySelect">
-                                                <select name="city">
-                                                    <option value="">City</option>
-                                                        <option value="BL">Bac Lieu</option>
-                                                        <option value="BT">Binh Thuan</option>
-                                                        <option value="BTR">Ben Tre</option>
-                                                        <option value="CM">Ca Mau</option>
-                                                        <option value="CT">Can Tho</option>
-                                                        <option value="Dla">Da Lat</option>
-                                                        <option value="DN">Da Nang</option>
-                                                        <option value="DNA">Dong Nai</option>
-                                                        <option value="KG">Kien Giang</option>
-                                                        <option value="NT">Nha Trang</option>
-                                                        <option value="PT">Phan Thiet</option>
-                                                        <option value="QN">Quang Ninh</option>
-                                                        <option value="SG">Sai Gon</option>
-                                                        <option value="TN">Tay Ninh</option>
-                                                        <option value="TV">Tra Vinh</option>
-                                                        <option value="VT">Vung Tau</option>
-                                                </select>
+                                    <div class="mt-10" style="margin-bottom: 20px">
+                                        <div class="col-lg-12">
+                                            <div class="input-group-icon mt-10">
+                                                <div class="icon"><i class="fa fa-plane" aria-hidden="true"></i></div>
+                                                <div class="form-select" id="citySelect">
+                                                    <select name="city">
+                                                        <option value="">City</option>
+                                                            <option value="BL">Bac Lieu</option>
+                                                            <option value="BT">Binh Thuan</option>
+                                                            <option value="BTR">Ben Tre</option>
+                                                            <option value="CM">Ca Mau</option>
+                                                            <option value="CT">Can Tho</option>
+                                                            <option value="Dla">Da Lat</option>
+                                                            <option value="DN">Da Nang</option>
+                                                            <option value="DNA">Dong Nai</option>
+                                                            <option value="KG">Kien Giang</option>
+                                                            <option value="NT">Nha Trang</option>
+                                                            <option value="PT">Phan Thiet</option>
+                                                            <option value="QN">Quang Ninh</option>
+                                                            <option value="SG">Sai Gon</option>
+                                                            <option value="TN">Tay Ninh</option>
+                                                            <option value="TV">Tra Vinh</option>
+                                                            <option value="VT">Vung Tau</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="mt-10" style="margin-bottom: 20px">
-                                    <div class="col-lg-12">
-                                        <div class="switch-wrap d-flex justify-content-between" style="margin-top: 20px;">
-                                            <label for="formControlRange">Quality</label>
-                                            <input type="range" min="1" max="10" value="" class="slider" name="quality" id="quality" style="margin-left: 10px;" disabled>
-                                            <input type="text" id="resultRange" value="1" style="width: 30px; margin-left: 10px;margin-right:10px" disabled />/10 <i class="lnr lnr-star"></i>
+                                    <div class="mt-10" style="margin-bottom: 20px">
+                                        <div class="col-lg-12">
+                                            <div class="switch-wrap d-flex justify-content-between" style="margin-top: 20px;">
+                                                <label> Available </label>
+                                                <div class="confirm-switch">
+                                                    <input type="checkbox" name="isAvailable" id="confirm-switch" value="true" checked disabled>
+                                                    <label for="confirm-switch"></label>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="button-group-area mt-40">
-                                    <button type="submit" class="submitAdvance genric-btn primary circle">Search</button>
+                                    <div class="mt-10" style="margin-bottom: 20px">
+                                        <div class="col-lg-12">
+                                            <div class="switch-wrap d-flex justify-content-between" style="margin-top: 20px;">
+                                                <label for="formControlRange">Quality</label>
+                                                <input type="range" min="1" max="10" value="" class="slider" name="quality" id="quality" style="margin-left: 10px;" disabled>
+                                                <input type="text" id="resultRange" value="1" style="width: 30px; margin-left: 10px;margin-right:10px" disabled />/10 <i class="lnr lnr-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-10" style="margin-bottom: 20px">
+                                        <div class="col-lg-12">
+                                            <div class="switch-wrap d-flex justify-content-between" style="margin-top: 20px;">
+                                                <label>Price</label>
+                                                <input class="form-control" type="number" name="minPrice" id="minPrice" value="0" style="width:75px" disabled>
+                                                <label>To</label>
+                                                <input class="form-control" type="number" name="maxPrice" id="maxPrice" value="0" style="width:75px" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-10">
+                                        <div class="col-lg-12">
+                                            <div class="switch-wrap d-flex justify-content-between" style="margin-top: 20px;">
+                                                <label>Discount</label>
+                                                <div class="primary-checkbox text-left">
+                                                    <input type="checkbox" name="isDiscount" id="primary-checkbox" value="true" checked disabled>
+                                                    <label for="primary-checkbox"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="button-group-area mt-40">
+                                        <button type="submit" class="submitAdvance genric-btn primary circle">Search</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </aside>
-                </div>
+                        </aside>
+                    </div>
 </form>            </div>
         </div>
     </div>
 </section>
+
 <script>
     $(document).ready(function () {
         //$(".pagination-container").removeClass('pagination-container');
@@ -304,6 +358,43 @@
             }
 
         });
+        $('#maxPrice').change(function () {
+            let minPrice = $('#minPrice').val();
+            let maxPrice = $('#maxPrice').val();
+            if (minPrice > maxPrice) {
+                $('.errorInput').show();
+                $('.errorInput').text('Max Price must greater than Min Price!');
+            } else {
+                $('.errorInput').hide();
+            }
+        })
+        $('#minPrice').change(function () {
+            let minPrice = $(this).val();
+            let maxPrice = $('#maxPrice').val();
+            if (minPrice > maxPrice) {
+                $('.errorInput').show();
+                $('.errorInput').text('Max Price must greater than Min Price!');
+            } else {
+                $('.errorInput').hide();
+            }
+
+        });
+
+        $('#isDiscount').change(function () {
+            if (!$(this).is(':checked')) {
+                $(this).val(false);
+            } else {
+                $(this).val(true);
+            }
+        })
+
+        $('#isAvailable').change(function () {
+            if (!$(this).is(':checked')) {
+                $(this).val(false);
+            } else {
+                $(this).val(true);
+            }
+        })
     });
 </script>
 
@@ -315,7 +406,7 @@
                 <div class="col-lg-3  col-md-6 col-sm-6">
                     <div class="single-footer-widget">
                         <h6 class="footer_title">About Agency</h6>
-                        <p>The world has become so fast paced that people don’t want to stand by reading a page of information, they would much rather look at a presentation and understand the message. It has come to a point </p>
+                        <p>The world has become so fast paced that people donât want to stand by reading a page of information, they would much rather look at a presentation and understand the message. It has come to a point </p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
@@ -407,5 +498,5 @@
 
 </body>
 
-<!-- Mirrored from localhost:2012/Home/ShowAllTouristSpot by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 25 Feb 2022 14:18:45 GMT -->
+<!-- Mirrored from localhost:2012/Home/ShowAllResort by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 25 Feb 2022 14:19:07 GMT -->
 </html>

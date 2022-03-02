@@ -47,11 +47,11 @@
                         <li class="nav-item submenu dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Information</a>
                             <ul class="dropdown-menu">
-                                <li class="nav-item"><a class="nav-link" href="Home/ShowAllTouristSpot.html">Tourist Spots</a></li>
-                                <li class="nav-item"><a class="nav-link" href="Home/ShowAllHotel.html">Hotel</a></li>
-                                <li class="nav-item"><a class="nav-link" href="Home/ShowAllRestaurant.html">Restaurant</a></li>
-                                <li class="nav-item"><a class="nav-link" href="Home/ShowAllResort.html">Resort</a></li>
-                                <li class="nav-item"><a class="nav-link" href="Home/ShowAllTravel.html">Travel</a></li>
+                                <li class="nav-item"><a class="nav-link" href="infomation/showAllTouristSpot">Tourist Spots</a></li>
+                                <li class="nav-item"><a class="nav-link" href="infomation/showAllHotel">Hotel</a></li>
+                                <li class="nav-item"><a class="nav-link" href="infomation/showAllRestaurant">Restaurant</a></li>
+                                <li class="nav-item"><a class="nav-link" href="infomation/showAllResort">Resort</a></li>
+                                <li class="nav-item"><a class="nav-link" href="infomation/showAllTravel">Travel</a></li>
                             </ul>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="Home/AboutUs.html">About us</a></li>

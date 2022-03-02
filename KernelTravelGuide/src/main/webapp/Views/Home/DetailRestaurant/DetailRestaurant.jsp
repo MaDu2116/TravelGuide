@@ -9,6 +9,9 @@
 <body>
 	<section class="blog_area single-post-area">
 		<div class="container">
+		<c:out value="${restaurantDto.imageDetailRestaurant}"></c:out>
+		<img class="img-fluid"
+									src="${restaurantDto.imageDetailRestaurant}" alt="">
 			<div class="row">
 				<div class="col-lg-8 posts-list">
 					<div class="single-post row">

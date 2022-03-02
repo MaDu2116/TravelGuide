@@ -80,4 +80,43 @@ public class TravelDao extends BaseConnection {
 		}
 		return travelDto;
 	}
+
+	public List<TravelDto> getAllTravel() {
+
+		List<TravelDto> travelDtoList = new ArrayList<TravelDto>();
+		TravelDto travelDto = new TravelDto();
+		conn = getConnection();
+		StringBuilder sql = new StringBuilder();
+		sql.append("  SELECT * FROM TRAVELGUIDE.DBO.TRAVEL AS T");
+		sql.append("  INNER JOIN TRAVELGUIDE.DBO.CITY AS C");
+		sql.append("  ON T.ID_CITY = C.ID_CITY");
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql.toString());
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				
+				travelDto.setIdTravel(rs.getInt("ID_TRAVEL"));
+				travelDto.setNameTravel(rs.getString("NAME_TRAVEL"));
+				travelDto.setIdCity(rs.getString("ID_CITY"));
+				travelDto.setAddressTravel(rs.getString("ADDRESS_TRAVEL"));
+				travelDto.setTelTravel(rs.getString("TEL_TRAVEL"));
+				travelDto.setQualityTravel(rs.getInt("QUALITY_TRAVEL"));
+				travelDto.setAvailable(rs.getInt("AVAILABLE"));
+				travelDto.setDesTravel(rs.getString("DES_TRAVEL"));
+				travelDto.setIntroductTravel(rs.getString("INTRODUCE_TRAVEL"));
+				travelDto.setImageTravel(rs.getString("IMAGE_TRAVEL"));
+				travelDto.setIsDiscountTravel(rs.getInt("ISDISCOUNT_TRAVEL"));
+				travelDto.setDiscountTravel(rs.getInt("DISCOUNT_TRAVEL"));
+				travelDto.setImageDetailTravel(rs.getString("IMAGE_DETAIL_TRAVEL"));
+				travelDto.setNameCity(rs.getString("NAME_CITY"));
+
+				travelDtoList.add(travelDto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return travelDtoList;
+	}
 }
