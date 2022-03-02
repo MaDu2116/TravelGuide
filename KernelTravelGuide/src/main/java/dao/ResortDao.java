@@ -86,7 +86,7 @@ public class ResortDao extends BaseConnection {
 
 	public List<ResortDto> getAllResort() {
 		List<ResortDto> resortDtoList = new ArrayList<ResortDto>();
-		ResortDto resortDto = new ResortDto();
+	
 		conn = getConnection();
 		StringBuilder sql = new StringBuilder();
 		sql.append("  SELECT * FROM TRAVELGUIDE.DBO.RESORT AS R");
@@ -96,6 +96,7 @@ public class ResortDao extends BaseConnection {
 			PreparedStatement stmt = conn.prepareStatement(sql.toString());
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
+				ResortDto resortDto = new ResortDto();
 
 				resortDto.setIdResort(rs.getInt("ID_RESORT"));
 				resortDto.setNameResort(rs.getString("NAME_RESORT"));

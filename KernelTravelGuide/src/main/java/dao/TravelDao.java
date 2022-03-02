@@ -84,7 +84,7 @@ public class TravelDao extends BaseConnection {
 	public List<TravelDto> getAllTravel() {
 
 		List<TravelDto> travelDtoList = new ArrayList<TravelDto>();
-		TravelDto travelDto = new TravelDto();
+		
 		conn = getConnection();
 		StringBuilder sql = new StringBuilder();
 		sql.append("  SELECT * FROM TRAVELGUIDE.DBO.TRAVEL AS T");
@@ -94,7 +94,7 @@ public class TravelDao extends BaseConnection {
 			PreparedStatement stmt = conn.prepareStatement(sql.toString());
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				
+				TravelDto travelDto = new TravelDto();
 				travelDto.setIdTravel(rs.getInt("ID_TRAVEL"));
 				travelDto.setNameTravel(rs.getString("NAME_TRAVEL"));
 				travelDto.setIdCity(rs.getString("ID_CITY"));

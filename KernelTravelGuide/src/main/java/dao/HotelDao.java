@@ -85,7 +85,7 @@ public class HotelDao extends BaseConnection {
 
 	public List<HotelDto> getAllHotel() {
 		List<HotelDto> hotelDtoList = new ArrayList<HotelDto>();
-		HotelDto hotelDto = new HotelDto();
+		
 		conn = getConnection();
 		StringBuilder sql = new StringBuilder();
 		sql.append("  SELECT * FROM TRAVELGUIDE.DBO.HOTEL AS H");
@@ -95,6 +95,7 @@ public class HotelDao extends BaseConnection {
 			PreparedStatement stmt = conn.prepareStatement(sql.toString());
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
+				HotelDto hotelDto = new HotelDto();
 
 				hotelDto.setIdHotel(rs.getInt("ID_HOTEL"));
 				hotelDto.setNameHotel(rs.getString("NAME_HOTEL"));

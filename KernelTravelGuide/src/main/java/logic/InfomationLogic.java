@@ -51,4 +51,30 @@ public class InfomationLogic {
 		return resortDtoList;
 	}
 
+	public int totalPage(String type) {
+		int totalPage = 0;
+		switch (type) {
+		case "showAllTouristSpot":
+			TouristSpotDao touristSpotDao = new TouristSpotDao();
+			totalPage = touristSpotDao.countAllTouristSpot();
+
+			break;
+		case "hotel":
+
+			break;
+		case "resort":
+
+			break;
+		case "travel":
+
+			break;
+
+		default:
+			break;
+		}
+
+		return totalPage;
+
+	}
+
 }

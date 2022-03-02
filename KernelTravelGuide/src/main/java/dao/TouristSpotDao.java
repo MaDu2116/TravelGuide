@@ -77,9 +77,31 @@ public class TouristSpotDao extends BaseConnection {
 		return touristSpotDto;
 	}
 
+	public int countAllTouristSpot() {
+		int count = 0;
+
+		conn = getConnection();
+		StringBuilder sql = new StringBuilder();
+		sql.append("  SELECT COUNT(*) FROM TRAVELGUIDE.DBO.TOURIST_SPOTS AS T");
+		sql.append("  INNER JOIN TRAVELGUIDE.DBO.CITY AS C");
+		sql.append("  ON T.ID_CITY = C.ID_CITY");
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql.toString());
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				count = Integer.parseInt(rs.getString(1));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return count;
+	}
+
 	public List<TouristSpotDto> getAllTouristSpot() {
 		List<TouristSpotDto> touristSpotDtoList = new ArrayList<>();
-		TouristSpotDto touristSpotDto = new TouristSpotDto();
+
 		conn = getConnection();
 		StringBuilder sql = new StringBuilder();
 		sql.append("  SELECT * FROM TRAVELGUIDE.DBO.TOURIST_SPOTS AS T");
@@ -89,7 +111,7 @@ public class TouristSpotDao extends BaseConnection {
 			PreparedStatement stmt = conn.prepareStatement(sql.toString());
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-
+				TouristSpotDto touristSpotDto = new TouristSpotDto();
 				touristSpotDto.setIdTouristSpot(rs.getInt("ID_TOURISTSPOT"));
 				touristSpotDto.setNameTouristSpot(rs.getString("NAME_TOURISTSPOT"));
 				touristSpotDto.setIdCity(rs.getString("ID_CITY"));

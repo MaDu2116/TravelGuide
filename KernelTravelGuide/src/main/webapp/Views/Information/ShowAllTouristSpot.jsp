@@ -56,7 +56,7 @@
 					id="navbarSupportedContent">
 					<ul class="nav navbar-nav menu_nav ml-auto">
 						<li class="nav-item active"><a class="nav-link"
-							href="../index.html">Home</a></li>
+							href="home">Home</a></li>
 						<li class="nav-item submenu dropdown"><a href="#"
 							class="nav-link dropdown-toggle" data-toggle="dropdown"
 							role="button" aria-haspopup="true" aria-expanded="false">Information</a>
@@ -95,7 +95,6 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8">
-
 					 <c:forEach items="${touristSpotDtoList}" var="touristSpot">
 						<div class="blog_left_sidebar">
 							<article class="row blog_item">
@@ -112,7 +111,7 @@
 								</div>
 								<div class="col-md-9">
 									<div class="blog_post">
-										<img src="<c:out value="${touristSpot.imageTouristSpots}"/>"
+										<img src="../${touristSpot.imageTouristSpots}"
 											alt="">
 										<div class="blog_details">
 											<a href="DetailTouristSpot/1.html">
@@ -132,21 +131,35 @@
 
 					</c:forEach>
 
+<%-- <c:forEach items="${schools}" var="school"  begin="4" end="8"> --%>
+<%--     School from index 4 until index 8: ${school} --%>
+<%-- </c:forEach> --%>
+
+
 
 
 
 					<nav class="blog-pagination justify-content-center d-flex">
 						<div class="pagination-container">
 							<ul class="pagination">
-								<li class="active"><a>1</a></li>
-								<li><a href="ShowAllTouristSpot4658.html?page=2">2</a></li>
-								<li><a href="ShowAllTouristSpot9ba9.html?page=3">3</a></li>
-								<li class="PagedList-skipToNext"><a
-									href="ShowAllTouristSpot4658.html?page=2" rel="next">Â»</a></li>
+							
+							 <c:forEach var="page" begin="1" end="${totalPage}" step="1">
+<!-- 								<li class="active"><a>1</a></li> -->
+								<li><a href="showAllTouristSpot?page=${page}">${page}</a></li>
+								</c:forEach>
+								
+								
+								
+								
+								
+<!-- 								<li class="PagedList-skipToNext"><a -->
+<!-- 									href="showAllTouristSpot?page=2" rel="next">>></a></li> -->
 							</ul>
 						</div>
 					</nav>
+					
 				</div>
+				
 				<div class="col-lg-4">
 					<form action="http://localhost:2012/Home/ShowAllTouristSpot"
 						method="post">

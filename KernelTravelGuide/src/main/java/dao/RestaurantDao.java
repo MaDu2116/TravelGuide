@@ -84,7 +84,7 @@ public class RestaurantDao extends BaseConnection {
 	}
 	public List<RestaurantDto> getAllRestauran() {
 		List<RestaurantDto> restaurantDtoList = new ArrayList<RestaurantDto>();
-		RestaurantDto restaurantDto = new RestaurantDto();
+		
 		conn = getConnection();
 		StringBuilder sql = new StringBuilder();
 		sql.append("  SELECT * FROM TRAVELGUIDE.DBO.RESTAURANT AS H");
@@ -94,6 +94,7 @@ public class RestaurantDao extends BaseConnection {
 			PreparedStatement stmt = conn.prepareStatement(sql.toString());
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
+				RestaurantDto restaurantDto = new RestaurantDto();
 				
 				restaurantDto.setIdRestaurant(rs.getInt("ID_RESTAURANT"));
 				restaurantDto.setNameRestaurant(rs.getString("NAME_RESTAURANT"));
