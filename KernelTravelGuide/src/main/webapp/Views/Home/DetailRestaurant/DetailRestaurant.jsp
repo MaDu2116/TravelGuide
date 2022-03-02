@@ -9,7 +9,6 @@
 <body>
 	<section class="blog_area single-post-area">
 		<div class="container">
-		<c:out value="${restaurantDto.imageDetailRestaurant}"></c:out>
 		<img class="img-fluid"
 									src="${restaurantDto.imageDetailRestaurant}" alt="">
 			<div class="row">

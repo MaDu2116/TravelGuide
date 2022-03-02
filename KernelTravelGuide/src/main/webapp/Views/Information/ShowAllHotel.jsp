@@ -75,6 +75,9 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
+             <c:forEach items="${hotelDtoList}" var="hotel">
+            
+            
                         <div class="blog_left_sidebar">
                             <article class="row blog_item">
                                 <div class="col-md-3">
@@ -83,11 +86,11 @@
                                             <li>
                                                     <a href="#"><div class="btn btn-success">Available</div></a>
                                             </li>
-                                            <li><a href="#">The administrative and political center of Ca Mau province, Ward 9, Ca Mau city<i class="lnr lnr-home"></i></a></li>
-                                            <li><a href="#">Ca Mau<i class="lnr lnr-map-marker"></i></a></li>
+                                            <li><a href="#"><c:out value="${hotel.addressHotel}"/><i class="lnr lnr-home"></i></a></li>
+                                            <li><a href="#"><c:out value="${hotel.nameCity}"/><i class="lnr lnr-map-marker"></i></a></li>
                                             <li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
-                                            <li><a href="#">9/ 10<i class="lnr lnr-star"></i></a></li>
-                                            <li><a href="#"><h5>$500<small>/night</small></h5></a></li>
+                                            <li><a href="#"><c:out value="${hotel.qualityHotel}"/>/ 10<i class="lnr lnr-star"></i></a></li>
+                                            <li><a href="#"><h5>$<c:out value="${hotel.priceHotel}"/><small>/night</small></h5></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -96,105 +99,23 @@
                                         <img src="../Content/image/Hotel/infor/CM_infor_7.jpg" alt="">
                                         <div class="blog_details">
                                             <a href="DetailHotel/1.html">
-                                                <h2>Muong Thanh Luxury Ca Mau Hotel</h2>
+                                                <h2><c:out value="${hotel.nameHotel}"/></h2>
                                             </a>
-                                            <p>Hotel housed 285 rooms and suites .Hotel also housed 9 conference rooms, a gym and game rooms. There are 2 in house restaurants serving chinese and western cuisine,an executive lounge</p>
+                                            <p><c:out value="${hotel.desHotel}"/></p>
                                             <a href="DetailHotel/1.html" class="view_btn button_hover">View More</a>
                                         </div>
                                     </div>
                                 </div>
                             </article>
                         </div>
-                        <div class="blog_left_sidebar">
-                            <article class="row blog_item">
-                                <div class="col-md-3">
-                                    <div class="blog_info text-right">
-                                        <ul class="blog_meta list_style">
-                                            <li>
-                                                    <a href="#"><div class="btn btn-success">Available</div></a>
-                                            </li>
-                                            <li><a href="#">207 Phan Ngoc Hien, Ward 6, Ca Mau, Vietnam<i class="lnr lnr-home"></i></a></li>
-                                            <li><a href="#">Ca Mau<i class="lnr lnr-map-marker"></i></a></li>
-                                            <li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
-                                            <li><a href="#">9/ 10<i class="lnr lnr-star"></i></a></li>
-                                            <li><a href="#"><h5>$500<small>/night</small></h5></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-md-9">
-                                    <div class="blog_post">
-                                        <img src="../Content/image/Hotel/infor/CM_infor_1.jpg" alt="">
-                                        <div class="blog_details">
-                                            <a href="DetailHotel/2.html">
-                                                <h2>Anh Nguyet Hotel</h2>
-                                            </a>
-                                            <p>Hotel housed 285 rooms and suites .Hotel also housed 9 conference rooms, a gym and game rooms. There are 2 in house restaurants serving chinese and western cuisine,an executive lounge</p>
-                                            <a href="DetailHotel/2.html" class="view_btn button_hover">View More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="blog_left_sidebar">
-                            <article class="row blog_item">
-                                <div class="col-md-3">
-                                    <div class="blog_info text-right">
-                                        <ul class="blog_meta list_style">
-                                            <li>
-                                                    <a href="#"><div class="btn btn-success">Available</div></a>
-                                            </li>
-                                            <li><a href="#">200 C, Hung Vuong Street<i class="lnr lnr-home"></i></a></li>
-                                            <li><a href="#">Binh Thuan<i class="lnr lnr-map-marker"></i></a></li>
-                                            <li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
-                                            <li><a href="#">9/ 10<i class="lnr lnr-star"></i></a></li>
-                                            <li><a href="#"><h5>$500<small>/night</small></h5></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-md-9">
-                                    <div class="blog_post">
-                                        <img src="../Content/image/Hotel/infor/BT_infor_2.jpg" alt="">
-                                        <div class="blog_details">
-                                            <a href="DetailHotel/3.html">
-                                                <h2>Ham Luong Hotel</h2>
-                                            </a>
-                                            <p>Hotel housed 285 rooms and suites .Hotel also housed 9 conference rooms, a gym and game rooms. There are 2 in house restaurants serving chinese and western cuisine,an executive lounge</p>
-                                            <a href="DetailHotel/3.html" class="view_btn button_hover">View More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="blog_left_sidebar">
-                            <article class="row blog_item">
-                                <div class="col-md-3">
-                                    <div class="blog_info text-right">
-                                        <ul class="blog_meta list_style">
-                                            <li>
-                                                    <a href="#"><div class="btn btn-success">Available</div></a>
-                                            </li>
-                                            <li><a href="#">Ham Rong, Nam Can, Ca Mau<i class="lnr lnr-home"></i></a></li>
-                                            <li><a href="#">Ca Mau<i class="lnr lnr-map-marker"></i></a></li>
-                                            <li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
-                                            <li><a href="#">9/ 10<i class="lnr lnr-star"></i></a></li>
-                                            <li><a href="#"><h5>$500<small>/night</small></h5></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-md-9">
-                                    <div class="blog_post">
-                                        <img src="../Content/image/Hotel/infor/CM_infor_13.jpg" alt="">
-                                        <div class="blog_details">
-                                            <a href="DetailHotel/4.html">
-                                                <h2>Ozon Hotel</h2>
-                                            </a>
-                                            <p>Hotel housed 285 rooms and suites .Hotel also housed 9 conference rooms, a gym and game rooms. There are 2 in house restaurants serving chinese and western cuisine,an executive lounge</p>
-                                            <a href="DetailHotel/4.html" class="view_btn button_hover">View More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
+			</c:forEach>
+
+
+
+
+
+
+
                 <nav class="blog-pagination justify-content-center d-flex">
                     <div class="pagination-container"><ul class="pagination"><li class="active"><a>1</a></li><li><a href="ShowAllHotel4658.html?page=2">2</a></li><li class="PagedList-skipToNext"><a href="ShowAllHotel4658.html?page=2" rel="next">Â»</a></li></ul></div>
                 </nav>

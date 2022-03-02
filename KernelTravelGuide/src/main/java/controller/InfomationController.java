@@ -45,28 +45,28 @@ public class InfomationController extends HttpServlet {
 			List<HotelDto> hotelDtoList = new ArrayList<>();
 			hotelDtoList = infomationLogic.getAllHotel();
 			req.setAttribute("hotelDtoList", hotelDtoList);
-			dispatcher = req.getRequestDispatcher("/Views/Information/showAllHotel.jsp");
+			dispatcher = req.getRequestDispatcher("/Views/Information/ShowAllHotel.jsp");
 			break;
 		case "showAllRestaurant":
 			// ToDo
 			List<RestaurantDto> restaurantDtoList = new ArrayList<>();
 			restaurantDtoList = infomationLogic.getAllRestaurant();
 			req.setAttribute("restaurantDtoList", restaurantDtoList);
-			dispatcher = req.getRequestDispatcher("/Views/Information/showAllRestaurant.jsp");
+			dispatcher = req.getRequestDispatcher("/Views/Information/ShowAllRestaurant.jsp");
 			break;
 		case "showAllResort":
 			// ToDo
 			List<ResortDto> resortDtoList = new ArrayList<>();
 			resortDtoList = infomationLogic.getAllResort();
 			req.setAttribute("resortDtoList", resortDtoList);
-			dispatcher = req.getRequestDispatcher("/Views/Information/showAllResort.jsp");
+			dispatcher = req.getRequestDispatcher("/Views/Information/ShowAllResort.jsp");
 			break;
 		case "showAllTravel":
 			// ToDo
 			List<TravelDto> travelDtoList = new ArrayList<>();
 			travelDtoList = infomationLogic.getAllTravel();
 			req.setAttribute("travelDtoList", travelDtoList);
-			dispatcher = req.getRequestDispatcher("/Views/Information/showAllTravel.jsp");
+			dispatcher = req.getRequestDispatcher("/Views/Information/ShowAllTravel.jsp");
 			break;
 		default:
 			dispatcher = req.getRequestDispatcher("/Views/Information/ShowAllTouristSpot.jsp");
