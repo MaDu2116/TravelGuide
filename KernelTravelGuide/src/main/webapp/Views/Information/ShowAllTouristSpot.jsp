@@ -29,14 +29,14 @@
 										<img src="../${touristSpot.imageTouristSpots}"
 											alt="">
 										<div class="blog_details">
-											<a href="DetailTouristSpot/1.html">
+											<a href="/KernelTravelGuide/detailTouristSpot?idTouristSpot=${touristSpot.idTouristSpot}">
 												<h2><c:out value="${touristSpot.nameTouristSpot}"/></h2>
 											</a>
 											<p>Note that the Students.cs has a StudentPhoto property
 												which is assigned with [Required] attribute. This makes the
 												relation one-to-one between Students and StudentPhotoes
 												tables.</p>
-											<a href="DetailTouristSpot/1.html"
+											<a href="/KernelTravelGuide/detailTouristSpot?idTouristSpot=${touristSpot.idTouristSpot}"
 												class="view_btn button_hover">View More</a>
 										</div>
 									</div>

@@ -14,12 +14,16 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="icon" href="<c:url value ='/Content/image/favicon.png' /> type="image/png" />
+<link rel="icon"
+	href="<c:url value ='/Content/image/favicon.png' /> " type=" image/png" />
 <title>Karnel Travel Guild</title>
 <!-- Bootstrap CSS -->
-<link href="<c:url value ='/Content/css/bootstrap.css'/> " rel="stylesheet" />
-<link href="<c:url value ='/Content/vendors/linericon/style.css'/> " rel="stylesheet" />
-<link rel="stylesheet" href="<c:url value = '../Content/css/font-awesome.min.css'/> " />
+<link href="<c:url value ='/Content/css/bootstrap.css'/> "
+	rel="stylesheet" />
+<link href="<c:url value ='/Content/vendors/linericon/style.css'/> "
+	rel="stylesheet" />
+<link rel="stylesheet"
+	href="<c:url value = '../Content/css/font-awesome.min.css'/> " />
 <link rel="stylesheet"
 	href="<c:url value = '/Content/vendors/owl-carousel/owl.carousel.min.css'/> " />
 <link rel="stylesheet"
@@ -30,11 +34,13 @@
 	href="<c:url value ='/Content/vendors/owl-carousel/owl.carousel.min.css'/> " />
 <!-- main css -->
 <link rel="stylesheet" href="<c:url value ='/Content/css/style.css'/>" />
-<link rel="stylesheet" href="<c:url value ='/Content/css/responsive.css'/> " />
+<link rel="stylesheet"
+	href="<c:url value ='/Content/css/responsive.css'/> " />
 <!-- Jquery-->
 <script src="<c:url value ='/Scripts/jquery-3.3.1.min.js'/> "></script>
 <script src="<c:url value ='/Scripts/pnotify.custom.min.js'/>"></script>
-<link rel="stylesheet" href="<c:url value ='/Scripts/pnotify.custom.min.css'/> "/>
+<link rel="stylesheet"
+	href="<c:url value ='/Scripts/pnotify.custom.min.css'/> " />
 </head>
 <body>
 	<!--================Header Area =================-->
@@ -43,7 +49,7 @@
 			<nav class="navbar navbar-expand-lg navbar-light">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<a class="navbar-brand logo_h" href="home"><img
-					src="Content/image/Logo.png" alt=""></a>
+					src="<c:url value ='/Content/image/Logo.png'/>" alt=""></a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarSupportedContent"
 					aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -55,21 +61,23 @@
 				<div class="collapse navbar-collapse offset"
 					id="navbarSupportedContent">
 					<ul class="nav navbar-nav menu_nav ml-auto">
-						<li class="nav-item active"><a class="nav-link" href="home">Home</a></li>
+						<li class="nav-item active"><a class="nav-link"
+							href="/KernelTravelGuide/home">Home</a></li>
 						<li class="nav-item submenu dropdown"><a href="#"
 							class="nav-link dropdown-toggle" data-toggle="dropdown"
 							role="button" aria-haspopup="true" aria-expanded="false">Information</a>
 							<ul class="dropdown-menu">
 								<li class="nav-item"><a class="nav-link"
-									href="infomation/showAllTouristSpot">Tourist Spots</a></li>
+									href="/KernelTravelGuide/infomation/showAllTouristSpot">Tourist
+										Spots</a></li>
 								<li class="nav-item"><a class="nav-link"
-									href="infomation/showAllHotel">Hotel</a></li>
+									href="/KernelTravelGuide/infomation/showAllHotel">Hotel</a></li>
 								<li class="nav-item"><a class="nav-link"
-									href="infomation/showAllRestaurant">Restaurant</a></li>
+									href="/KernelTravelGuide/infomation/showAllRestaurant">Restaurant</a></li>
 								<li class="nav-item"><a class="nav-link"
-									href="infomation/showAllResort">Resort</a></li>
+									href="/KernelTravelGuide/infomation/showAllResort">Resort</a></li>
 								<li class="nav-item"><a class="nav-link"
-									href="infomation/showAllTravel">Travel</a></li>
+									href="/KernelTravelGuide/infomation/showAllTravel">Travel</a></li>
 							</ul></li>
 						<li class="nav-item"><a class="nav-link" href="AboutUs.jsp">About
 								us</a></li>
@@ -92,15 +100,18 @@
 	<script src="<c:url value ='/Content/js/jquery-3.2.1.min.js '/> "></script>
 	<script src="<c:url value ='/Content/js/popper.js '/> "></script>
 	<script src="<c:url value ='/Content/js/bootstrap.min.js '/> "></script>
-	<script src="<c:url value ='/Content/vendors/owl-carousel/owl.carousel.min.js '/> "></script>
+	<script
+		src="<c:url value ='/Content/vendors/owl-carousel/owl.carousel.min.js '/> "></script>
 	<script src="<c:url value ='/Content/js/jquery.ajaxchimp.min.js '/> "></script>
 	<script src="<c:url value ='/Content/js/mail-script.js '/> "></script>
 	<script
 		src="<c:url value ='/Content/vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.js '/> "></script>
-	<script src="<c:url value ='/Content/vendors/nice-select/js/jquery.nice-select.js '/> "></script>
+	<script
+		src="<c:url value ='/Content/vendors/nice-select/js/jquery.nice-select.js '/> "></script>
 	<script src="<c:url value ='/Content/js/mail-script.js '/> "></script>
 	<script src="<c:url value ='/Content/js/stellar.js '/> "></script>
-	<script src="<c:url value ='/Content/vendors/lightbox/simpleLightbox.min.js '/> "></script>
+	<script
+		src="<c:url value ='/Content/vendors/lightbox/simpleLightbox.min.js '/> "></script>
 	<script src="<c:url value ='/Content/js/custom.js '/> "></script>
 </body>
 
