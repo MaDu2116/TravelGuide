@@ -99,7 +99,7 @@ public class TouristSpotDao extends BaseConnection {
 		return count;
 	}
 
-	public List<TouristSpotDto> getAllTouristSpot() {
+	public List<TouristSpotDto> getAllTouristSpot(int offset) {
 		List<TouristSpotDto> touristSpotDtoList = new ArrayList<>();
 
 		conn = getConnection();
@@ -107,8 +107,13 @@ public class TouristSpotDao extends BaseConnection {
 		sql.append("  SELECT * FROM TRAVELGUIDE.DBO.TOURIST_SPOTS AS T");
 		sql.append("  INNER JOIN TRAVELGUIDE.DBO.CITY AS C");
 		sql.append("  ON T.ID_CITY = C.ID_CITY");
+		sql.append("  ORDER BY T.ID_TOURISTSPOT");
+		sql.append("  OFFSET ? ROWS");
+		sql.append("  FETCH NEXT ? ROWS ONLY;");
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql.toString());
+			stmt.setInt(1, offset);
+			stmt.setInt(2, 3);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				TouristSpotDto touristSpotDto = new TouristSpotDto();

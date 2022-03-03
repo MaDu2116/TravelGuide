@@ -29,36 +29,29 @@ public class InfomationController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String act[] = req.getRequestURL().toString().split("/");
 		String action = act[act.length - 1];
-//		System.out.println(action);
 		RequestDispatcher dispatcher = null;
 		InfomationLogic infomationLogic = new InfomationLogic();
+		
+		
+		List<String> nameCityList = new ArrayList<>();
+		nameCityList = infomationLogic.getAllNameCity();
+		req.setAttribute("nameCityList", nameCityList);
+//		req.setAttribute("selectedCity", selectedCity)
+		
+		
 		switch (action) {
 		case "showAllTouristSpot":
-			
-//			String spageid=req.getParameter("page");  
-//			int pageid=Integer.parseInt(spageid);  
-//			int total=3;  
-//			if(pageid==1){}  
-//			else{  
-//			    pageid=pageid-1;  
-//			    pageid=pageid*total+1;  
-//			}  
-			
+
 			int totalPage = infomationLogic.totalPage("showAllTouristSpot");
-			
+
 			req.setAttribute("totalPage", totalPage);
-			System.out.println(totalPage);
-			
-			
-			
+			int currentPage = req.getParameter("page") != null ? Integer.valueOf(req.getParameter("page")) : 1;
 			List<TouristSpotDto> touristSpotDtoList = new ArrayList<>();
-			touristSpotDtoList = infomationLogic.getAllTouristSpot();
+
+			touristSpotDtoList = infomationLogic.getAllTouristSpot(currentPage);
+
 			req.setAttribute("touristSpotDtoList", touristSpotDtoList);
-			
-			
-			
-			
-			
+
 			dispatcher = req.getRequestDispatcher("/Views/Information/ShowAllTouristSpot.jsp");
 			break;
 
@@ -91,9 +84,9 @@ public class InfomationController extends HttpServlet {
 			break;
 		default:
 			System.out.println("vao default");
-			touristSpotDtoList = new ArrayList<>();
-			touristSpotDtoList = infomationLogic.getAllTouristSpot();
-			req.setAttribute("touristSpotDtoList", touristSpotDtoList);
+//			touristSpotDtoList = new ArrayList<>();
+//			touristSpotDtoList = infomationLogic.getAllTouristSpot();
+//			req.setAttribute("touristSpotDtoList", touristSpotDtoList);
 			dispatcher = req.getRequestDispatcher("/Views/Information/ShowAllTouristSpot.jsp");
 			break;
 		}

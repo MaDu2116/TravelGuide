@@ -3,6 +3,7 @@ package logic;
 import java.util.ArrayList;
 import java.util.List;
 
+import dao.CityDao;
 import dao.HotelDao;
 import dao.ResortDao;
 import dao.RestaurantDao;
@@ -16,10 +17,18 @@ import dto.TravelDto;
 
 public class InfomationLogic {
 
-	public List<TouristSpotDto> getAllTouristSpot() {
+	public List<String> getAllNameCity() {
+		List<String> nameCityList = new ArrayList<>();
+		CityDao cityDao = new CityDao();
+		nameCityList = cityDao.getAllNameCity();
+		return nameCityList;
+	}
+
+	public List<TouristSpotDto> getAllTouristSpot(int currentPage) {
+		int offset = (currentPage - 1) * 3;
 		List<TouristSpotDto> touristSpotDtoList = new ArrayList<>();
 		TouristSpotDao touristSpotDao = new TouristSpotDao();
-		touristSpotDtoList = touristSpotDao.getAllTouristSpot();
+		touristSpotDtoList = touristSpotDao.getAllTouristSpot(offset);
 		return touristSpotDtoList;
 	}
 
@@ -57,7 +66,11 @@ public class InfomationLogic {
 		case "showAllTouristSpot":
 			TouristSpotDao touristSpotDao = new TouristSpotDao();
 			totalPage = touristSpotDao.countAllTouristSpot();
-
+			if (totalPage % 3 > 0) {
+				totalPage = totalPage / 3 + 1;
+			} else {
+				totalPage /= 3;
+			}
 			break;
 		case "hotel":
 
