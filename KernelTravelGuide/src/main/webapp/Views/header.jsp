@@ -14,27 +14,27 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="icon" href="Content/image/favicon.png" type="image/png">
+<link rel="icon" href="<c:url value ='/Content/image/favicon.png' /> type="image/png" />
 <title>Karnel Travel Guild</title>
 <!-- Bootstrap CSS -->
-<link rel="stylesheet" href="Content/css/bootstrap.css">
-<link rel="stylesheet" href="Content/vendors/linericon/style.css">
-<link rel="stylesheet" href="Content/css/font-awesome.min.css">
+<link href="<c:url value ='/Content/css/bootstrap.css'/> " rel="stylesheet" />
+<link href="<c:url value ='/Content/vendors/linericon/style.css'/> " rel="stylesheet" />
+<link rel="stylesheet" href="<c:url value = '../Content/css/font-awesome.min.css'/> " />
 <link rel="stylesheet"
-	href="Content/vendors/owl-carousel/owl.carousel.min.css">
+	href="<c:url value = '/Content/vendors/owl-carousel/owl.carousel.min.css'/> " />
 <link rel="stylesheet"
-	href="Content/vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.css">
+	href="<c:url value ='/Content/vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.css'/> " />
 <link rel="stylesheet"
-	href="Content/vendors/nice-select/css/nice-select.css">
+	href="<c:url value ='/Content/vendors/nice-select/css/nice-select.css'/> " />
 <link rel="stylesheet"
-	href="Content/vendors/owl-carousel/owl.carousel.min.css">
+	href="<c:url value ='/Content/vendors/owl-carousel/owl.carousel.min.css'/> " />
 <!-- main css -->
-<link rel="stylesheet" href="Content/css/style.css">
-<link rel="stylesheet" href="Content/css/responsive.css">
+<link rel="stylesheet" href="<c:url value ='/Content/css/style.css'/>" />
+<link rel="stylesheet" href="<c:url value ='/Content/css/responsive.css'/> " />
 <!-- Jquery-->
-<script src="Scripts/jquery-3.3.1.min.js"></script>
-<script src="Scripts/pnotify.custom.min.js"></script>
-<link rel="stylesheet" href="Scripts/pnotify.custom.min.css">
+<script src="<c:url value ='/Scripts/jquery-3.3.1.min.js'/> "></script>
+<script src="<c:url value ='/Scripts/pnotify.custom.min.js'/>"></script>
+<link rel="stylesheet" href="<c:url value ='/Scripts/pnotify.custom.min.css'/> "/>
 </head>
 <body>
 	<!--================Header Area =================-->
@@ -89,19 +89,19 @@
 	<!--================ End footer Area  =================-->
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="/Content/js/jquery-3.2.1.min.js"></script>
-	<script src="/Content/js/popper.js"></script>
-	<script src="/Content/js/bootstrap.min.js"></script>
-	<script src="/Content/vendors/owl-carousel/owl.carousel.min.js"></script>
-	<script src="/Content/js/jquery.ajaxchimp.min.js"></script>
-	<script src="/Content/js/mail-script.js"></script>
+	<script src="<c:url value ='/Content/js/jquery-3.2.1.min.js '/> "></script>
+	<script src="<c:url value ='/Content/js/popper.js '/> "></script>
+	<script src="<c:url value ='/Content/js/bootstrap.min.js '/> "></script>
+	<script src="<c:url value ='/Content/vendors/owl-carousel/owl.carousel.min.js '/> "></script>
+	<script src="<c:url value ='/Content/js/jquery.ajaxchimp.min.js '/> "></script>
+	<script src="<c:url value ='/Content/js/mail-script.js '/> "></script>
 	<script
-		src="/Content/vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.js"></script>
-	<script src="/Content/vendors/nice-select/js/jquery.nice-select.js"></script>
-	<script src="/Content/js/mail-script.js"></script>
-	<script src="/Content/js/stellar.js"></script>
-	<script src="/Content/vendors/lightbox/simpleLightbox.min.js"></script>
-	<script src="/Content/js/custom.js"></script>
+		src="<c:url value ='/Content/vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.js '/> "></script>
+	<script src="<c:url value ='/Content/vendors/nice-select/js/jquery.nice-select.js '/> "></script>
+	<script src="<c:url value ='/Content/js/mail-script.js '/> "></script>
+	<script src="<c:url value ='/Content/js/stellar.js '/> "></script>
+	<script src="<c:url value ='/Content/vendors/lightbox/simpleLightbox.min.js '/> "></script>
+	<script src="<c:url value ='/Content/js/custom.js '/> "></script>
 </body>
 
 </html>

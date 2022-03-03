@@ -4,7 +4,6 @@
 <%@ page import="java.util.List"%>
 <!DOCTYPE  html>
 <html lang="en">
-
 <jsp:include page="../../header.jsp" />
 <body>
 	<section class="blog_area single-post-area">
