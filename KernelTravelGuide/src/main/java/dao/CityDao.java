@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import common.BaseConnection;
-import entity.CityEntity;
 
 public class CityDao extends BaseConnection{
 	public List<String> getAllNameCity() {
@@ -18,9 +17,7 @@ public class CityDao extends BaseConnection{
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				CityEntity cityEntity = new CityEntity();
-				nameCityList.add(cityEntity.getNameCity());
-				System.out.println(cityEntity.getNameCity()+"__________");
+				nameCityList.add(rs.getString("NAME_CITY"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

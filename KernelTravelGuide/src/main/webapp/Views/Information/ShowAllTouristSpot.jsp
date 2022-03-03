@@ -144,13 +144,6 @@
 								<li><a href="showAllTouristSpot?page=${page}">${page}</a></li>
 								
 								</c:forEach>
-								
-								
-								
-								
-								
-<!-- 								<li class="PagedList-skipToNext"><a -->
-<!-- 									href="showAllTouristSpot?page=2" rel="next">>></a></li> -->
 							</ul>
 						</div>
 					</nav>
@@ -197,37 +190,11 @@
 
 														<select name="city">
 														<option value="">City</option> 
-<%-- 														 <c:forEach var="page" begin="1" end="${nameCityList.size()}" step="1"> --%>
 														<c:forEach var="nameCity" items="${nameCityList}">
 																<option value="${nameCity}"
 																	>${nameCity}</option>
 															</c:forEach>
-<%-- 														${nameCity == selectedCity ? 'selected="selected"' : ''} --%>
-														
-<!-- 															<option value="">City</option> -->
-<!-- 															<option value="BL">Bac Lieu</option> -->
-<!-- 															<option value="BT">Binh Thuan</option> -->
-<!-- 															<option value="BTR">Ben Tre</option> -->
-<!-- 															<option value="CM">Ca Mau</option> -->
-<!-- 															<option value="CT">Can Tho</option> -->
-<!-- 															<option value="Dla">Da Lat</option> -->
-<!-- 															<option value="DN">Da Nang</option> -->
-<!-- 															<option value="DNA">Dong Nai</option> -->
-<!-- 															<option value="KG">Kien Giang</option> -->
-<!-- 															<option value="NT">Nha Trang</option> -->
-<!-- 															<option value="PT">Phan Thiet</option> -->
-<!-- 															<option value="QN">Quang Ninh</option> -->
-<!-- 															<option value="SG">Sai Gon</option> -->
-<!-- 															<option value="TN">Tay Ninh</option> -->
-<!-- 															<option value="TV">Tra Vinh</option> -->
-<!-- 															<option value="VT">Vung Tau</option> -->
-															
-<%-- 															</c:forEach> --%>
 														</select>
-														
-														
-														
-														
 														
 													</div>
 												</div>
