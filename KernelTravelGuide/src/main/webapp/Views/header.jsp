@@ -48,7 +48,7 @@
 		<div class="container">
 			<nav class="navbar navbar-expand-lg navbar-light">
 				<!-- Brand and toggle get grouped for better mobile display -->
-				<a class="navbar-brand logo_h" href="home"><img
+				<a class="navbar-brand logo_h" href="/KernelTravelGuide/home"><img
 					src="<c:url value ='/Content/image/Logo.png'/>" alt=""></a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarSupportedContent"
@@ -84,9 +84,9 @@
 						<li class="nav-item"><a class="nav-link" href="gallery.jsp">Gallery</a></li>
 						<li class="nav-item"><a class="nav-link" href="contact.jsp">Contact</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="Account/Register.jsp">Register</a></li>
+							href="/KernelTravelGuide/register">Register</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="Account/Login.jsp">Login</a></li>
+							href="/KernelTravelGuide/login">Login</a></li>
 
 					</ul>
 				</div>

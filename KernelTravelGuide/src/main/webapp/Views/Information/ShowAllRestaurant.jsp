@@ -312,6 +312,9 @@
         $("#quality").on('change', function () {
             $("#resultRange").val($("#quality").val());
         });
+        $("#city").on('change', function () {
+            $("#resultRange").val($("#city").val());
+        });
 
         $(".submitAdvance").hide();
 

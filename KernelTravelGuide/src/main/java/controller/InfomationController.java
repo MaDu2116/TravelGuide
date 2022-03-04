@@ -18,7 +18,8 @@ import dto.TouristSpotDto;
 import dto.TravelDto;
 import logic.InfomationLogic;
 
-@WebServlet(urlPatterns = "/infomation/*")
+@WebServlet(urlPatterns = { "/infomation/showAllTouristSpot", "/infomation/showAllHotel",
+		"/infomation/showAllRestaurant", "/infomation/showAllTravel", "/infomation/showAllResort" })
 public class InfomationController extends HttpServlet {
 	/**
 	 * 
@@ -31,14 +32,14 @@ public class InfomationController extends HttpServlet {
 		String action = act[act.length - 1];
 		RequestDispatcher dispatcher = null;
 		InfomationLogic infomationLogic = new InfomationLogic();
-		
-		
+
 		List<String> nameCityList = new ArrayList<>();
 		nameCityList = infomationLogic.getAllNameCity();
 		req.setAttribute("nameCityList", nameCityList);
-//		req.setAttribute("selectedCity", selectedCity)
-		
-		
+
+		String city = req.getParameter("city");
+		System.out.println(city);
+
 		switch (action) {
 		case "showAllTouristSpot":
 
@@ -82,13 +83,13 @@ public class InfomationController extends HttpServlet {
 			req.setAttribute("travelDtoList", travelDtoList);
 			dispatcher = req.getRequestDispatcher("/Views/Information/ShowAllTravel.jsp");
 			break;
-		default:
-			System.out.println("vao default");
-//			touristSpotDtoList = new ArrayList<>();
-//			touristSpotDtoList = infomationLogic.getAllTouristSpot();
-//			req.setAttribute("touristSpotDtoList", touristSpotDtoList);
-			dispatcher = req.getRequestDispatcher("/Views/Information/ShowAllTouristSpot.jsp");
-			break;
+//		default:
+//			System.out.println("vao default");
+////			touristSpotDtoList = new ArrayList<>();
+////			touristSpotDtoList = infomationLogic.getAllTouristSpot();
+////			req.setAttribute("touristSpotDtoList", touristSpotDtoList);
+//			dispatcher = req.getRequestDispatcher("/Views/Information/ShowAllTouristSpot.jsp");
+//			break;
 		}
 
 		dispatcher.forward(req, resp);

@@ -10,33 +10,41 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8">
-					 <c:forEach items="${touristSpotDtoList}" var="touristSpot">
+					<c:forEach items="${touristSpotDtoList}" var="touristSpot">
 						<div class="blog_left_sidebar">
 							<article class="row blog_item">
 								<div class="col-md-3">
 									<div class="blog_info text-right" style="font-size: 30px;">
 										<ul class="blog_meta list_style">
-											<li><a href="#"><c:out value="${touristSpot.addressTouristSpot}"/><i
+											<li><a href="#"><c:out
+														value="${touristSpot.addressTouristSpot}" /><i
 													class="lnr lnr-home"></i></a></li>
-											<li><a href="#"><c:out value="${touristSpot.nameCity}"/><i class="lnr lnr-map-marker"></i></a></li>
+											<li><a href="#"><c:out
+														value="${touristSpot.nameCity}" /><i
+													class="lnr lnr-map-marker"></i></a></li>
 											<li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
-											<li><a href="#"><c:out value="${touristSpot.qualityTouristSpots}"/>/ 10<i class="lnr lnr-star"></i></a></li>
+											<li><a href="#"><c:out
+														value="${touristSpot.qualityTouristSpots}" />/ 10<i
+													class="lnr lnr-star"></i></a></li>
 										</ul>
 									</div>
 								</div>
 								<div class="col-md-9">
 									<div class="blog_post">
-										<img src="../${touristSpot.imageTouristSpots}"
-											alt="">
+										<img src="../${touristSpot.imageTouristSpots}" alt="">
 										<div class="blog_details">
-											<a href="/KernelTravelGuide/detailTouristSpot?idTouristSpot=${touristSpot.idTouristSpot}">
-												<h2><c:out value="${touristSpot.nameTouristSpot}"/></h2>
+											<a
+												href="/KernelTravelGuide/detailTouristSpot?idTouristSpot=${touristSpot.idTouristSpot}">
+												<h2>
+													<c:out value="${touristSpot.nameTouristSpot}" />
+												</h2>
 											</a>
 											<p>Note that the Students.cs has a StudentPhoto property
 												which is assigned with [Required] attribute. This makes the
 												relation one-to-one between Students and StudentPhotoes
 												tables.</p>
-											<a href="/KernelTravelGuide/detailTouristSpot?idTouristSpot=${touristSpot.idTouristSpot}"
+											<a
+												href="/KernelTravelGuide/detailTouristSpot?idTouristSpot=${touristSpot.idTouristSpot}"
 												class="view_btn button_hover">View More</a>
 										</div>
 									</div>
@@ -47,18 +55,18 @@
 					<nav class="blog-pagination justify-content-center d-flex">
 						<div class="pagination-container">
 							<ul class="pagination">
-							 <c:forEach var="page" begin="1" end="${totalPage}" step="1">
-								<li><a href="showAllTouristSpot?page=${page}">${page}</a></li>
+								<c:forEach var="page" begin="1" end="${totalPage}" step="1">
+									<li><a href="showAllTouristSpot?page=${page}">${page}</a></li>
 								</c:forEach>
 							</ul>
 						</div>
 					</nav>
-					
+
 				</div>
-				
+
 				<div class="col-lg-4">
-					<form action="http://localhost:2012/Home/ShowAllTouristSpot"
-						method="post">
+					<form action="/KernelTravelGuide/infomation/showAllTouristSpot"
+						method="get">
 						<div class="blog_right_sidebar">
 							<aside class="single_sidebar_widget search_widget">
 								<div class="input-group">
@@ -95,13 +103,12 @@
 													<div class="form-select" id="citySelect">
 
 														<select name="city">
-														<option value="">City</option> 
-														<c:forEach var="nameCity" items="${nameCityList}">
-																<option value="${nameCity}"
-																	>${nameCity}</option>
+															<option value="null">City</option>
+															<c:forEach var="nameCity" items="${nameCityList}">
+																<option value="${nameCity}">${nameCity}</option>
 															</c:forEach>
 														</select>
-														
+
 													</div>
 												</div>
 											</div>
@@ -112,9 +119,9 @@
 													style="margin-top: 20px;">
 													<label for="formControlRange">Quality</label> <input
 														type="range" min="1" max="10" value="" class="slider"
-														name="quality" id="quality" style="margin-left: 10px;"
-														disabled> <input type="text" id="resultRange"
-														value="1"
+														disabled name="quality" id="quality"
+														style="margin-left: 10px;"> <input
+														type="text" id="resultRange" value="6"
 														style="width: 30px; margin-left: 10px; margin-right: 10px"
 														disabled />/10 <i class="lnr lnr-star"></i>
 												</div>
@@ -142,16 +149,15 @@
 									.find('a').addClass('page-link');
 							$('.blog-pagination').append($('.pagination'));
 							$('.errorInput').hide();
-
 							$('#SearchString').addClass('form-control').attr(
 									'placeholder', "Search");
-
 							$("#quality").on('change', function() {
 								$("#resultRange").val($("#quality").val());
 							});
-
+							 $("#city").on('change', function () {
+						            $("#resultRange").val($("#city").val());
+						        });
 							$(".submitAdvance").hide();
-
 							$('.advanceSearchButton')
 									.click(
 											function() {
@@ -191,7 +197,6 @@
 																				"disabled",
 																				false);
 															}
-
 														}
 													}
 												} else {
@@ -227,16 +232,13 @@
 																				"disabled",
 																				true);
 															}
-
 														}
 													}
 												}
-
 											});
 						});
 	</script>
 	<jsp:include page="../footer.jsp" />
 </body>
 
-<!-- Mirrored from localhost:2012/Home/ShowAllTouristSpot by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 25 Feb 2022 14:18:45 GMT -->
 </html>
