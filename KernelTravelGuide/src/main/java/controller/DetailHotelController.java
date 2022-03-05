@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import dto.HotelDto;
 import logic.DetailLogic;
 
-@WebServlet( urlPatterns = "/detailHotel")
+@WebServlet(urlPatterns = "/detailHotel")
 public class DetailHotelController extends HttpServlet {
 
 	/**
@@ -24,8 +24,7 @@ public class DetailHotelController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String idHotel = req.getParameter("idHotel");
 		DetailLogic detailLogic = new DetailLogic();
-		HotelDto hotelDto = new HotelDto();
-		hotelDto = detailLogic.getHotelById(idHotel);
+		HotelDto hotelDto = detailLogic.getHotelById(idHotel);
 
 		req.setAttribute("hotelDto", hotelDto);
 

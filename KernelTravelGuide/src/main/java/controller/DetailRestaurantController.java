@@ -23,9 +23,7 @@ public class DetailRestaurantController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String idRestaurant = req.getParameter("idRestaurant");
 		DetailLogic detailLogic = new DetailLogic();
-		RestaurantDto restaurantDto = new RestaurantDto();
-
-		restaurantDto = detailLogic.getRestauranById(idRestaurant);
+		RestaurantDto restaurantDto = detailLogic.getRestauranById(idRestaurant);
 
 		req.setAttribute("restaurantDto", restaurantDto);
 
@@ -35,7 +33,6 @@ public class DetailRestaurantController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		super.doPost(req, resp);
 	}
 }

@@ -85,7 +85,7 @@ public class HotelDao extends BaseConnection {
 
 	public List<HotelDto> getAllHotel() {
 		List<HotelDto> hotelDtoList = new ArrayList<HotelDto>();
-		
+
 		conn = getConnection();
 		StringBuilder sql = new StringBuilder();
 		sql.append("  SELECT * FROM TRAVELGUIDE.DBO.HOTEL AS H");
@@ -113,6 +113,71 @@ public class HotelDao extends BaseConnection {
 				hotelDto.setImageDetailHotel(rs.getString("IMAGE_DETAIL_HOTEL"));
 				hotelDto.setNameCity(rs.getString("NAME_CITY"));
 
+				hotelDtoList.add(hotelDto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return hotelDtoList;
+	}
+
+	public int countAllHotel() {
+		int count = 0;
+
+		conn = getConnection();
+		StringBuilder sql = new StringBuilder();
+		sql.append("  SELECT COUNT(*) FROM TRAVELGUIDE.DBO.HOTEL AS H");
+		sql.append("  INNER JOIN TRAVELGUIDE.DBO.CITY AS C");
+		sql.append("  ON H.ID_CITY = C.ID_CITY");
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql.toString());
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				count = Integer.parseInt(rs.getString(1));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return count;
+	}
+
+	public List<HotelDto> getAllHotel(int offset) {
+		List<HotelDto> hotelDtoList = new ArrayList<>();
+
+		conn = getConnection();
+		StringBuilder sql = new StringBuilder();
+		sql.append("  SELECT * FROM TRAVELGUIDE.DBO.HOTEL AS H");
+		sql.append("  INNER JOIN TRAVELGUIDE.DBO.CITY AS C");
+		sql.append("  ON H.ID_CITY = C.ID_CITY");
+		sql.append("  ORDER BY H.ID_HOTEL");
+		sql.append("  OFFSET ? ROWS");
+		sql.append("  FETCH NEXT ? ROWS ONLY;");
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql.toString());
+			stmt.setInt(1, offset);
+			stmt.setInt(2, 3);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				HotelDto hotelDto = new HotelDto();
+				hotelDto.setIdHotel(rs.getInt("ID_HOTEL"));
+				hotelDto.setNameHotel(rs.getString("NAME_HOTEL"));
+				hotelDto.setIdCity(rs.getString("ID_CITY"));
+				hotelDto.setAddressHotel(rs.getString("ADDRESS_HOTEL"));
+				hotelDto.setTelHotel(rs.getString("TEL_HOTEL"));
+				hotelDto.setQualityHotel(rs.getInt("QUALITY_HOTEL"));
+				hotelDto.setIntroductHotel(rs.getString("INTRODUCE_HOTEL"));
+				hotelDto.setDesHotel(rs.getString("DES_HOTEL"));
+				hotelDto.setImageHotel(rs.getString("IMAGE_HOTEL"));
+				hotelDto.setAvailable(rs.getInt("AVAILABLE"));
+				hotelDto.setPriceHotel(rs.getInt("PRICE_HOTEL"));
+				hotelDto.setIsDiscountHotel(rs.getInt("ISDISCOUNT_HOTEL"));
+				hotelDto.setDiscountHotel(rs.getInt("DISCOUNT_HOTEL"));
+				hotelDto.setImageDetailHotel(rs.getString("IMAGE_DETAIL_HOTEL"));
+				hotelDto.setNameCity(rs.getString("NAME_CITY"));
 				hotelDtoList.add(hotelDto);
 			}
 		} catch (SQLException e) {

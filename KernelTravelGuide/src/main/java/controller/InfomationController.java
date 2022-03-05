@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import common.Constant;
 import dto.HotelDto;
 import dto.ResortDto;
 import dto.RestaurantDto;
@@ -35,65 +36,91 @@ public class InfomationController extends HttpServlet {
 
 		List<String> nameCityList = new ArrayList<>();
 		nameCityList = infomationLogic.getAllNameCity();
-		req.setAttribute("nameCityList", nameCityList);
 
-		String city = req.getParameter("city");
-		System.out.println(city);
+		String city = req.getParameter(Constant.CITY);
+
 		int totalPage = 1;
-		
-		int currentPage = req.getParameter("page") != null ? Integer.valueOf(req.getParameter("page")) : 1;
 
+		int currentPage = req.getParameter(Constant.CURRENT_PAGE) != null
+				? Integer.valueOf(req.getParameter(Constant.CURRENT_PAGE))
+				: 1;
+
+		String searchStr = req.getParameter(Constant.SEARCH_STRING);
+		String quality = req.getParameter(Constant.QUALITY);
+		List<Integer> listPaging = new ArrayList<Integer>();
+
+		String path = "";
+		int totalItem = 0;
 		switch (action) {
-		case "showAllTouristSpot":
-			totalPage = infomationLogic.totalPage("showAllTouristSpot");
-			req.setAttribute("totalPage", totalPage);
+		case Constant.SHOW_ALL_TOURIST_SPOT:
+
+			totalPage = infomationLogic.totalPage(Constant.SHOW_ALL_TOURIST_SPOT, searchStr, city, quality);
+
 			List<TouristSpotDto> touristSpotDtoList = new ArrayList<>();
-			touristSpotDtoList = infomationLogic.getAllTouristSpot(currentPage);
-			req.setAttribute("touristSpotDtoList", touristSpotDtoList);
-			dispatcher = req.getRequestDispatcher("/Views/Information/ShowAllTouristSpot.jsp");
+			touristSpotDtoList = infomationLogic.getAllTouristSpot(currentPage, searchStr, city, quality);
+			req.setAttribute(Constant.TOURIST_SPOT_DTO_LIST, touristSpotDtoList);
+			path = "/Views/Information/ShowAllTouristSpot.jsp";
 			break;
 
-		case "showAllHotel":
-			totalPage = infomationLogic.totalPage("showAllHotel");
-			req.setAttribute("totalPage", totalPage);
+		case Constant.SHOW_ALL_HOTEL:
+			totalPage = infomationLogic.totalPage(Constant.SHOW_ALL_HOTEL, searchStr, city, quality);
+			
+			
 			List<HotelDto> hotelDtoList = new ArrayList<>();
 			hotelDtoList = infomationLogic.getAllHotel();
 			req.setAttribute("hotelDtoList", hotelDtoList);
-			dispatcher = req.getRequestDispatcher("/Views/Information/ShowAllHotel.jsp");
+			path = "/Views/Information/ShowAllHotel.jsp";
 			break;
-		case "showAllRestaurant":
-			totalPage = infomationLogic.totalPage("showAllRestaurant");
-			req.setAttribute("totalPage", totalPage);
+
+		case Constant.SHOW_ALL_RESTAURANT:
+			totalPage = infomationLogic.totalPage(Constant.SHOW_ALL_RESTAURANT, searchStr, city, quality);
+			
+			
 			List<RestaurantDto> restaurantDtoList = new ArrayList<>();
 			restaurantDtoList = infomationLogic.getAllRestaurant();
-			req.setAttribute("restaurantDtoList", restaurantDtoList);
-			dispatcher = req.getRequestDispatcher("/Views/Information/ShowAllRestaurant.jsp");
+			req.setAttribute(Constant.RESTAURANT_DTO_LIST, restaurantDtoList);
+			path = "/Views/Information/ShowAllRestaurant.jsp";
 			break;
-		case "showAllResort":
-			totalPage = infomationLogic.totalPage("showAllResort");
-			req.setAttribute("totalPage", totalPage);
+
+		case Constant.SHOW_ALL_RESORT:
+			totalPage = infomationLogic.totalPage(Constant.SHOW_ALL_RESORT, searchStr, city, quality);
+			
+			
 			List<ResortDto> resortDtoList = new ArrayList<>();
 			resortDtoList = infomationLogic.getAllResort();
-			req.setAttribute("resortDtoList", resortDtoList);
-			dispatcher = req.getRequestDispatcher("/Views/Information/ShowAllResort.jsp");
+			req.setAttribute(Constant.RESORT_DTO_LIST, resortDtoList);
+			path = "/Views/Information/ShowAllResort.jsp";
 			break;
-		case "showAllTravel":
-			totalPage = infomationLogic.totalPage("showAllTravel");
-			req.setAttribute("totalPage", totalPage);
+
+		case Constant.SHOW_ALL_TRAVEL:
+			totalPage = infomationLogic.totalPage(Constant.SHOW_ALL_TRAVEL, searchStr, city, quality);
+			
+			
 			List<TravelDto> travelDtoList = new ArrayList<>();
 			travelDtoList = infomationLogic.getAllTravel();
-			req.setAttribute("travelDtoList", travelDtoList);
-			dispatcher = req.getRequestDispatcher("/Views/Information/ShowAllTravel.jsp");
+			req.setAttribute(Constant.TRAVEL_DTO_LIST, travelDtoList);
+			path = "/Views/Information/ShowAllTravel.jsp";
 			break;
-//		default:
-//			System.out.println("vao default");
-////			touristSpotDtoList = new ArrayList<>();
-////			touristSpotDtoList = infomationLogic.getAllTouristSpot();
-////			req.setAttribute("touristSpotDtoList", touristSpotDtoList);
-//			dispatcher = req.getRequestDispatcher("/Views/Information/ShowAllTouristSpot.jsp");
-//			break;
+
 		}
 
+		totalItem = infomationLogic.countTotalItem(searchStr, city, quality);
+		totalPage = (int) Math.ceil((double) totalItem / 3);
+		if (currentPage == 0) {
+			currentPage = 1;
+		}
+		if (totalPage == 0) {
+			currentPage = 0;
+		}
+		if (currentPage > totalPage) {
+			currentPage = totalPage;
+		}
+		listPaging = infomationLogic.getListPaging(totalPage, currentPage);
+		req.setAttribute(Constant.NAME_CITY_LIST, nameCityList);
+		req.setAttribute(Constant.TOTAL_PAGE, totalPage);
+		req.setAttribute(Constant.LIST_PAGING, listPaging);
+		req.setAttribute(Constant.CURRENT_PAGE, currentPage);
+		dispatcher = req.getRequestDispatcher(path);
 		dispatcher.forward(req, resp);
 	}
 }

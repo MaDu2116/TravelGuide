@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ page import="java.util.List"%>
 <!DOCTYPE  html>
 <html lang="en">
@@ -55,11 +57,52 @@
 					<nav class="blog-pagination justify-content-center d-flex">
 						<div class="pagination-container">
 							<ul class="pagination">
-								<c:forEach var="page" begin="1" end="${totalPage}" step="1">
-									<li><a href="showAllTouristSpot?page=${page}">${page}</a></li>
+
+
+								<c:forEach var="pageId" items="${listPaging}"
+									varStatus="pageIndex">
+
+									<c:if test="${pageIndex.first and pageId > 3}">
+										<li class="page-item"><a
+											href="showAllTouristSpot?currentPage=${pageId - 1}"
+											class="page-link">&laquo;</a></li>
+									</c:if>
+									<c:choose>
+										<c:when test="${fn:length(listPaging) gt 1}">
+											<c:choose>
+												<c:when test="${currentPage eq pageId}">
+													<li class="page-item"><a
+														href="showAllTouristSpot?currentPage=${pageId}"
+														class="page-link">${pageId}</a></li>
+												</c:when>
+												<c:otherwise>
+													<li class="page-item"><a
+														href="showAllTouristSpot?currentPage=${pageId}"
+														class="page-link"> ${pageId} </a></li>
+												</c:otherwise>
+											</c:choose>
+											<c:if test="${pageIndex.last and pageId < totalPage}">
+												<li class="page-item"><a
+													href="showAllTouristSpot?currentPage=${pageId + 1}"
+													class="page-link">&raquo;</a></li>
+											</c:if>
+										</c:when>
+										<c:when
+											test="${(fn:length(listPaging) eq 1) and (pageId gt 3)}">
+											<li class="page-item"><a
+												href="showAllTouristSpot?currentPage=${pageId}"
+												class="page-link">${pageId}</a></li>
+										</c:when>
+									</c:choose>
+
 								</c:forEach>
+
 							</ul>
 						</div>
+
+
+
+
 					</nav>
 
 				</div>
@@ -67,6 +110,7 @@
 				<div class="col-lg-4">
 					<form action="/KernelTravelGuide/infomation/showAllTouristSpot"
 						method="get">
+						<input type="hidden" name="currentPage" value="1" />
 						<div class="blog_right_sidebar">
 							<aside class="single_sidebar_widget search_widget">
 								<div class="input-group">
@@ -103,7 +147,7 @@
 													<div class="form-select" id="citySelect">
 
 														<select name="city">
-															<option value="null">City</option>
+															<option value="">City</option>
 															<c:forEach var="nameCity" items="${nameCityList}">
 																<option value="${nameCity}">${nameCity}</option>
 															</c:forEach>
@@ -120,8 +164,8 @@
 													<label for="formControlRange">Quality</label> <input
 														type="range" min="1" max="10" value="" class="slider"
 														disabled name="quality" id="quality"
-														style="margin-left: 10px;"> <input
-														type="text" id="resultRange" value="6"
+														style="margin-left: 10px;"> <input type="text"
+														id="resultRange" value="6"
 														style="width: 30px; margin-left: 10px; margin-right: 10px"
 														disabled />/10 <i class="lnr lnr-star"></i>
 												</div>
@@ -144,19 +188,12 @@
 		$(document)
 				.ready(
 						function() {
-							//$(".pagination-container").removeClass('pagination-container');
-							$('.pagination').find('li').addClass('page-item')
-									.find('a').addClass('page-link');
-							$('.blog-pagination').append($('.pagination'));
-							$('.errorInput').hide();
+
 							$('#SearchString').addClass('form-control').attr(
 									'placeholder', "Search");
 							$("#quality").on('change', function() {
 								$("#resultRange").val($("#quality").val());
 							});
-							 $("#city").on('change', function () {
-						            $("#resultRange").val($("#city").val());
-						        });
 							$(".submitAdvance").hide();
 							$('.advanceSearchButton')
 									.click(

@@ -77,16 +77,41 @@ public class TouristSpotDao extends BaseConnection {
 		return touristSpotDto;
 	}
 
-	public int countAllTouristSpot() {
+	public int countAllTouristSpot(String searchStr, String city, String quality) {
 		int count = 0;
 
 		conn = getConnection();
 		StringBuilder sql = new StringBuilder();
-		sql.append("  SELECT COUNT(*) FROM TRAVELGUIDE.DBO.TOURIST_SPOTS AS T");
+		sql.append("  SELECT * FROM TRAVELGUIDE.DBO.TOURIST_SPOTS AS T");
 		sql.append("  INNER JOIN TRAVELGUIDE.DBO.CITY AS C");
 		sql.append("  ON T.ID_CITY = C.ID_CITY");
+		sql.append("  WHERE 1 = 1 ");
+
+		if (searchStr != null) {
+			sql.append(" AND T.NAME_TOURISTSPOT like ?  ESCAPE '!'");
+		}
+		if (city != null && !city.isEmpty()) {
+
+			sql.append(" AND C.NAME_CITY = ? ");
+		}
+		if (quality != null && !quality.isEmpty()) {
+
+			sql.append(" AND T.QUALITY_TOURISTSPOT  = ? ");
+		}
+		sql.append("  ORDER BY T.ID_TOURISTSPOT");
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql.toString());
+			int index = 1;
+			if (searchStr != null) {
+				stmt.setString(index++, "%" + searchStr + "%");
+			}
+			if (city != null && !city.isEmpty()) {
+				stmt.setString(index++, city);
+			}
+			if (quality != null && !quality.isEmpty()) {
+
+				stmt.setString(index++, quality);
+			}
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				count = Integer.parseInt(rs.getString(1));
@@ -99,7 +124,7 @@ public class TouristSpotDao extends BaseConnection {
 		return count;
 	}
 
-	public List<TouristSpotDto> getAllTouristSpot(int offset) {
+	public List<TouristSpotDto> getAllTouristSpot(int offset, String searchStr, String city, String quality) {
 		List<TouristSpotDto> touristSpotDtoList = new ArrayList<>();
 
 		conn = getConnection();
@@ -107,13 +132,37 @@ public class TouristSpotDao extends BaseConnection {
 		sql.append("  SELECT * FROM TRAVELGUIDE.DBO.TOURIST_SPOTS AS T");
 		sql.append("  INNER JOIN TRAVELGUIDE.DBO.CITY AS C");
 		sql.append("  ON T.ID_CITY = C.ID_CITY");
+		sql.append("  WHERE 1 = 1 ");
+
+		if (searchStr != null) {
+			sql.append(" AND T.NAME_TOURISTSPOT like ?  ESCAPE '!'");
+		}
+		if (city != null && !city.isEmpty()) {
+
+			sql.append(" AND C.NAME_CITY = ? ");
+		}
+		if (quality != null && !quality.isEmpty()) {
+
+			sql.append(" AND T.QUALITY_TOURISTSPOT  = ? ");
+		}
 		sql.append("  ORDER BY T.ID_TOURISTSPOT");
 		sql.append("  OFFSET ? ROWS");
 		sql.append("  FETCH NEXT ? ROWS ONLY;");
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql.toString());
-			stmt.setInt(1, offset);
-			stmt.setInt(2, 3);
+			int index = 1;
+			if (searchStr != null) {
+				stmt.setString(index++, "%" + searchStr + "%");
+			}
+			if (city != null && !city.isEmpty()) {
+				stmt.setString(index++, city);
+			}
+			if (quality != null && !quality.isEmpty()) {
+
+				stmt.setString(index++, quality);
+			}
+			stmt.setInt(index++, offset);
+			stmt.setInt(index, 3);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				TouristSpotDto touristSpotDto = new TouristSpotDto();

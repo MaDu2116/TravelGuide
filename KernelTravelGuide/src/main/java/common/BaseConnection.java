@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class BaseConnection {
-	protected static Connection conn;
+	protected Connection conn;
 
 	protected Connection getConnection() {
 		try {

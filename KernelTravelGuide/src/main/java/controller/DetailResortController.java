@@ -23,9 +23,7 @@ public class DetailResortController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String idResort = req.getParameter("idResort");
 		DetailLogic detailLogic = new DetailLogic();
-		ResortDto resortDto = new ResortDto();
-
-		resortDto = detailLogic.getResortById(idResort);
+		ResortDto resortDto = detailLogic.getResortById(idResort);
 
 		req.setAttribute("resortDto", resortDto);
 

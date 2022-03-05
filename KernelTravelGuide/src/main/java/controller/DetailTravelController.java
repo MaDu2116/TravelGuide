@@ -24,9 +24,7 @@ public class DetailTravelController extends HttpServlet {
 		String idTravel = req.getParameter("idTravel");
 		DetailLogic detailLogic = new DetailLogic();
 
-		TravelDto travelDto = new TravelDto();
-
-		travelDto = detailLogic.getTravelById(idTravel);
+		TravelDto travelDto = detailLogic.getTravelById(idTravel);
 
 		req.setAttribute("travelDto", travelDto);
 

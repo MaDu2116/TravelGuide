@@ -14,39 +14,28 @@ import dto.TravelDto;
 public class DetailLogic {
 
 	public HotelDto getHotelById(String idHotel) {
-
-		HotelDto hotelDto = new HotelDto();
 		HotelDao hotelDao = new HotelDao();
-		hotelDto = hotelDao.getHotelById(idHotel);
-		return hotelDto;
+		return hotelDao.getHotelById(idHotel);
 	}
 
 	public RestaurantDto getRestauranById(String idRestaurant) {
-		RestaurantDto restaurantDto = new RestaurantDto();
 		RestaurantDao restaurantDao = new RestaurantDao();
-		restaurantDto = restaurantDao.getRestauranById(idRestaurant);
-		return restaurantDto;
+		return restaurantDao.getRestauranById(idRestaurant);
 	}
 
 	public ResortDto getResortById(String idResort) {
-		ResortDto resortDto = new ResortDto();
 		ResortDao resortDao = new ResortDao();
-		resortDto = resortDao.getResortById(idResort);
-		return resortDto;
+		return resortDao.getResortById(idResort);
 	}
 
 	public TouristSpotDto getTouristSpotById(String idTouristSpot) {
-		TouristSpotDto touristSpotDto = new TouristSpotDto();
 		TouristSpotDao touristSpotDao = new TouristSpotDao();
-		touristSpotDto = touristSpotDao.getTouristSpotById(idTouristSpot);
-		return touristSpotDto;
+		return touristSpotDao.getTouristSpotById(idTouristSpot);
 	}
 
 	public TravelDto getTravelById(String idTravel) {
-		TravelDto travelDto = new TravelDto();
 		TravelDao travelDao = new TravelDao();
-		travelDto = travelDao.getTravelById(idTravel);
-		return travelDto;
+		return travelDao.getTravelById(idTravel);
 	}
 
 }

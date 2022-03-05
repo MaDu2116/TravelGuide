@@ -24,10 +24,8 @@ public class DetailTouristSpotController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String idTouristSpot = req.getParameter("idTouristSpot");
 		DetailLogic detailLogic = new DetailLogic();
-		
-		TouristSpotDto touristSpotDto = new TouristSpotDto();
 
-		touristSpotDto = detailLogic.getTouristSpotById(idTouristSpot);
+		TouristSpotDto touristSpotDto = detailLogic.getTouristSpotById(idTouristSpot);
 
 		req.setAttribute("touristSpotDto", touristSpotDto);
 
