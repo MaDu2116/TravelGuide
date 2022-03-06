@@ -47,12 +47,12 @@ public class TouristSpotDao extends BaseConnection {
 		TouristSpotDto touristSpotDto = new TouristSpotDto();
 		conn = getConnection();
 		StringBuilder sql = new StringBuilder();
-		sql.append("  SELECT * FROM TRAVELGUIDE.DBO.TOURIST_SPOTS AS T");
-		sql.append("  INNER JOIN TRAVELGUIDE.DBO.CITY AS C");
-		sql.append("  ON T.ID_CITY = C.ID_CITY");
-		sql.append("   WHERE ID_TOURISTSPOT = ?");
-		try {
-			PreparedStatement stmt = conn.prepareStatement(sql.toString());
+		sql.append(" SELECT * FROM TRAVELGUIDE.DBO.TOURIST_SPOTS AS T");
+		sql.append(" INNER JOIN TRAVELGUIDE.DBO.CITY AS C");
+		sql.append(" ON T.ID_CITY = C.ID_CITY");
+		sql.append(" WHERE ID_TOURISTSPOT = ?");
+		try (PreparedStatement stmt = conn.prepareStatement(sql.toString());){
+			
 			stmt.setString(1, idTouristSpot);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
@@ -99,8 +99,8 @@ public class TouristSpotDao extends BaseConnection {
 			sql.append(" AND T.QUALITY_TOURISTSPOT  = ? ");
 		}
 		sql.append("  ORDER BY T.ID_TOURISTSPOT");
-		try {
-			PreparedStatement stmt = conn.prepareStatement(sql.toString());
+		try (PreparedStatement stmt = conn.prepareStatement(sql.toString());) {
+
 			int index = 1;
 			if (searchStr != null) {
 				stmt.setString(index++, "%" + searchStr + "%");
@@ -148,8 +148,8 @@ public class TouristSpotDao extends BaseConnection {
 		sql.append("  ORDER BY T.ID_TOURISTSPOT");
 		sql.append("  OFFSET ? ROWS");
 		sql.append("  FETCH NEXT ? ROWS ONLY;");
-		try {
-			PreparedStatement stmt = conn.prepareStatement(sql.toString());
+		try (PreparedStatement stmt = conn.prepareStatement(sql.toString());) {
+
 			int index = 1;
 			if (searchStr != null) {
 				stmt.setString(index++, "%" + searchStr + "%");

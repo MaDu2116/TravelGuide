@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ page import="java.util.List"%>
 <!DOCTYPE  html>
 <html lang="en">
@@ -10,166 +12,101 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8">
-					<div class="blog_left_sidebar">
-						<article class="row blog_item">
-							<div class="col-md-3">
-								<div class="blog_info text-right">
-									<ul class="blog_meta list_style">
-										<li><a href="#"><div class="btn btn-success">Available</div></a>
-										</li>
-										<li><a href="#">Ward 1, Bac Lieu<i
-												class="lnr lnr-home"></i></a></li>
-										<li><a href="#">Bac Lieu<i class="lnr lnr-map-marker"></i></a></li>
-										<li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
-										<li><a href="#">9/ 10<i class="lnr lnr-star"></i></a></li>
-										<li><a href="#"><h5>
-													$500<small>/night</small>
-												</h5></a></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-9">
-								<div class="blog_post">
-									<img src="../Content/image/Resort/info/BL_infor_4.jpg" alt="">
-									<div class="blog_details">
-										<a href="DetailResort/1.html">
-											<h2>Ho Nam Resort</h2>
-										</a>
-										<p>You will enjoy popular activities such as sightseeing,
-											cycling and casual walks around the charming town centre,
-											observing local people trading in the colourful open market</p>
-										<a href="DetailResort/1.html" class="view_btn button_hover">View
-											More</a>
+					<c:forEach items="${resortDtoList}" var="resort">
+						<div class="blog_left_sidebar">
+							<article class="row blog_item">
+								<div class="col-md-3">
+									<div class="blog_info text-right">
+										<ul class="blog_meta list_style">
+											<li><a href="#"><div class="btn btn-success">Available</div></a>
+											</li>
+											<li><a href="#"><c:out
+														value="${resort.addressResort}" /><i class="lnr lnr-home"></i></a></li>
+											<li><a href="#"><c:out value="${resort.nameCity}" /><i
+													class="lnr lnr-map-marker"></i></a></li>
+											<li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
+											<li><a href="#"><c:out
+														value="${resort.qualityResort}" />/ 10<i
+													class="lnr lnr-star"></i></a></li>
+											<li><a href="#"><h5>
+														$
+														<c:out value="${resort.priceResort}" />
+														<small>/night</small>
+													</h5></a></li>
+										</ul>
 									</div>
 								</div>
-							</div>
-						</article>
-					</div>
-					<div class="blog_left_sidebar">
-						<article class="row blog_item">
-							<div class="col-md-3">
-								<div class="blog_info text-right">
-									<ul class="blog_meta list_style">
-										<li><a href="#"><div class="btn btn-success">Available</div></a>
-										</li>
-										<li><a href="#">Nha Mat Resort, Nha Mat District, Bac
-												Lieu Province<i class="lnr lnr-home"></i>
-										</a></li>
-										<li><a href="#">Bac Lieu<i class="lnr lnr-map-marker"></i></a></li>
-										<li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
-										<li><a href="#">8/ 10<i class="lnr lnr-star"></i></a></li>
-										<li><a href="#"><h5>
-													$500<small>/night</small>
-												</h5></a></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-9">
-								<div class="blog_post">
-									<img src="../Content/image/Resort/info/BL_infor_5.jpg" alt="">
-									<div class="blog_details">
-										<a href="DetailResort/2.html">
-											<h2>Nha Mat Resort</h2>
-										</a>
-										<p>You will enjoy popular activities such as sightseeing,
-											cycling and casual walks around the charming town centre,
-											observing local people trading in the colourful open market.</p>
-										<a href="DetailResort/2.html" class="view_btn button_hover">View
-											More</a>
+								<div class="col-md-9">
+									<div class="blog_post">
+										<img src="../${resort.imageResort}" alt="">
+										<div class="blog_details">
+											<a
+												href="/KernelTravelGuide/detailResort?idResort=${resort.idResort}">
+												<h2>
+													<c:out value="${resort.nameResort}" />
+												</h2>
+											</a>
+											<p>
+												<c:out value="${resort.desResort}" />
+											</p>
+											<a
+												href="/KernelTravelGuide/detailResort?idResort=${resort.idResort}"
+												class="view_btn button_hover">View More</a>
+										</div>
 									</div>
 								</div>
-							</div>
-						</article>
-					</div>
-					<div class="blog_left_sidebar">
-						<article class="row blog_item">
-							<div class="col-md-3">
-								<div class="blog_info text-right">
-									<ul class="blog_meta list_style">
-										<li><a href="#"><div class="btn btn-success">Available</div></a>
-										</li>
-										<li><a href="#">708 Nguyen Van Tu Street, Ward 7, Ben
-												Tre, Ben Tre<i class="lnr lnr-home"></i>
-										</a></li>
-										<li><a href="#">Binh Thuan<i
-												class="lnr lnr-map-marker"></i></a></li>
-										<li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
-										<li><a href="#">7/ 10<i class="lnr lnr-star"></i></a></li>
-										<li><a href="#"><h5>
-													$500<small>/night</small>
-												</h5></a></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-9">
-								<div class="blog_post">
-									<img src="../Content/image/Resort/info/BT_infor_1.jpg" alt="">
-									<div class="blog_details">
-										<a href="DetailResort/3.html">
-											<h2>Ben Tre Riverside Resort</h2>
-										</a>
-										<p>You will enjoy popular activities such as sightseeing,
-											cycling and casual walks around the charming town centre,
-											observing local people trading in the colourful open market</p>
-										<a href="DetailResort/3.html" class="view_btn button_hover">View
-											More</a>
-									</div>
-								</div>
-							</div>
-						</article>
-					</div>
-					<div class="blog_left_sidebar">
-						<article class="row blog_item">
-							<div class="col-md-3">
-								<div class="blog_info text-right">
-									<ul class="blog_meta list_style">
-										<li><a href="#"><div class="btn btn-success">Available</div></a>
-										</li>
-										<li><a href="#">Phu Khuong, Phu Tuc, Chau Thanh, Ben
-												Tre, Phu Tuc, Chau Thanh, Ben Tre<i class="lnr lnr-home"></i>
-										</a></li>
-										<li><a href="#">Binh Thuan<i
-												class="lnr lnr-map-marker"></i></a></li>
-										<li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
-										<li><a href="#">6/ 10<i class="lnr lnr-star"></i></a></li>
-										<li><a href="#"><h5>
-													$500<small>/night</small>
-												</h5></a></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-9">
-								<div class="blog_post">
-									<img src="../Content/image/Resort/info/BT_infor_10.jpg" alt="">
-									<div class="blog_details">
-										<a href="DetailResort/4.html">
-											<h2>Forever Green Resort</h2>
-										</a>
-										<p>You will enjoy popular activities such as sightseeing,
-											cycling and casual walks around the charming town centre,
-											observing local people trading in the colourful open market</p>
-										<a href="DetailResort/4.html" class="view_btn button_hover">View
-											More</a>
-									</div>
-								</div>
-							</div>
-						</article>
-					</div>
+							</article>
+						</div>
+					</c:forEach>
+
 					<nav class="blog-pagination justify-content-center d-flex">
 						<div class="pagination-container">
 							<ul class="pagination">
-								<li class="active"><a>1</a></li>
-								<li><a href="ShowAllResort4658.html?page=2">2</a></li>
-								<li><a href="ShowAllResort9ba9.html?page=3">3</a></li>
-								<li class="PagedList-skipToNext"><a
-									href="ShowAllResort4658.html?page=2" rel="next">Â»</a></li>
+								<c:forEach var="pageId" items="${listPaging}"
+									varStatus="pageIndex">
+
+									<c:if test="${pageIndex.first and pageId > 3}">
+										<li class="page-item"><a
+											href="showAllResort?currentPage=${pageId - 1}"
+											class="page-link">&laquo;</a></li>
+									</c:if>
+									<c:choose>
+										<c:when test="${fn:length(listPaging) gt 1}">
+											<c:choose>
+												<c:when test="${currentPage eq pageId}">
+													<li class="page-item"><a
+														href="showAllResort?currentPage=${pageId}"
+														class="page-link">${pageId}</a></li>
+												</c:when>
+												<c:otherwise>
+													<li class="page-item"><a
+														href="showAllResort?currentPage=${pageId}"
+														class="page-link"> ${pageId} </a></li>
+												</c:otherwise>
+											</c:choose>
+											<c:if test="${pageIndex.last and pageId < totalPage}">
+												<li class="page-item"><a
+													href="showAllResort?currentPage=${pageId + 1}"
+													class="page-link">&raquo;</a></li>
+											</c:if>
+										</c:when>
+										<c:when
+											test="${(fn:length(listPaging) eq 1) and (pageId gt 3)}">
+											<li class="page-item"><a
+												href="showAllResort?currentPage=${pageId}" class="page-link">${pageId}</a></li>
+										</c:when>
+									</c:choose>
+
+								</c:forEach>
+
 							</ul>
 						</div>
 					</nav>
 				</div>
 				<div class="col-lg-4">
-					<form action="http://localhost:2012/Home/ShowAllResort"
-						method="post">
+					<form action="/KernelTravelGuide/infomation/ShowAllResort"
+						method="get">
+						<input type="hidden" name="currentPage" value="1" />
 						<div class="blog_right_sidebar">
 							<aside class="single_sidebar_widget search_widget">
 								<div class="input-group">
@@ -206,22 +143,9 @@
 													<div class="form-select" id="citySelect">
 														<select name="city">
 															<option value="">City</option>
-															<option value="BL">Bac Lieu</option>
-															<option value="BT">Binh Thuan</option>
-															<option value="BTR">Ben Tre</option>
-															<option value="CM">Ca Mau</option>
-															<option value="CT">Can Tho</option>
-															<option value="Dla">Da Lat</option>
-															<option value="DN">Da Nang</option>
-															<option value="DNA">Dong Nai</option>
-															<option value="KG">Kien Giang</option>
-															<option value="NT">Nha Trang</option>
-															<option value="PT">Phan Thiet</option>
-															<option value="QN">Quang Ninh</option>
-															<option value="SG">Sai Gon</option>
-															<option value="TN">Tay Ninh</option>
-															<option value="TV">Tra Vinh</option>
-															<option value="VT">Vung Tau</option>
+															<c:forEach var="nameCity" items="${nameCityList}">
+																<option value="${nameCity}">${nameCity}</option>
+															</c:forEach>
 														</select>
 													</div>
 												</div>
@@ -248,7 +172,7 @@
 														type="range" min="1" max="10" value="" class="slider"
 														name="quality" id="quality" style="margin-left: 10px;"
 														disabled> <input type="text" id="resultRange"
-														value="1"
+														value="6"
 														style="width: 30px; margin-left: 10px; margin-right: 10px"
 														disabled />/10 <i class="lnr lnr-star"></i>
 												</div>
@@ -294,97 +218,150 @@
 	</section>
 
 	<script>
-    $(document).ready(function () {
-        //$(".pagination-container").removeClass('pagination-container');
-        $('.pagination').find('li').addClass('page-item').find('a').addClass('page-link');
-        $('.blog-pagination').append($('.pagination'));
-        $('.errorInput').hide();
+		$(document)
+				.ready(
+						function() {
 
-        $('#SearchString').addClass('form-control').attr('placeholder', "Search");
+							$('#SearchString').addClass('form-control').attr(
+									'placeholder', "Search");
 
-        $("#quality").on('change', function () {
-            $("#resultRange").val($("#quality").val());
-        });
+							$("#quality").on('change', function() {
+								$("#resultRange").val($("#quality").val());
+							});
 
-        $(".submitAdvance").hide();
+							$(".submitAdvance").hide();
 
-        $('.advanceSearchButton').click(function () {
-            if ($(this).find('.iconButton').hasClass('lnr-chevron-down')) {
-                $(".submitButton").hide();
-                $(".submitAdvance").show();
-                $(this).find('.iconButton').removeClass('lnr-chevron-down').addClass('lnr-chevron-up');
-                insideElement = $('form :input');
-                for (let i = 0; i < insideElement.length; i++) {
-                    let type = $(insideElement[i]).prop('type');
-                    let id = $(insideElement[i]).prop('id')
-                    if (type != 'submit' && id != 'resultRange') {
-                        if (type == 'select-one') {
-                            $(insideElement[i]).siblings('.nice-select').removeClass("disabled");
-                        } else {
-                            $(insideElement[i]).prop("disabled", false);
-                        }
+							$('.advanceSearchButton')
+									.click(
+											function() {
+												if ($(this)
+														.find('.iconButton')
+														.hasClass(
+																'lnr-chevron-down')) {
+													$(".submitButton").hide();
+													$(".submitAdvance").show();
+													$(this)
+															.find('.iconButton')
+															.removeClass(
+																	'lnr-chevron-down')
+															.addClass(
+																	'lnr-chevron-up');
+													insideElement = $('form :input');
+													for (let i = 0; i < insideElement.length; i++) {
+														let type = $(
+																insideElement[i])
+																.prop('type');
+														let id = $(
+																insideElement[i])
+																.prop('id')
+														if (type != 'submit'
+																&& id != 'resultRange') {
+															if (type == 'select-one') {
+																$(
+																		insideElement[i])
+																		.siblings(
+																				'.nice-select')
+																		.removeClass(
+																				"disabled");
+															} else {
+																$(
+																		insideElement[i])
+																		.prop(
+																				"disabled",
+																				false);
+															}
 
-                    }
-                }
-            } else {
-                $(".submitButton").show();
-                $(".submitAdvance").hide();
-                $(this).find('.iconButton').addClass('lnr-chevron-down').removeClass('lnr-chevron-up');
-                insideElement = $('form :input');
-                for (let i = 0; i < insideElement.length; i++) {
-                    let type = $(insideElement[i]).prop('type');
-                    let id = $(insideElement[i]).prop('id')
-                    if (type != 'submit' && id != 'SearchString') {
-                        if (type == 'select-one') {
-                            $(insideElement[i]).siblings('.nice-select').addClass("disabled");
-                        } else {
-                            $(insideElement[i]).prop("disabled", true);
-                        }
+														}
+													}
+												} else {
+													$(".submitButton").show();
+													$(".submitAdvance").hide();
+													$(this)
+															.find('.iconButton')
+															.addClass(
+																	'lnr-chevron-down')
+															.removeClass(
+																	'lnr-chevron-up');
+													insideElement = $('form :input');
+													for (let i = 0; i < insideElement.length; i++) {
+														let type = $(
+																insideElement[i])
+																.prop('type');
+														let id = $(
+																insideElement[i])
+																.prop('id')
+														if (type != 'submit'
+																&& id != 'SearchString') {
+															if (type == 'select-one') {
+																$(
+																		insideElement[i])
+																		.siblings(
+																				'.nice-select')
+																		.addClass(
+																				"disabled");
+															} else {
+																$(
+																		insideElement[i])
+																		.prop(
+																				"disabled",
+																				true);
+															}
 
-                    }
-                }
-            }
+														}
+													}
+												}
 
-        });
-        $('#maxPrice').change(function () {
-            let minPrice = $('#minPrice').val();
-            let maxPrice = $('#maxPrice').val();
-            if (minPrice > maxPrice) {
-                $('.errorInput').show();
-                $('.errorInput').text('Max Price must greater than Min Price!');
-            } else {
-                $('.errorInput').hide();
-            }
-        })
-        $('#minPrice').change(function () {
-            let minPrice = $(this).val();
-            let maxPrice = $('#maxPrice').val();
-            if (minPrice > maxPrice) {
-                $('.errorInput').show();
-                $('.errorInput').text('Max Price must greater than Min Price!');
-            } else {
-                $('.errorInput').hide();
-            }
+											});
+							$('#maxPrice')
+									.change(
+											function() {
+												let minPrice = $('#minPrice')
+														.val();
+												let maxPrice = $('#maxPrice')
+														.val();
+												if (minPrice > maxPrice) {
+													$('.errorInput').show();
+													$('.errorInput')
+															.text(
+																	'Max Price must greater than Min Price!');
+												} else {
+													$('.errorInput').hide();
+												}
+											})
+							$('#minPrice')
+									.change(
+											function() {
+												let minPrice = $(this).val();
+												let maxPrice = $('#maxPrice')
+														.val();
+												if (minPrice > maxPrice) {
+													$('.errorInput').show();
+													$('.errorInput')
+															.text(
+																	'Max Price must greater than Min Price!');
+												} else {
+													$('.errorInput').hide();
+												}
 
-        });
+											});
 
-        $('#isDiscount').change(function () {
-            if (!$(this).is(':checked')) {
-                $(this).val(false);
-            } else {
-                $(this).val(true);
-            }
-        })
+							$('#isDiscount').change(function() {
+								if (!$(this).is(':checked')) {
+									$(this).val(false);
+								} else {
+									$(this).val(true);
+								}
+							})
 
-        $('#isAvailable').change(function () {
-            if (!$(this).is(':checked')) {
-                $(this).val(false);
-            } else {
-                $(this).val(true);
-            }
-        })
-    });
-</script>
+							$('#isAvailable').change(function() {
+								if (!$(this).is(':checked')) {
+									$(this).val(false);
+								} else {
+									$(this).val(true);
+								}
+							})
+						});
+	</script>
 	<jsp:include page="../footer.jsp" />
 </body>
 

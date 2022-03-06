@@ -15,8 +15,8 @@ public class RestaurantDao extends BaseConnection {
 		List<RestaurantEntity> restaurantEntityList = new ArrayList<>();
 		conn = getConnection();
 		String sql = "  select * from TravelGuide.dbo.RESTAURANT where QUALITY_RESTAURANT > 8";
-		try {
-			PreparedStatement stmt = conn.prepareStatement(sql);
+		try (PreparedStatement stmt = conn.prepareStatement(sql);) {
+
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				RestaurantEntity restaurantEntity = new RestaurantEntity();
@@ -54,8 +54,8 @@ public class RestaurantDao extends BaseConnection {
 		sql.append("  INNER JOIN TRAVELGUIDE.DBO.CITY AS C");
 		sql.append("  ON H.ID_CITY = C.ID_CITY");
 		sql.append("   WHERE ID_RESTAURANT = ?");
-		try {
-			PreparedStatement stmt = conn.prepareStatement(sql.toString());
+		try (PreparedStatement stmt = conn.prepareStatement(sql.toString());) {
+
 			stmt.setString(1, idRestaurant);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
@@ -91,8 +91,8 @@ public class RestaurantDao extends BaseConnection {
 		sql.append("  SELECT * FROM TRAVELGUIDE.DBO.RESTAURANT AS H");
 		sql.append("  INNER JOIN TRAVELGUIDE.DBO.CITY AS C");
 		sql.append("  ON H.ID_CITY = C.ID_CITY");
-		try {
-			PreparedStatement stmt = conn.prepareStatement(sql.toString());
+		try (PreparedStatement stmt = conn.prepareStatement(sql.toString());) {
+
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				RestaurantDto restaurantDto = new RestaurantDto();
@@ -130,8 +130,8 @@ public class RestaurantDao extends BaseConnection {
 		sql.append("  SELECT COUNT(*) FROM TRAVELGUIDE.DBO.RESTAURANT AS R");
 		sql.append("  INNER JOIN TRAVELGUIDE.DBO.CITY AS C");
 		sql.append("  ON R.ID_CITY = C.ID_CITY");
-		try {
-			PreparedStatement stmt = conn.prepareStatement(sql.toString());
+		try (PreparedStatement stmt = conn.prepareStatement(sql.toString());) {
+
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				count = Integer.parseInt(rs.getString(1));
@@ -155,8 +155,8 @@ public class RestaurantDao extends BaseConnection {
 		sql.append("  ORDER BY H.ID_RESTAURANT");
 		sql.append("  OFFSET ? ROWS");
 		sql.append("  FETCH NEXT ? ROWS ONLY;");
-		try {
-			PreparedStatement stmt = conn.prepareStatement(sql.toString());
+		try (PreparedStatement stmt = conn.prepareStatement(sql.toString());) {
+
 			stmt.setInt(1, offset);
 			stmt.setInt(2, 3);
 			ResultSet rs = stmt.executeQuery();
@@ -180,6 +180,74 @@ public class RestaurantDao extends BaseConnection {
 
 				restaurantDtoList.add(restaurantDto);
 
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return restaurantDtoList;
+	}
+
+	public List<RestaurantDto> getAllRestauran(int offset, String searchStr, String city, String quality) {
+		List<RestaurantDto> restaurantDtoList = new ArrayList<>();
+
+		conn = getConnection();
+		StringBuilder sql = new StringBuilder();
+		sql.append("  SELECT * FROM TRAVELGUIDE.DBO.RESTAURANT AS T");
+		sql.append("  INNER JOIN TRAVELGUIDE.DBO.CITY AS C");
+		sql.append("  ON T.ID_CITY = C.ID_CITY");
+		sql.append("  WHERE 1 = 1 ");
+
+		if (searchStr != null) {
+			sql.append(" AND T.NAME_RESTAURANT like ?  ESCAPE '!'");
+		}
+		if (city != null && !city.isEmpty()) {
+
+			sql.append(" AND C.NAME_CITY = ? ");
+		}
+		if (quality != null && !quality.isEmpty()) {
+
+			sql.append(" AND T.QUALITY_HOTEL  = ? ");
+		}
+		sql.append("  ORDER BY T.ID_RESTAURANT");
+		sql.append("  OFFSET ? ROWS");
+		sql.append("  FETCH NEXT ? ROWS ONLY;");
+		try (PreparedStatement stmt = conn.prepareStatement(sql.toString());) {
+
+			int index = 1;
+			if (searchStr != null) {
+				stmt.setString(index++, "%" + searchStr + "%");
+			}
+			if (city != null && !city.isEmpty()) {
+				stmt.setString(index++, city);
+			}
+			if (quality != null && !quality.isEmpty()) {
+
+				stmt.setString(index++, quality);
+			}
+			stmt.setInt(index++, offset);
+			stmt.setInt(index, 3);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				RestaurantDto restaurantDto = new RestaurantDto();
+
+				restaurantDto.setIdRestaurant(rs.getInt("ID_RESTAURANT"));
+				restaurantDto.setNameRestaurant(rs.getString("NAME_RESTAURANT"));
+				restaurantDto.setIdCity(rs.getString("ID_CITY"));
+				restaurantDto.setTelRestaurant(rs.getString("TEL_RESTAURANT"));
+				restaurantDto.setQualityRestaurant(rs.getInt("QUALITY_RESTAURANT"));
+				restaurantDto.setAvailable(rs.getInt("AVAILABLE"));
+				restaurantDto.setDesRestaurant(rs.getString("DES_RESTAURANT"));
+				restaurantDto.setIntroductRestaurant(rs.getString("INTRODUCE_RESTAURANT"));
+				restaurantDto.setImageRestaurant(rs.getString("IMAGE_RESTAURANT"));
+				restaurantDto.setIsDiscountRes(rs.getInt("ISDISCOUNT_RES"));
+				restaurantDto.setDiscountRes(rs.getInt("DISCOUNT_RES"));
+				restaurantDto.setPriceRestaurant(rs.getInt("PRICE_RESTAURANT"));
+				restaurantDto.setImageDetailRestaurant(rs.getString("IMAGE_DETAIL_RESTAURANT"));
+				restaurantDto.setNameCity(rs.getString("NAME_CITY"));
+
+				restaurantDtoList.add(restaurantDto);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

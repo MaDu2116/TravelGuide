@@ -56,12 +56,6 @@
 						</div>
 					</c:forEach>
 
-
-
-
-
-
-
 					<nav class="blog-pagination justify-content-center d-flex">
 						<div class="pagination-container">
 							<ul class="pagination">

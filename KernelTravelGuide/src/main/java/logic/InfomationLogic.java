@@ -18,46 +18,38 @@ import dto.TravelDto;
 public class InfomationLogic {
 
 	public List<String> getAllNameCity() {
-		List<String> nameCityList = new ArrayList<>();
 		CityDao cityDao = new CityDao();
-		nameCityList = cityDao.getAllNameCity();
-		return nameCityList;
+		return cityDao.getAllNameCity();
 	}
 
 	public List<TouristSpotDto> getAllTouristSpot(int currentPage, String searchStr, String city, String quality) {
 		int offset = (currentPage - 1) * 3;
-		List<TouristSpotDto> touristSpotDtoList = new ArrayList<>();
 		TouristSpotDao touristSpotDao = new TouristSpotDao();
-		touristSpotDtoList = touristSpotDao.getAllTouristSpot(offset, searchStr, city, quality);
-		return touristSpotDtoList;
+		return touristSpotDao.getAllTouristSpot(offset, searchStr, city, quality);
 	}
 
-	public List<HotelDto> getAllHotel() {
-		List<HotelDto> hotelDtoList = new ArrayList<>();
+	public List<HotelDto> getAllHotel(int currentPage, String searchStr, String city, String quality) {
+		int offset = (currentPage - 1) * 3;
 		HotelDao hotelDao = new HotelDao();
-		hotelDtoList = hotelDao.getAllHotel();
-		return hotelDtoList;
+		return hotelDao.getAllHotel(offset, searchStr, city, quality);
 	}
 
-	public List<RestaurantDto> getAllRestaurant() {
-		List<RestaurantDto> restaurantDtoList = new ArrayList<>();
+	public List<RestaurantDto> getAllRestaurant(int currentPage, String searchStr, String city, String quality) {
+		int offset = (currentPage - 1) * 3;
 		RestaurantDao restaurantDao = new RestaurantDao();
-		restaurantDtoList = restaurantDao.getAllRestauran();
-		return restaurantDtoList;
+		return restaurantDao.getAllRestauran(offset, searchStr, city, quality);
 	}
 
-	public List<TravelDto> getAllTravel() {
-		List<TravelDto> travelDtoList = new ArrayList<>();
+	public List<TravelDto> getAllTravel(int currentPage, String searchStr, String city, String quality) {
+		int offset = (currentPage - 1) * 3;
 		TravelDao travelDao = new TravelDao();
-		travelDtoList = travelDao.getAllTravel();
-		return travelDtoList;
+		return travelDao.getAllTravel(offset, searchStr, city, quality);
 	}
 
-	public List<ResortDto> getAllResort() {
-		List<ResortDto> resortDtoList = new ArrayList<>();
+	public List<ResortDto> getAllResort(int currentPage, String searchStr, String city, String quality) {
+		int offset = (currentPage - 1) * 3;
 		ResortDao resortDao = new ResortDao();
-		resortDtoList = resortDao.getAllResort();
-		return resortDtoList;
+		return resortDao.getAllResort(offset, searchStr, city, quality);
 	}
 
 	public int totalPage(String type, String searchStr, String city, String quality) {
@@ -70,17 +62,17 @@ public class InfomationLogic {
 			break;
 		case "hotel":
 			HotelDao hotelDao = new HotelDao();
-			totalPage = hotelDao.countAllHotel();
+			totalPage = hotelDao.countAllHotel(searchStr, city, quality);
 
 			break;
 		case "resort":
 			ResortDao resortDao = new ResortDao();
-			totalPage = resortDao.countAllResort();
+			totalPage = resortDao.countAllResort(searchStr, city, quality);
 
 			break;
 		case "travel":
 			TravelDao travelDao = new TravelDao();
-			totalPage = travelDao.countAllTravel();
+			totalPage = travelDao.countAllTravel(searchStr, city, quality);
 			break;
 
 		default:

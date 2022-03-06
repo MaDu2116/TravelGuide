@@ -14,9 +14,9 @@ public class ResortDao extends BaseConnection {
 	public List<ResortEntity> getResorts() {
 		List<ResortEntity> resortEntityList = new ArrayList<>();
 		conn = getConnection();
-		String sql = "  select * from TravelGuide.dbo.RESORT where QUALITY_RESORT > 8";
-		try {
-			PreparedStatement stmt = conn.prepareStatement(sql);
+		String sql = "select * from TravelGuide.dbo.RESORT where QUALITY_RESORT > 8";
+		try (PreparedStatement stmt = conn.prepareStatement(sql);) {
+
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				ResortEntity resortEntity = new ResortEntity();
@@ -50,12 +50,12 @@ public class ResortDao extends BaseConnection {
 		ResortDto resortDto = new ResortDto();
 		conn = getConnection();
 		StringBuilder sql = new StringBuilder();
-		sql.append("  SELECT * FROM TRAVELGUIDE.DBO.RESORT AS R");
-		sql.append("  INNER JOIN TRAVELGUIDE.DBO.CITY AS C");
-		sql.append("  ON R.ID_CITY = C.ID_CITY");
-		sql.append("   WHERE ID_RESORT = ?");
-		try {
-			PreparedStatement stmt = conn.prepareStatement(sql.toString());
+		sql.append(" SELECT * FROM TRAVELGUIDE.DBO.RESORT AS R");
+		sql.append(" INNER JOIN TRAVELGUIDE.DBO.CITY AS C");
+		sql.append(" ON R.ID_CITY = C.ID_CITY");
+		sql.append(" WHERE ID_RESORT = ?");
+		try (PreparedStatement stmt = conn.prepareStatement(sql.toString());) {
+
 			stmt.setString(1, idResort);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
@@ -89,11 +89,11 @@ public class ResortDao extends BaseConnection {
 
 		conn = getConnection();
 		StringBuilder sql = new StringBuilder();
-		sql.append("  SELECT * FROM TRAVELGUIDE.DBO.RESORT AS R");
-		sql.append("  INNER JOIN TRAVELGUIDE.DBO.CITY AS C");
-		sql.append("  ON R.ID_CITY = C.ID_CITY");
-		try {
-			PreparedStatement stmt = conn.prepareStatement(sql.toString());
+		sql.append(" SELECT * FROM TRAVELGUIDE.DBO.RESORT AS R");
+		sql.append(" INNER JOIN TRAVELGUIDE.DBO.CITY AS C");
+		sql.append(" ON R.ID_CITY = C.ID_CITY");
+		try (PreparedStatement stmt = conn.prepareStatement(sql.toString());) {
+
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				ResortDto resortDto = new ResortDto();
@@ -129,11 +129,11 @@ public class ResortDao extends BaseConnection {
 
 		conn = getConnection();
 		StringBuilder sql = new StringBuilder();
-		sql.append("  SELECT COUNT(*) FROM TRAVELGUIDE.DBO.RESORT AS R");
-		sql.append("  INNER JOIN TRAVELGUIDE.DBO.CITY AS C");
-		sql.append("  ON R.ID_CITY = C.ID_CITY");
-		try {
-			PreparedStatement stmt = conn.prepareStatement(sql.toString());
+		sql.append(" SELECT COUNT(*) FROM TRAVELGUIDE.DBO.RESORT AS R");
+		sql.append(" INNER JOIN TRAVELGUIDE.DBO.CITY AS C");
+		sql.append(" ON R.ID_CITY = C.ID_CITY");
+		try (PreparedStatement stmt = conn.prepareStatement(sql.toString());) {
+
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				count = Integer.parseInt(rs.getString(1));
@@ -151,16 +151,131 @@ public class ResortDao extends BaseConnection {
 
 		conn = getConnection();
 		StringBuilder sql = new StringBuilder();
-		sql.append("  SELECT * FROM TRAVELGUIDE.DBO.RESORT AS H");
-		sql.append("  INNER JOIN TRAVELGUIDE.DBO.CITY AS C");
-		sql.append("  ON H.ID_CITY = C.ID_CITY");
-		sql.append("  ORDER BY H.ID_RESORT");
-		sql.append("  OFFSET ? ROWS");
-		sql.append("  FETCH NEXT ? ROWS ONLY;");
-		try {
-			PreparedStatement stmt = conn.prepareStatement(sql.toString());
+		sql.append(" SELECT * FROM TRAVELGUIDE.DBO.RESORT AS H");
+		sql.append(" INNER JOIN TRAVELGUIDE.DBO.CITY AS C");
+		sql.append(" ON H.ID_CITY = C.ID_CITY");
+		sql.append(" ORDER BY H.ID_RESORT");
+		sql.append(" OFFSET ? ROWS");
+		sql.append(" FETCH NEXT ? ROWS ONLY;");
+		try (PreparedStatement stmt = conn.prepareStatement(sql.toString());) {
+
 			stmt.setInt(1, offset);
 			stmt.setInt(2, 3);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				ResortDto resortDto = new ResortDto();
+
+				resortDto.setIdResort(rs.getInt("ID_RESORT"));
+				resortDto.setNameResort(rs.getString("NAME_RESORT"));
+				resortDto.setIdCity(rs.getString("ID_CITY"));
+				resortDto.setAddressResort(rs.getString("ADDRESS_RESORT"));
+				resortDto.setTelResort(rs.getString("TEL_RESORT"));
+				resortDto.setQualityResort(rs.getInt("QUALITY_RESORT"));
+				resortDto.setAvailable(rs.getInt("AVAILABLE"));
+				resortDto.setDesResort(rs.getString("DES_RESORT"));
+				resortDto.setImageResort(rs.getString("IMAGE_RESORT"));
+				resortDto.setIsDiscountResort(rs.getInt("ISDISCOUNT_RESORT"));
+				resortDto.setDiscountResort(rs.getInt("DISCOUNT_RESORT"));
+				resortDto.setPriceResort(rs.getInt("PRICE_RESORT"));
+				resortDto.setImageDetailResort(rs.getString("IMAGE_DETAIL_RESORT"));
+				resortDto.setIntroductResort(rs.getString("INTRODUCE_RESORT"));
+				resortDto.setNameCity(rs.getString("NAME_CITY"));
+
+				resortDtoList.add(resortDto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return resortDtoList;
+	}
+
+	public int countAllResort(String searchStr, String city, String quality) {
+		int count = 0;
+
+		conn = getConnection();
+		StringBuilder sql = new StringBuilder();
+		sql.append("  SELECT * FROM TRAVELGUIDE.DBO.RESORT AS T");
+		sql.append("  INNER JOIN TRAVELGUIDE.DBO.CITY AS C");
+		sql.append("  ON T.ID_CITY = C.ID_CITY");
+		sql.append("  WHERE 1 = 1 ");
+
+		if (searchStr != null) {
+			sql.append(" AND T.NAME_RESORT like ?  ESCAPE '!'");
+		}
+		if (city != null && !city.isEmpty()) {
+
+			sql.append(" AND C.NAME_CITY = ? ");
+		}
+		if (quality != null && !quality.isEmpty()) {
+
+			sql.append(" AND T.QUALITY_RESORT  = ? ");
+		}
+		sql.append("  ORDER BY T.ID_RESORT");
+		try (PreparedStatement stmt = conn.prepareStatement(sql.toString());) {
+
+			int index = 1;
+			if (searchStr != null) {
+				stmt.setString(index++, "%" + searchStr + "%");
+			}
+			if (city != null && !city.isEmpty()) {
+				stmt.setString(index++, city);
+			}
+			if (quality != null && !quality.isEmpty()) {
+
+				stmt.setString(index++, quality);
+			}
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				count = Integer.parseInt(rs.getString(1));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection();
+		}
+		return count;
+	}
+
+	public List<ResortDto> getAllResort(int offset, String searchStr, String city, String quality) {
+		List<ResortDto> resortDtoList = new ArrayList<>();
+
+		conn = getConnection();
+		StringBuilder sql = new StringBuilder();
+		sql.append("  SELECT * FROM TRAVELGUIDE.DBO.RESORT AS T");
+		sql.append("  INNER JOIN TRAVELGUIDE.DBO.CITY AS C");
+		sql.append("  ON T.ID_CITY = C.ID_CITY");
+		sql.append("  WHERE 1 = 1 ");
+
+		if (searchStr != null) {
+			sql.append(" AND T.NAME_RESORT like ?  ESCAPE '!'");
+		}
+		if (city != null && !city.isEmpty()) {
+
+			sql.append(" AND C.NAME_CITY = ? ");
+		}
+		if (quality != null && !quality.isEmpty()) {
+
+			sql.append(" AND T.QUALITY_RESORT  = ? ");
+		}
+		sql.append("  ORDER BY T.ID_RESORT");
+		sql.append("  OFFSET ? ROWS");
+		sql.append("  FETCH NEXT ? ROWS ONLY;");
+		try (PreparedStatement stmt = conn.prepareStatement(sql.toString());) {
+
+			int index = 1;
+			if (searchStr != null) {
+				stmt.setString(index++, "%" + searchStr + "%");
+			}
+			if (city != null && !city.isEmpty()) {
+				stmt.setString(index++, city);
+			}
+			if (quality != null && !quality.isEmpty()) {
+				stmt.setString(index++, quality);
+			}
+			stmt.setInt(index++, offset);
+			stmt.setInt(index, 3);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				ResortDto resortDto = new ResortDto();
