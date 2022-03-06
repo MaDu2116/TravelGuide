@@ -133,7 +133,7 @@
                 </nav>
             </div>
             <div class="col-lg-4">
-<form action="http://localhost:2012/Home/ShowAllTravel" method="post">                    <div class="blog_right_sidebar">
+<form action="/KernelTravelGuide/infomation/showAllTravel" method="get">                    <div class="blog_right_sidebar">
                         <aside class="single_sidebar_widget search_widget">
                             <div class="input-group">
                                 <input id="SearchString" name="SearchString" type="text" value="" />
@@ -162,24 +162,11 @@
                                                 <div class="icon"><i class="fa fa-plane" aria-hidden="true"></i></div>
                                                 <div class="form-select" id="citySelect">
                                                     <select name="city">
-                                                        <option value="">City</option>
-                                                            <option value="BL">Bac Lieu</option>
-                                                            <option value="BT">Binh Thuan</option>
-                                                            <option value="BTR">Ben Tre</option>
-                                                            <option value="CM">Ca Mau</option>
-                                                            <option value="CT">Can Tho</option>
-                                                            <option value="Dla">Da Lat</option>
-                                                            <option value="DN">Da Nang</option>
-                                                            <option value="DNA">Dong Nai</option>
-                                                            <option value="KG">Kien Giang</option>
-                                                            <option value="NT">Nha Trang</option>
-                                                            <option value="PT">Phan Thiet</option>
-                                                            <option value="QN">Quang Ninh</option>
-                                                            <option value="SG">Sai Gon</option>
-                                                            <option value="TN">Tay Ninh</option>
-                                                            <option value="TV">Tra Vinh</option>
-                                                            <option value="VT">Vung Tau</option>
-                                                    </select>
+															<option value="">City</option>
+															<c:forEach var="nameCity" items="${nameCityList}">
+																<option value="${nameCity}">${nameCity}</option>
+															</c:forEach>
+														</select>
                                                 </div>
                                             </div>
                                         </div>

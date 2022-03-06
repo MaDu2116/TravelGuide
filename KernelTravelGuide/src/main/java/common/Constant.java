@@ -8,6 +8,10 @@ public class Constant {
 	public static final String SEARCH_STRING = "SearchString";
 	public static final String CITY = "city";
 	public static final String QUALITY = "quality";
+	public static final String AVAILABLE = "available";
+	public static final String DISCOUNT = "discount";
+	public static final String MIN_PRICE = "minPrice";
+	public static final String MAX_PRICE = "maxPrice";
 	public static final String SHOW_ALL_TOURIST_SPOT = "showAllTouristSpot";
 	public static final String SHOW_ALL_HOTEL = "showAllHotel";
 	public static final String SHOW_ALL_RESTAURANT = "showAllRestaurant";

@@ -71,7 +71,7 @@
 										<c:when test="${fn:length(listPaging) gt 1}">
 											<c:choose>
 												<c:when test="${currentPage eq pageId}">
-													<li class="page-item"><a
+													<li class="page-item active"><a
 														href="showAllTouristSpot?currentPage=${pageId}"
 														class="page-link">${pageId}</a></li>
 												</c:when>
@@ -89,9 +89,9 @@
 										</c:when>
 										<c:when
 											test="${(fn:length(listPaging) eq 1) and (pageId gt 3)}">
-											<li class="page-item"><a
+											<li class="page-item active"><a
 												href="showAllTouristSpot?currentPage=${pageId}"
-												class="page-link">${pageId}</a></li>
+												class="page-link ">${pageId}</a></li>
 										</c:when>
 									</c:choose>
 
@@ -148,7 +148,6 @@
 																<option value="${nameCity}">${nameCity}</option>
 															</c:forEach>
 														</select>
-
 													</div>
 												</div>
 											</div>

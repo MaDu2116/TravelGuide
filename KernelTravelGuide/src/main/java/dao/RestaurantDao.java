@@ -122,19 +122,59 @@ public class RestaurantDao extends BaseConnection {
 		return restaurantDtoList;
 	}
 
-	public int countAllRestaurant() {
+	public int countAllRestaurant(String searchStr, String city, String available, String quality, String priceMin, String priceMax, String discount) {
 		int count = 0;
-
 		conn = getConnection();
 		StringBuilder sql = new StringBuilder();
 		sql.append("  SELECT COUNT(*) FROM TRAVELGUIDE.DBO.RESTAURANT AS R");
 		sql.append("  INNER JOIN TRAVELGUIDE.DBO.CITY AS C");
 		sql.append("  ON R.ID_CITY = C.ID_CITY");
+		sql.append("  WHERE 1 = 1 ");
+		if (searchStr != null) {
+			sql.append(" AND R.NAME_RESTAURANT like ?  ESCAPE '!'");
+		}
+		if (city != null && !city.isEmpty()) {
+			sql.append(" AND C.NAME_CITY = ? ");
+		}
+		if (available != null) {
+			if ("true".equals(available)) {
+				sql.append(" AND R.AVAILABLE  = 1 ");
+			} else {
+				sql.append(" AND R.AVAILABLE  = 0 ");
+			}
+		}
+		if (quality != null && !quality.isEmpty()) {
+			sql.append(" AND R.QUALITY_RESTAURANT  >= ? ");
+		}
+		if(priceMin != null && priceMax != null) {
+			sql.append(" AND R.PRICE_RESTAURANT  BETWEEN ? AND ? ");
+		}
+		if (discount != null) {
+			if ("true".equals(discount)) {
+				sql.append(" AND R.ISDISCOUNT_RES  = 1 ");
+			} else {
+				sql.append(" AND R.ISDISCOUNT_RES  = 0 ");
+			}
+		}
 		try (PreparedStatement stmt = conn.prepareStatement(sql.toString());) {
-
+			int index = 1;
+			if (searchStr != null) {
+				stmt.setString(index++, "%" + searchStr + "%");
+			}
+			if (city != null && !city.isEmpty()) {
+				stmt.setString(index++, city);
+			}
+			if (quality != null && !quality.isEmpty()) {
+				stmt.setString(index++, quality);
+			}
+			if(priceMin != null && priceMax != null) {
+				stmt.setInt(index++, Integer.parseInt(priceMin));
+				stmt.setInt(index++, Integer.parseInt(priceMax));
+			}
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				count = Integer.parseInt(rs.getString(1));
+				System.out.println(count);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -208,7 +248,7 @@ public class RestaurantDao extends BaseConnection {
 		}
 		if (quality != null && !quality.isEmpty()) {
 
-			sql.append(" AND T.QUALITY_HOTEL  = ? ");
+			sql.append(" AND T.QUALITY_RESTAURANT  = ? ");
 		}
 		sql.append("  ORDER BY T.ID_RESTAURANT");
 		sql.append("  OFFSET ? ROWS");
@@ -231,9 +271,9 @@ public class RestaurantDao extends BaseConnection {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				RestaurantDto restaurantDto = new RestaurantDto();
-
 				restaurantDto.setIdRestaurant(rs.getInt("ID_RESTAURANT"));
 				restaurantDto.setNameRestaurant(rs.getString("NAME_RESTAURANT"));
+				restaurantDto.setAddressRestaurant(rs.getString("ADDRESS_RESTAURANT"));
 				restaurantDto.setIdCity(rs.getString("ID_CITY"));
 				restaurantDto.setTelRestaurant(rs.getString("TEL_RESTAURANT"));
 				restaurantDto.setQualityRestaurant(rs.getInt("QUALITY_RESTAURANT"));
@@ -248,6 +288,7 @@ public class RestaurantDao extends BaseConnection {
 				restaurantDto.setNameCity(rs.getString("NAME_CITY"));
 
 				restaurantDtoList.add(restaurantDto);
+				
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

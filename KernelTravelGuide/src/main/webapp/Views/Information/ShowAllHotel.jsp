@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ page import="java.util.List"%>
 <!DOCTYPE  html>
 <html lang="en">
@@ -59,17 +61,51 @@
 					<nav class="blog-pagination justify-content-center d-flex">
 						<div class="pagination-container">
 							<ul class="pagination">
-								<li class="active"><a>1</a></li>
-								<li><a href="ShowAllHotel4658.html?page=2">2</a></li>
-								<li class="PagedList-skipToNext"><a
-									href="ShowAllHotel4658.html?page=2" rel="next">Â»</a></li>
+								<c:forEach var="pageId" items="${listPaging}"
+									varStatus="pageIndex">
+
+									<c:if test="${pageIndex.first and pageId > 3}">
+										<li class="page-item"><a
+											href="showAllTouristSpot?currentPage=${pageId - 1}"
+											class="page-link">&laquo;</a></li>
+									</c:if>
+									<c:choose>
+										<c:when test="${fn:length(listPaging) gt 1}">
+											<c:choose>
+												<c:when test="${currentPage eq pageId}">
+													<li class="page-item"><a
+														href="showAllTouristSpot?currentPage=${pageId}"
+														class="page-link">${pageId}</a></li>
+												</c:when>
+												<c:otherwise>
+													<li class="page-item"><a
+														href="showAllTouristSpot?currentPage=${pageId}"
+														class="page-link"> ${pageId} </a></li>
+												</c:otherwise>
+											</c:choose>
+											<c:if test="${pageIndex.last and pageId < totalPage}">
+												<li class="page-item"><a
+													href="showAllTouristSpot?currentPage=${pageId + 1}"
+													class="page-link">&raquo;</a></li>
+											</c:if>
+										</c:when>
+										<c:when
+											test="${(fn:length(listPaging) eq 1) and (pageId gt 3)}">
+											<li class="page-item"><a
+												href="showAllTouristSpot?currentPage=${pageId}"
+												class="page-link">${pageId}</a></li>
+										</c:when>
+									</c:choose>
+
+								</c:forEach>
+
 							</ul>
 						</div>
 					</nav>
 				</div>
 				<div class="col-lg-4">
-					<form action="http://localhost:2012/Home/ShowAllHotel"
-						method="post">
+					<form action="/KernelTravelGuide/infomation/showAllHotel"
+						method="get">
 						<div class="blog_right_sidebar">
 							<aside class="single_sidebar_widget search_widget">
 								<div class="input-group">
@@ -106,22 +142,9 @@
 													<div class="form-select" id="citySelect">
 														<select name="city">
 															<option value="">City</option>
-															<option value="BL">Bac Lieu</option>
-															<option value="BT">Binh Thuan</option>
-															<option value="BTR">Ben Tre</option>
-															<option value="CM">Ca Mau</option>
-															<option value="CT">Can Tho</option>
-															<option value="Dla">Da Lat</option>
-															<option value="DN">Da Nang</option>
-															<option value="DNA">Dong Nai</option>
-															<option value="KG">Kien Giang</option>
-															<option value="NT">Nha Trang</option>
-															<option value="PT">Phan Thiet</option>
-															<option value="QN">Quang Ninh</option>
-															<option value="SG">Sai Gon</option>
-															<option value="TN">Tay Ninh</option>
-															<option value="TV">Tra Vinh</option>
-															<option value="VT">Vung Tau</option>
+															<c:forEach var="nameCity" items="${nameCityList}">
+																<option value="${nameCity}">${nameCity}</option>
+															</c:forEach>
 														</select>
 													</div>
 												</div>

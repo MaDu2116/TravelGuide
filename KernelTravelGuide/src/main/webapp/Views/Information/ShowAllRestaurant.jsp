@@ -12,173 +12,103 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8">
-					<div class="blog_left_sidebar">
-						<article class="row blog_item">
-							<div class="col-md-3">
-								<div class="blog_info text-right">
-									<ul class="blog_meta list_style">
-										<li><a href="#"><div class="btn btn-success">Available</div></a>
-										</li>
-										<li><a href="#">128 Vo Thi Sau Street, Zone 2, Ward
-												8, Bac Lieu City, Vietnam<i class="lnr lnr-home"></i>
-										</a></li>
-										<li><a href="#">Bac Lieu<i class="lnr lnr-map-marker"></i></a></li>
-										<li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
-										<li><a href="#">9/ 10<i class="lnr lnr-star"></i></a></li>
-										<li><a href="#"><h5>
-													$500<small>/night</small>
-												</h5></a></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-9">
-								<div class="blog_post">
-									<img src="../Content/image/Restaurant/infor/BL_infor_1.jpg"
-										alt="">
-									<div class="blog_details">
-										<a href="DetailRestaurant/1.html">
-											<h2>Thuyen Trang Quan</h2>
-										</a>
-										<p>Serving delicious international and local cuisine in a
-											romantic ambience. The delectable buffet spread, together
-											with the amorous setting of both the indoor and terrace
-											seating areas</p>
-										<a href="DetailRestaurant/1.html"
-											class="view_btn button_hover">View More</a>
+					<c:forEach items="${restaurantDtoList}" var="restaurant">
+						<div class="blog_left_sidebar">
+							<article class="row blog_item">
+								<div class="col-md-3">
+									<div class="blog_info text-right">
+										<ul class="blog_meta list_style">
+											<li>
+												<a href="#"><c:out value="${restaurant.nameRestaurant}" /></a>
+											</li>
+											<li>
+												<a href="#"><c:out value="${restaurant.addressRestaurant}" /><i class="lnr lnr-home"></i></a>
+											</li>
+											<li>
+												<a href="#"><c:out value="${restaurant.nameCity}" /><i class="lnr lnr-map-marker"></i></a>
+											</li>
+											<li>
+												<a href="#">1.2M Views<i class="lnr lnr-eye"></i></a>
+											</li>
+											<li>
+												<a href="#"><c:out value="${restaurant.qualityRestaurant}" />/ 10<i class="lnr lnr-star"></i></a>
+												</li>
+											<li><a href="#"><h5>$
+														<c:out value="${restaurant.priceRestaurant}" /><small>/night</small>
+											</h5></a></li>
+										</ul>
 									</div>
 								</div>
-							</div>
-						</article>
-					</div>
-					<div class="blog_left_sidebar">
-						<article class="row blog_item">
-							<div class="col-md-3">
-								<div class="blog_info text-right">
-									<ul class="blog_meta list_style">
-										<li><a href="#"><div class="btn btn-success">Available</div></a>
-										</li>
-										<li><a href="#">98 C My Thanh An, Ben Tre 83000,
-												Vietnam<i class="lnr lnr-home"></i>
-										</a></li>
-										<li><a href="#">Ben Tre<i class="lnr lnr-map-marker"></i></a></li>
-										<li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
-										<li><a href="#">9/ 10<i class="lnr lnr-star"></i></a></li>
-										<li><a href="#"><h5>
-													$500<small>/night</small>
-												</h5></a></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-9">
-								<div class="blog_post">
-									<img src="../Content/image/Restaurant/infor/DN_infor_2.jpg"
-										alt="">
-									<div class="blog_details">
-										<a href="DetailRestaurant/2.html">
-											<h2>3D Coffee</h2>
-										</a>
-										<p>Serving delicious international and local cuisine in a
-											romantic ambience. The delectable buffet spread, together
-											with the amorous setting of both the indoor and terrace
-											seating areas</p>
-										<a href="DetailRestaurant/2.html"
-											class="view_btn button_hover">View More</a>
+								<div class="col-md-9">
+									<div class="blog_post">
+										<img src="../${restaurant.imageRestaurant}"
+											alt="">
+										<div class="blog_details">
+											<a href="/KernelTravelGuide/detailRestaurant?idRestaurant=${restaurant.idRestaurant}">
+												<h2><c:out value="${restaurant.nameRestaurant}" /></h2>
+											</a>
+											<p>Serving delicious international and local cuisine in a
+												romantic ambience. The delectable buffet spread, together
+												with the amorous setting of both the indoor and terrace
+												seating areas</p>
+											<a href="/KernelTravelGuide/detailRestaurant?idRestaurant=${restaurant.idRestaurant}"
+												class="view_btn button_hover">View More</a>
+										</div>
 									</div>
 								</div>
-							</div>
-						</article>
-					</div>
-					<div class="blog_left_sidebar">
-						<article class="row blog_item">
-							<div class="col-md-3">
-								<div class="blog_info text-right">
-									<ul class="blog_meta list_style">
-										<li><a href="#"><div class="btn btn-success">Available</div></a>
-										</li>
-										<li><a href="#">2 Hai Ba Trung | Tan An, Ninh Kieu,
-												Can Tho 10.029656, Vietnam<i class="lnr lnr-home"></i>
-										</a></li>
-										<li><a href="#">Can Tho<i class="lnr lnr-map-marker"></i></a></li>
-										<li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
-										<li><a href="#">9/ 10<i class="lnr lnr-star"></i></a></li>
-										<li><a href="#"><h5>
-													$500<small>/night</small>
-												</h5></a></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-9">
-								<div class="blog_post">
-									<img src="../Content/image/Restaurant/infor/CT_infor_2.jpg"
-										alt="">
-									<div class="blog_details">
-										<a href="DetailRestaurant/3.html">
-											<h2>Caf&#233; Lotus Ninh Kieu</h2>
-										</a>
-										<p>Serving delicious international and local cuisine in a
-											romantic ambience. The delectable buffet spread, together
-											with the amorous setting of both the indoor and terrace
-											seating areas</p>
-										<a href="DetailRestaurant/3.html"
-											class="view_btn button_hover">View More</a>
-									</div>
-								</div>
-							</div>
-						</article>
-					</div>
-					<div class="blog_left_sidebar">
-						<article class="row blog_item">
-							<div class="col-md-3">
-								<div class="blog_info text-right">
-									<ul class="blog_meta list_style">
-										<li><a href="#"><div class="btn btn-success">Available</div></a>
-										</li>
-										<li><a href="#">29 Quang Dung Street, Thanh Khe
-												District, Danang<i class="lnr lnr-home"></i>
-										</a></li>
-										<li><a href="#">Da Nang<i class="lnr lnr-map-marker"></i></a></li>
-										<li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
-										<li><a href="#">9/ 10<i class="lnr lnr-star"></i></a></li>
-										<li><a href="#"><h5>
-													$500<small>/night</small>
-												</h5></a></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-9">
-								<div class="blog_post">
-									<img src="../Content/image/Restaurant/infor/DN_infor_1.jpg"
-										alt="">
-									<div class="blog_details">
-										<a href="DetailRestaurant/4.html">
-											<h2>Anchor Beer Club</h2>
-										</a>
-										<p>Serving delicious international and local cuisine in a
-											romantic ambience. The delectable buffet spread, together
-											with the amorous setting of both the indoor and terrace
-											seating areas</p>
-										<a href="DetailRestaurant/4.html"
-											class="view_btn button_hover">View More</a>
-									</div>
-								</div>
-							</div>
-						</article>
-					</div>
+							</article>
+						</div>
+					</c:forEach>
 					<nav class="blog-pagination justify-content-center d-flex">
 						<div class="pagination-container">
 							<ul class="pagination">
-								<li class="active"><a>1</a></li>
-								<li><a href="ShowAllRestaurant4658.html?page=2">2</a></li>
-								<li><a href="ShowAllRestaurant9ba9.html?page=3">3</a></li>
-								<li class="PagedList-skipToNext"><a
-									href="ShowAllRestaurant4658.html?page=2" rel="next">Â»</a></li>
+
+
+								<c:forEach var="pageId" items="${listPaging}"
+									varStatus="pageIndex">
+
+									<c:if test="${pageIndex.first and pageId > 3}">
+										<li class="page-item"><a
+											href="showAllRestaurant?currentPage=${pageId - 1}"
+											class="page-link">&laquo;</a></li>
+									</c:if>
+									<c:choose>
+										<c:when test="${fn:length(listPaging) gt 1}">
+											<c:choose>
+												<c:when test="${ currentPage eq pageId }">
+													<li class="page-item active"><a
+														href="showAllRestaurant?currentPage=${pageId}"
+														class="page-link">${pageId}</a></li>
+												</c:when>
+												<c:otherwise>
+													<li class="page-item"><a
+														href="showAllRestaurant?currentPage=${pageId}"
+														class="page-link"> ${pageId} </a></li>
+												</c:otherwise>
+											</c:choose>
+											<c:if test="${pageIndex.last and pageId < totalPage}">
+												<li class="page-item"><a
+													href="showAllRestaurant?currentPage=${pageId + 1}"
+													class="page-link">&raquo;</a></li>
+											</c:if>
+										</c:when>
+										<c:when
+											test="${(fn:length(listPaging) eq 1) and (pageId gt 3)}">
+											<li class="page-item active"><a
+												href="showAllRestaurant?currentPage=${pageId}"
+												class="page-link">${pageId}</a></li>
+										</c:when>
+									</c:choose>
+
+								</c:forEach>
+
 							</ul>
 						</div>
 					</nav>
 				</div>
 				<div class="col-lg-4">
-					<form action="http://localhost:2012/Home/ShowAllRestaurant"
-						method="post">
+					<form action="/KernelTravelGuide/infomation/showAllRestaurant"
+						method="get">
 						<div class="blog_right_sidebar">
 							<aside class="single_sidebar_widget search_widget">
 								<div class="input-group">
@@ -215,22 +145,9 @@
 													<div class="form-select" id="citySelect">
 														<select name="city">
 															<option value="">City</option>
-															<option value="BL">Bac Lieu</option>
-															<option value="BT">Binh Thuan</option>
-															<option value="BTR">Ben Tre</option>
-															<option value="CM">Ca Mau</option>
-															<option value="CT">Can Tho</option>
-															<option value="Dla">Da Lat</option>
-															<option value="DN">Da Nang</option>
-															<option value="DNA">Dong Nai</option>
-															<option value="KG">Kien Giang</option>
-															<option value="NT">Nha Trang</option>
-															<option value="PT">Phan Thiet</option>
-															<option value="QN">Quang Ninh</option>
-															<option value="SG">Sai Gon</option>
-															<option value="TN">Tay Ninh</option>
-															<option value="TV">Tra Vinh</option>
-															<option value="VT">Vung Tau</option>
+															<c:forEach var="nameCity" items="${nameCityList}">
+																<option value="${nameCity}">${nameCity}</option>
+															</c:forEach>
 														</select>
 													</div>
 												</div>
@@ -242,7 +159,7 @@
 													style="margin-top: 20px;">
 													<label> Available </label>
 													<div class="confirm-switch">
-														<input type="checkbox" name="isAvailable"
+														<input type="checkbox" name="available"
 															id="confirm-switch" value="true" checked disabled>
 														<label for="confirm-switch"></label>
 													</div>
@@ -257,7 +174,7 @@
 														type="range" min="1" max="10" value="" class="slider"
 														name="quality" id="quality" style="margin-left: 10px;"
 														disabled> <input type="text" id="resultRange"
-														value="1"
+														value="6"
 														style="width: 30px; margin-left: 10px; margin-right: 10px"
 														disabled />/10 <i class="lnr lnr-star"></i>
 												</div>
@@ -281,7 +198,7 @@
 													style="margin-top: 20px;">
 													<label>Discount</label>
 													<div class="primary-checkbox text-left">
-														<input type="checkbox" name="isDiscount"
+														<input type="checkbox" name="discount"
 															id="primary-checkbox" value="true" checked disabled>
 														<label for="primary-checkbox"></label>
 													</div>

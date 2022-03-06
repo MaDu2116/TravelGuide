@@ -29,7 +29,6 @@ public class InfomationController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("vaof");
 		String act[] = req.getRequestURL().toString().split("/");
 		String action = act[act.length - 1];
 		RequestDispatcher dispatcher = null;
@@ -47,16 +46,16 @@ public class InfomationController extends HttpServlet {
 			int currentPage = req.getParameter(Constant.CURRENT_PAGE) != null
 					? Integer.valueOf(req.getParameter(Constant.CURRENT_PAGE))
 					: 1;
-
 			String searchStr = req.getParameter(Constant.SEARCH_STRING);
 			String quality = req.getParameter(Constant.QUALITY);
+			String available = req.getParameter(Constant.AVAILABLE);
+			String discount = req.getParameter(Constant.DISCOUNT);
+			String priceMin = req.getParameter(Constant.MIN_PRICE);
+			String priceMax = req.getParameter(Constant.MAX_PRICE);
 			List<Integer> listPaging = new ArrayList<>();
-
 			switch (action) {
 			case Constant.SHOW_ALL_TOURIST_SPOT:
-
-				totalPage = infomationLogic.totalPage(Constant.SHOW_ALL_TOURIST_SPOT, searchStr, city, quality);
-
+				totalPage = infomationLogic.totalPage(Constant.SHOW_ALL_TOURIST_SPOT, searchStr, city, quality, available, priceMin, priceMax, discount);
 				List<TouristSpotDto> touristSpotDtoList = infomationLogic.getAllTouristSpot(currentPage, searchStr,
 						city, quality);
 				req.setAttribute(Constant.TOURIST_SPOT_DTO_LIST, touristSpotDtoList);
@@ -64,7 +63,7 @@ public class InfomationController extends HttpServlet {
 				break;
 
 			case Constant.SHOW_ALL_HOTEL:
-				totalPage = infomationLogic.totalPage(Constant.SHOW_ALL_HOTEL, searchStr, city, quality);
+				totalPage = infomationLogic.totalPage(Constant.SHOW_ALL_HOTEL, searchStr, city, quality, available, priceMin, priceMax, discount);
 
 				List<HotelDto> hotelDtoList = infomationLogic.getAllHotel(currentPage, searchStr, city, quality);
 				req.setAttribute("hotelDtoList", hotelDtoList);
@@ -72,8 +71,8 @@ public class InfomationController extends HttpServlet {
 				break;
 
 			case Constant.SHOW_ALL_RESTAURANT:
-				totalPage = infomationLogic.totalPage(Constant.SHOW_ALL_RESTAURANT, searchStr, city, quality);
-
+				totalItem = infomationLogic.countTotalItem(Constant.SHOW_ALL_RESTAURANT, searchStr, city, quality, available, priceMin, priceMax, discount);
+				totalPage = infomationLogic.totalPage(Constant.SHOW_ALL_RESTAURANT, searchStr, city, quality, available, priceMin, priceMax, discount );
 				List<RestaurantDto> restaurantDtoList = infomationLogic.getAllRestaurant(currentPage, searchStr, city,
 						quality);
 				req.setAttribute(Constant.RESTAURANT_DTO_LIST, restaurantDtoList);
@@ -81,7 +80,7 @@ public class InfomationController extends HttpServlet {
 				break;
 
 			case Constant.SHOW_ALL_RESORT:
-				totalPage = infomationLogic.totalPage(Constant.SHOW_ALL_RESORT, searchStr, city, quality);
+				totalPage = infomationLogic.totalPage(Constant.SHOW_ALL_RESORT, searchStr, city, quality, available, priceMin, priceMax, discount);
 
 				List<ResortDto> resortDtoList = infomationLogic.getAllResort(currentPage, searchStr, city, quality);
 				req.setAttribute(Constant.RESORT_DTO_LIST, resortDtoList);
@@ -89,7 +88,7 @@ public class InfomationController extends HttpServlet {
 				break;
 
 			case Constant.SHOW_ALL_TRAVEL:
-				totalPage = infomationLogic.totalPage(Constant.SHOW_ALL_TRAVEL, searchStr, city, quality);
+				totalPage = infomationLogic.totalPage(Constant.SHOW_ALL_TRAVEL, searchStr, city, quality, available, priceMin, priceMax, discount);
 
 				List<TravelDto> travelDtoList = infomationLogic.getAllTravel(currentPage, searchStr, city, quality);
 				req.setAttribute(Constant.TRAVEL_DTO_LIST, travelDtoList);
@@ -98,7 +97,7 @@ public class InfomationController extends HttpServlet {
 
 			}
 
-			totalItem = infomationLogic.countTotalItem(searchStr, city, quality);
+			
 			totalPage = (int) Math.ceil((double) totalItem / 3);
 			if (currentPage == 0) {
 				currentPage = 1;

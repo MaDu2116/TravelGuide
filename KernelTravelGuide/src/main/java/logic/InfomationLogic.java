@@ -52,7 +52,7 @@ public class InfomationLogic {
 		return resortDao.getAllResort(offset, searchStr, city, quality);
 	}
 
-	public int totalPage(String type, String searchStr, String city, String quality) {
+	public int totalPage(String type, String searchStr, String city, String available, String quality, String priceMin, String priceMax, String discount) {
 		int totalPage = 0;
 		switch (type) {
 		case "showAllTouristSpot":
@@ -60,17 +60,22 @@ public class InfomationLogic {
 			totalPage = touristSpotDao.countAllTouristSpot(searchStr, city, quality);
 
 			break;
-		case "hotel":
+		case "showAllHotel":
 			HotelDao hotelDao = new HotelDao();
 			totalPage = hotelDao.countAllHotel(searchStr, city, quality);
 
 			break;
-		case "resort":
+		case "showAllResort":
 			ResortDao resortDao = new ResortDao();
 			totalPage = resortDao.countAllResort(searchStr, city, quality);
 
 			break;
-		case "travel":
+		case "showAllRestaurant":
+			RestaurantDao restaurantDao = new RestaurantDao();
+			totalPage = restaurantDao.countAllRestaurant(searchStr, city, available, quality, priceMin, priceMax, discount );
+
+			break;
+		case "showAllTravel":
 			TravelDao travelDao = new TravelDao();
 			totalPage = travelDao.countAllTravel(searchStr, city, quality);
 			break;
@@ -89,9 +94,38 @@ public class InfomationLogic {
 
 	}
 
-	public int countTotalItem(String searchStr, String city, String quality) {
-		TouristSpotDao touristSpotDao = new TouristSpotDao();
-		return touristSpotDao.countAllTouristSpot(searchStr, city, quality);
+	public int countTotalItem(String type, String searchStr, String city, String quality, String available, String priceMin, String priceMax, String discount) {
+		int totalItem = 0;
+		switch (type) {
+		case "showAllTouristSpot":
+			TouristSpotDao touristSpotDao = new TouristSpotDao();
+			totalItem = touristSpotDao.countAllTouristSpot(searchStr, city, quality);
+
+			break;
+		case "showAllHotel":
+			HotelDao hotelDao = new HotelDao();
+			totalItem = hotelDao.countAllHotel(searchStr, city, quality);
+
+			break;
+		case "showAllResort":
+			ResortDao resortDao = new ResortDao();
+			totalItem = resortDao.countAllResort(searchStr, city, quality);
+
+			break;
+		case "showAllRestaurant":
+			RestaurantDao restaurantDao = new RestaurantDao();
+			totalItem = restaurantDao.countAllRestaurant(searchStr, city, available, quality, priceMin, priceMax, discount );
+
+			break;
+		case "showAllTravel":
+			TravelDao travelDao = new TravelDao();
+			totalItem = travelDao.countAllTravel(searchStr, city, quality);
+			break;
+
+		default:
+			break;
+		}
+		return totalItem;
 	}
 
 	public List<Integer> getListPaging(int totalPage, int currentPage) {
