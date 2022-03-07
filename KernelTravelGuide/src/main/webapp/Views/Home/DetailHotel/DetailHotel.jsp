@@ -19,8 +19,9 @@
 						<div class="col-lg-3  col-md-3">
 							<div class="blog_info text-right">
 								<ul class="blog_meta list_style">
-									<li><a><div type="button" class="btn btn-success">Available</div></a>
-									</li>
+									<c:if test="${hotelDto.available eq 1}">
+										<li><a href="#"><div class="btn btn-success">Available</div></a></li>
+									</c:if>
 									<li><a>${hotelDto.addressHotel}<i class="lnr lnr-home"></i></a></li>
 									<li><a>${hotelDto.nameCity}<i
 											class="lnr lnr-map-marker"></i></a></li>

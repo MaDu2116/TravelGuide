@@ -201,8 +201,9 @@
 													style="margin-top: 20px;">
 													<label for="formControlRange">Quality</label> <input
 														type="range" min="1" max="10" value="<c:out value="${requestScope.quality}"/>" class="slider"
-														name="quality" id="quality" style="margin-left: 10px;"
-														disabled> <input type="text" id="resultRange"
+														disabled name="quality" id="quality"
+														style="margin-left: 10px;"> <input type="text"
+														id="resultRange"
 														<c:choose>
 															<c:when test="${empty requestScope.quality}">
 																value="6"

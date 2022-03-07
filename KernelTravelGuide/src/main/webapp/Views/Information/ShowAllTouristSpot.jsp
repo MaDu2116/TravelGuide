@@ -41,10 +41,7 @@
 													<c:out value="${touristSpot.nameTouristSpot}" />
 												</h2>
 											</a>
-											<p>Note that the Students.cs has a StudentPhoto property
-												which is assigned with [Required] attribute. This makes the
-												relation one-to-one between Students and StudentPhotoes
-												tables.</p>
+											<p><c:out value="${touristSpot.introduceTouristSpots}" /></p>
 											<a
 												href="/KernelTravelGuide/detailTouristSpot?idTouristSpot=${touristSpot.idTouristSpot}"
 												class="view_btn button_hover">View More</a>

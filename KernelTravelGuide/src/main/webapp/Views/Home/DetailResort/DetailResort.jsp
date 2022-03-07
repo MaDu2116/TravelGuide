@@ -22,7 +22,9 @@
 						<div class="col-lg-3  col-md-3">
 							<div class="blog_info text-right">
 								<ul class="blog_meta list_style">
-
+									<c:if test="${resortDto.available eq 1}">
+												<li><a href="#"><div class="btn btn-success">Available</div></a></li>
+											</c:if>
 									<li><a href="#">${resortDto.addressResort}<i
 											class="lnr lnr-home"></i></a></li>
 									<li><a href="#">${resortDto.nameCity}<i

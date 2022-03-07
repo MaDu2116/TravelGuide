@@ -47,10 +47,7 @@
 											<a href="/KernelTravelGuide/detailRestaurant?idRestaurant=${restaurant.idRestaurant}">
 												<h2><c:out value="${restaurant.nameRestaurant}" /></h2>
 											</a>
-											<p>Serving delicious international and local cuisine in a
-												romantic ambience. The delectable buffet spread, together
-												with the amorous setting of both the indoor and terrace
-												seating areas</p>
+											<p><c:out value="${restaurant.introductRestaurant}" /></p>
 											<a href="/KernelTravelGuide/detailRestaurant?idRestaurant=${restaurant.idRestaurant}"
 												class="view_btn button_hover">View More</a>
 										</div>

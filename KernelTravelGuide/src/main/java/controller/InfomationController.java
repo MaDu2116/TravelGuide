@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -34,11 +33,8 @@ public class InfomationController extends HttpServlet {
 		String action = act[act.length - 1];
 		RequestDispatcher dispatcher = null;
 		InfomationLogic infomationLogic = new InfomationLogic();
-
 		List<String> nameCityList = infomationLogic.getAllNameCity();
-
 		String city = req.getParameter(Constant.CITY);
-
 		int totalPage = 1;
 		String path = "";
 		int totalItem = 0;
@@ -53,11 +49,9 @@ public class InfomationController extends HttpServlet {
 			String discount = req.getParameter(Constant.DISCOUNT);
 			String minPrice = Common.ruleOfPrice(req.getParameter(Constant.MIN_PRICE));
 			String maxPrice = Common.ruleOfPrice(req.getParameter(Constant.MAX_PRICE));
-			List<Integer> listPaging = new ArrayList<>();
 			switch (action) {
 			case Constant.SHOW_ALL_TOURIST_SPOT:
 				totalItem = infomationLogic.countTotalItem(Constant.SHOW_ALL_TOURIST_SPOT, searchStr, city, available, quality, minPrice, maxPrice, discount);
-				totalPage = infomationLogic.totalPage(totalItem);
 				List<TouristSpotDto> touristSpotDtoList = infomationLogic.getAllTouristSpot(currentPage, searchStr, city, quality);
 				req.setAttribute(Constant.TOURIST_SPOT_DTO_LIST, touristSpotDtoList);
 				path = "/Views/Information/ShowAllTouristSpot.jsp";
@@ -65,7 +59,6 @@ public class InfomationController extends HttpServlet {
 
 			case Constant.SHOW_ALL_HOTEL:
 				totalItem = infomationLogic.countTotalItem(Constant.SHOW_ALL_HOTEL, searchStr, city, available, quality, minPrice, maxPrice, discount);
-				totalPage = infomationLogic.totalPage(totalItem);
 				List<HotelDto> hotelDtoList = infomationLogic.getAllHotel(currentPage, searchStr, city, available, quality, minPrice, maxPrice, discount);
 				req.setAttribute("hotelDtoList", hotelDtoList);
 				path = "/Views/Information/ShowAllHotel.jsp";
@@ -73,7 +66,6 @@ public class InfomationController extends HttpServlet {
 
 			case Constant.SHOW_ALL_RESTAURANT:
 				totalItem = infomationLogic.countTotalItem(Constant.SHOW_ALL_RESTAURANT, searchStr, city, available, quality, minPrice, maxPrice, discount);
-				totalPage = infomationLogic.totalPage(totalItem);
 				List<RestaurantDto> restaurantDtoList = infomationLogic.getAllRestaurant(currentPage, searchStr, city, available, quality, minPrice, maxPrice, discount );
 				req.setAttribute(Constant.RESTAURANT_DTO_LIST, restaurantDtoList);
 				path = "/Views/Information/ShowAllRestaurant.jsp";
@@ -81,7 +73,6 @@ public class InfomationController extends HttpServlet {
 
 			case Constant.SHOW_ALL_RESORT:
 				totalItem = infomationLogic.countTotalItem(Constant.SHOW_ALL_RESORT, searchStr, city, available, quality, minPrice, maxPrice, discount);
-				totalPage = infomationLogic.totalPage(totalItem);
 				List<ResortDto> resortDtoList = infomationLogic.getAllResort(currentPage, searchStr, city, available, quality, minPrice, maxPrice, discount);
 				req.setAttribute(Constant.RESORT_DTO_LIST, resortDtoList);
 				path = "/Views/Information/ShowAllResort.jsp";
@@ -89,15 +80,12 @@ public class InfomationController extends HttpServlet {
 
 			case Constant.SHOW_ALL_TRAVEL:
 				totalItem = infomationLogic.countTotalItem(Constant.SHOW_ALL_TRAVEL, searchStr, city, available, quality, minPrice, maxPrice, discount);
-				totalPage = infomationLogic.totalPage(totalItem);
 				List<TravelDto> travelDtoList = infomationLogic.getAllTravel(currentPage, searchStr, city, available, quality, discount);
 				req.setAttribute(Constant.TRAVEL_DTO_LIST, travelDtoList);
 				path = "/Views/Information/ShowAllTravel.jsp";
 				break;
 
 			}
-
-			
 			totalPage = (int) Math.ceil((double) totalItem / 3);
 			if (currentPage == 0) {
 				currentPage = 1;
@@ -108,7 +96,7 @@ public class InfomationController extends HttpServlet {
 			if (currentPage > totalPage) {
 				currentPage = totalPage;
 			}
-			listPaging = infomationLogic.getListPaging(totalPage, currentPage);
+			List<Integer> listPaging = infomationLogic.getListPaging(totalPage, currentPage);
 			req.setAttribute(Constant.NAME_CITY_LIST, nameCityList);
 			req.setAttribute(Constant.TOTAL_PAGE, totalPage);
 			req.setAttribute(Constant.LIST_PAGING, listPaging);

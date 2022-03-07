@@ -29,7 +29,6 @@ public class BaseConnection {
 				e.printStackTrace();
 			}
 		}
-
 	}
 
 }

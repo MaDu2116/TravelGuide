@@ -41,9 +41,9 @@
 								</div>
 								<div class="col-md-9">
 									<div class="blog_post">
-										<img src="../Content/image/Hotel/infor/CM_infor_7.jpg" alt="">
+										<img src="../${hotel.imageHotel}" alt="">
 										<div class="blog_details">
-											<a href="DetailHotel/1.html">
+											<a href="/KernelTravelGuide/detailHotel?idHotel=${hotel.idHotel}">
 												<h2>
 													<c:out value="${hotel.nameHotel}" />
 												</h2>
@@ -51,7 +51,7 @@
 											<p>
 												<c:out value="${hotel.desHotel}" />
 											</p>
-											<a href="DetailHotel/1.html" class="view_btn button_hover">View
+											<a href="/KernelTravelGuide/detailHotel?idHotel=${hotel.idHotel}" class="view_btn button_hover">View
 												More</a>
 										</div>
 									</div>

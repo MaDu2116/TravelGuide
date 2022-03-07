@@ -51,17 +51,6 @@ public class InfomationLogic {
 		ResortDao resortDao = new ResortDao();
 		return resortDao.getAllResort(offset, searchStr, city, available, quality, minPrice, maxPrice, discount);
 	}
-
-	public int totalPage(int totalItem) {
-		int totalPage = 0;
-		if (totalItem % 3 > 0) {
-			totalPage = totalPage / 3 + 1;
-		} else {
-			totalPage /= 3;
-		}
-		return totalPage;
-	}
-
 	public int countTotalItem(String type, String searchStr, String city, String available, String quality, String minPrice, String maxPrice, String discount) {
 		int totalItem = 0;
 		switch (type) {
@@ -97,7 +86,7 @@ public class InfomationLogic {
 	}
 
 	public List<Integer> getListPaging(int totalPage, int currentPage) {
-		List<Integer> listPaging = new ArrayList<Integer>();
+		List<Integer> listPaging = new ArrayList<>();
 		int pageRange = 3;
 		int pageStart = 0;
 		int pageEnd = 0;
@@ -116,7 +105,6 @@ public class InfomationLogic {
 		}
 		// add List Page to listPaging => from pageStart to pageEnd
 		for (int i = pageStart; i <= pageEnd; i++) {
-			System.err.println(pageStart + "---" + pageEnd);
 			listPaging.add(i);
 		}
 		return listPaging;

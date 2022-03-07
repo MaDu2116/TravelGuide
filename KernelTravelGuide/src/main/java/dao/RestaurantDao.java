@@ -135,7 +135,6 @@ public class RestaurantDao extends BaseConnection {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				count = Integer.parseInt(rs.getString(1));
-				System.out.println(count);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();        

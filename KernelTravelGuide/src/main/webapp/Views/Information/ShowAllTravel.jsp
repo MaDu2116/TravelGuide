@@ -37,7 +37,7 @@
 										<img src="../${travel.imageTravel}" alt="">
 										<div class="blog_details">
 											<a href="/KernelTravelGuide/detailTravel?idTravel=${travel.idTravel}">
-												<h2>DKN</h2>
+												<h2><c:out value="${travel.nameTravel}" /></h2>
 											</a>
 											<p><c:out value="${travel.introductTravel}" /></p>
 											<a href="/KernelTravelGuide/detailTravel?idTravel=${travel.idTravel}" class="view_btn button_hover">View
@@ -256,6 +256,7 @@
                     if (type != 'submit' && id != 'SearchString') {
                         if (type == 'select-one') {
                             $(insideElement[i]).siblings('.nice-select').addClass("disabled");
+                            $(insideElement[i]).val("");
                         } else {
                             $(insideElement[i]).prop("disabled", true);
                         }
