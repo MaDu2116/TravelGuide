@@ -28,73 +28,41 @@ public class InfomationLogic {
 		return touristSpotDao.getAllTouristSpot(offset, searchStr, city, quality);
 	}
 
-	public List<HotelDto> getAllHotel(int currentPage, String searchStr, String city, String quality) {
+	public List<HotelDto> getAllHotel(int currentPage, String searchStr, String city, String available, String quality, String minPrice, String maxPrice, String discount) {
 		int offset = (currentPage - 1) * 3;
 		HotelDao hotelDao = new HotelDao();
-		return hotelDao.getAllHotel(offset, searchStr, city, quality);
+		return hotelDao.getAllHotel(offset, searchStr, city, available, quality, minPrice, maxPrice, discount);
 	}
 
-	public List<RestaurantDto> getAllRestaurant(int currentPage, String searchStr, String city, String quality) {
+	public List<RestaurantDto> getAllRestaurant(int currentPage, String searchStr, String city, String available, String quality, String minPrice, String maxPrice, String discount) {
 		int offset = (currentPage - 1) * 3;
 		RestaurantDao restaurantDao = new RestaurantDao();
-		return restaurantDao.getAllRestauran(offset, searchStr, city, quality);
+		return restaurantDao.getInfomationOfRestaurant(offset, searchStr, city, available, quality, minPrice, maxPrice, discount);
 	}
 
-	public List<TravelDto> getAllTravel(int currentPage, String searchStr, String city, String quality) {
+	public List<TravelDto> getAllTravel(int currentPage, String searchStr, String city, String available, String quality, String discount) {
 		int offset = (currentPage - 1) * 3;
 		TravelDao travelDao = new TravelDao();
-		return travelDao.getAllTravel(offset, searchStr, city, quality);
+		return travelDao.getAllTravel(offset, searchStr, city, available, quality,  discount);
 	}
 
-	public List<ResortDto> getAllResort(int currentPage, String searchStr, String city, String quality) {
+	public List<ResortDto> getAllResort(int currentPage, String searchStr, String city, String available, String quality, String minPrice, String maxPrice, String discount) {
 		int offset = (currentPage - 1) * 3;
 		ResortDao resortDao = new ResortDao();
-		return resortDao.getAllResort(offset, searchStr, city, quality);
+		return resortDao.getAllResort(offset, searchStr, city, available, quality, minPrice, maxPrice, discount);
 	}
 
-	public int totalPage(String type, String searchStr, String city, String available, String quality, String priceMin, String priceMax, String discount) {
+	public int totalPage(int totalItem) {
 		int totalPage = 0;
-		switch (type) {
-		case "showAllTouristSpot":
-			TouristSpotDao touristSpotDao = new TouristSpotDao();
-			totalPage = touristSpotDao.countAllTouristSpot(searchStr, city, quality);
-
-			break;
-		case "showAllHotel":
-			HotelDao hotelDao = new HotelDao();
-			totalPage = hotelDao.countAllHotel(searchStr, city, quality);
-
-			break;
-		case "showAllResort":
-			ResortDao resortDao = new ResortDao();
-			totalPage = resortDao.countAllResort(searchStr, city, quality);
-
-			break;
-		case "showAllRestaurant":
-			RestaurantDao restaurantDao = new RestaurantDao();
-			totalPage = restaurantDao.countAllRestaurant(searchStr, city, available, quality, priceMin, priceMax, discount );
-
-			break;
-		case "showAllTravel":
-			TravelDao travelDao = new TravelDao();
-			totalPage = travelDao.countAllTravel(searchStr, city, quality);
-			break;
-
-		default:
-			break;
-		}
-
-		if (totalPage % 3 > 0) {
+		if (totalItem % 3 > 0) {
 			totalPage = totalPage / 3 + 1;
 		} else {
 			totalPage /= 3;
 		}
-
 		return totalPage;
-
 	}
 
-	public int countTotalItem(String type, String searchStr, String city, String quality, String available, String priceMin, String priceMax, String discount) {
+	public int countTotalItem(String type, String searchStr, String city, String available, String quality, String minPrice, String maxPrice, String discount) {
 		int totalItem = 0;
 		switch (type) {
 		case "showAllTouristSpot":
@@ -104,22 +72,22 @@ public class InfomationLogic {
 			break;
 		case "showAllHotel":
 			HotelDao hotelDao = new HotelDao();
-			totalItem = hotelDao.countAllHotel(searchStr, city, quality);
+			totalItem = hotelDao.countAllHotel(searchStr, city, available, quality, minPrice, maxPrice, discount);
 
 			break;
 		case "showAllResort":
 			ResortDao resortDao = new ResortDao();
-			totalItem = resortDao.countAllResort(searchStr, city, quality);
+			totalItem = resortDao.countAllResort(searchStr, city, available, quality, minPrice, maxPrice, discount);
 
 			break;
 		case "showAllRestaurant":
 			RestaurantDao restaurantDao = new RestaurantDao();
-			totalItem = restaurantDao.countAllRestaurant(searchStr, city, available, quality, priceMin, priceMax, discount );
+			totalItem = restaurantDao.countAllRestaurant(searchStr, city, available, quality, minPrice, maxPrice, discount );
 
 			break;
 		case "showAllTravel":
 			TravelDao travelDao = new TravelDao();
-			totalItem = travelDao.countAllTravel(searchStr, city, quality);
+			totalItem = travelDao.countAllTravel(searchStr, city, available, quality,  discount);
 			break;
 
 		default:

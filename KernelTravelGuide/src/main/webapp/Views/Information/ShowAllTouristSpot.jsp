@@ -57,46 +57,60 @@
 					<nav class="blog-pagination justify-content-center d-flex">
 						<div class="pagination-container">
 							<ul class="pagination">
-
-
+								<c:url value="showAllTouristSpot" var="myURL">
+									<c:if
+										test="${not empty requestScope.quality or not empty requestScope.SearchString}">
+										<c:param name="SearchString" value="${SearchString}"></c:param>
+										<c:param name="city" value="${city}" />
+										<c:if test="${not empty requestScope.quality}">
+											<c:param name="quality" value="${quality}" />
+										</c:if>
+									</c:if>
+								</c:url>
 								<c:forEach var="pageId" items="${listPaging}"
 									varStatus="pageIndex">
-
 									<c:if test="${pageIndex.first and pageId > 3}">
-										<li class="page-item"><a
-											href="showAllTouristSpot?currentPage=${pageId - 1}"
+										<c:url value="${myURL}" var="myURLL">
+											<c:param name="currentPage" value="${pageId - 1}" />
+										</c:url>
+										<li class="page-item"><a href="${myURLL}"
 											class="page-link">&laquo;</a></li>
 									</c:if>
 									<c:choose>
+
 										<c:when test="${fn:length(listPaging) gt 1}">
+											<c:url value="${myURL}" var="myURLL">
+												<c:param name="currentPage" value="${pageId}" />
+											</c:url>
 											<c:choose>
-												<c:when test="${currentPage eq pageId}">
-													<li class="page-item active"><a
-														href="showAllTouristSpot?currentPage=${pageId}"
+												<c:when test="${ currentPage eq pageId }">
+													<li class="page-item active"><a href="${myURLL}"
 														class="page-link">${pageId}</a></li>
 												</c:when>
 												<c:otherwise>
-													<li class="page-item"><a
-														href="showAllTouristSpot?currentPage=${pageId}"
-														class="page-link"> ${pageId} </a></li>
+													<li class="page-item"><a href="${myURLL}"
+														class="page-link">${pageId}</a></li>
 												</c:otherwise>
 											</c:choose>
 											<c:if test="${pageIndex.last and pageId < totalPage}">
-												<li class="page-item"><a
-													href="showAllTouristSpot?currentPage=${pageId + 1}"
+												<c:url value="${myURL}" var="myURLL">
+													<c:param name="currentPage" value="${pageId+1}" />
+												</c:url>
+												<li class="page-item"><a href="${myURLL}"
 													class="page-link">&raquo;</a></li>
 											</c:if>
 										</c:when>
 										<c:when
 											test="${(fn:length(listPaging) eq 1) and (pageId gt 3)}">
-											<li class="page-item active"><a
-												href="showAllTouristSpot?currentPage=${pageId}"
-												class="page-link ">${pageId}</a></li>
+											<c:url value="${myURL}" var="myURLL">
+												<c:param name="currentPage" value="${pageId}" />
+											</c:url>
+											<li class="page-item active"><a href="${myURLL}"
+												class="page-link">${pageId}</a></li>
 										</c:when>
 									</c:choose>
 
 								</c:forEach>
-
 							</ul>
 						</div>
 					</nav>
@@ -112,7 +126,7 @@
 								<div class="input-group">
 
 									<input id="SearchString" name="SearchString" type="text"
-										value="" /> <span class="input-group-btn">
+										value="<c:out value="${requestScope.SearchString}"/>" /> <span class="input-group-btn">
 										<button class="btn btn-default submitButton" type="submit">
 											<i class="lnr lnr-magnifier"></i>
 										</button>
@@ -145,7 +159,7 @@
 														<select name="city">
 															<option value="">City</option>
 															<c:forEach var="nameCity" items="${nameCityList}">
-																<option value="${nameCity}">${nameCity}</option>
+																<option value="${nameCity}" <c:if test="${nameCity eq requestScope.city}">selected="selected"</c:if>>${nameCity}</option>
 															</c:forEach>
 														</select>
 													</div>
@@ -157,10 +171,18 @@
 												<div class="switch-wrap d-flex justify-content-between"
 													style="margin-top: 20px;">
 													<label for="formControlRange">Quality</label> <input
-														type="range" min="1" max="10" value="" class="slider"
+														type="range" min="1" max="10" value="<c:out value="${requestScope.quality}"/>" class="slider"
 														disabled name="quality" id="quality"
 														style="margin-left: 10px;"> <input type="text"
-														id="resultRange" value="6"
+														id="resultRange"
+														<c:choose>
+															<c:when test="${empty requestScope.quality}">
+																value="6"
+															</c:when>
+															<c:otherwise>
+																value="<c:out value="${requestScope.quality}"/>"
+															</c:otherwise>
+														</c:choose>
 														style="width: 30px; margin-left: 10px; margin-right: 10px"
 														disabled />/10 <i class="lnr lnr-star"></i>
 												</div>
@@ -180,95 +202,58 @@
 		</div>
 	</section>
 	<script>
-		$(document)
-				.ready(
-						function() {
+	$(document).ready(function () {
+        //$(".pagination-container").removeClass('pagination-container');
+        $('.pagination').find('li').addClass('page-item').find('a').addClass('page-link');
+        $('.blog-pagination').append($('.pagination'));
+        $('.errorInput').hide();
 
-							$('#SearchString').addClass('form-control').attr(
-									'placeholder', "Search");
-							$("#quality").on('change', function() {
-								$("#resultRange").val($("#quality").val());
-							});
-							$(".submitAdvance").hide();
-							$('.advanceSearchButton')
-									.click(
-											function() {
-												if ($(this)
-														.find('.iconButton')
-														.hasClass(
-																'lnr-chevron-down')) {
-													$(".submitButton").hide();
-													$(".submitAdvance").show();
-													$(this)
-															.find('.iconButton')
-															.removeClass(
-																	'lnr-chevron-down')
-															.addClass(
-																	'lnr-chevron-up');
-													insideElement = $('form :input');
-													for (let i = 0; i < insideElement.length; i++) {
-														let type = $(
-																insideElement[i])
-																.prop('type');
-														let id = $(
-																insideElement[i])
-																.prop('id')
-														if (type != 'submit'
-																&& id != 'resultRange') {
-															if (type == 'select-one') {
-																$(
-																		insideElement[i])
-																		.siblings(
-																				'.nice-select')
-																		.removeClass(
-																				"disabled");
-															} else {
-																$(
-																		insideElement[i])
-																		.prop(
-																				"disabled",
-																				false);
-															}
-														}
-													}
-												} else {
-													$(".submitButton").show();
-													$(".submitAdvance").hide();
-													$(this)
-															.find('.iconButton')
-															.addClass(
-																	'lnr-chevron-down')
-															.removeClass(
-																	'lnr-chevron-up');
-													insideElement = $('form :input');
-													for (let i = 0; i < insideElement.length; i++) {
-														let type = $(
-																insideElement[i])
-																.prop('type');
-														let id = $(
-																insideElement[i])
-																.prop('id')
-														if (type != 'submit'
-																&& id != 'SearchString') {
-															if (type == 'select-one') {
-																$(
-																		insideElement[i])
-																		.siblings(
-																				'.nice-select')
-																		.addClass(
-																				"disabled");
-															} else {
-																$(
-																		insideElement[i])
-																		.prop(
-																				"disabled",
-																				true);
-															}
-														}
-													}
-												}
-											});
-						});
+        $('#SearchString').addClass('form-control').attr('placeholder', "Search");
+
+        $("#quality").on('change', function () {
+            $("#resultRange").val($("#quality").val());
+        });
+
+        $(".submitAdvance").hide();
+
+        $('.advanceSearchButton').click(function () {
+            if ($(this).find('.iconButton').hasClass('lnr-chevron-down')) {
+                $(".submitButton").hide();
+                $(".submitAdvance").show();
+                $(this).find('.iconButton').removeClass('lnr-chevron-down').addClass('lnr-chevron-up');
+                insideElement = $('form :input');
+                for (let i = 0; i < insideElement.length; i++) {
+                    let type = $(insideElement[i]).prop('type');
+                    let id = $(insideElement[i]).prop('id')
+                    if (type != 'submit' && id != 'resultRange') {
+                        if (type == 'select-one') {
+                            $(insideElement[i]).siblings('.nice-select').removeClass("disabled");
+                        } else {
+                            $(insideElement[i]).prop("disabled", false);
+                        }
+                    }
+                }
+            } else {
+                $(".submitButton").show();
+                $(".submitAdvance").hide();
+                $(this).find('.iconButton').addClass('lnr-chevron-down').removeClass('lnr-chevron-up');
+                insideElement = $('form :input');
+                for (let i = 0; i < insideElement.length; i++) {
+                    let type = $(insideElement[i]).prop('type');
+                    let id = $(insideElement[i]).prop('id')
+                    if (type != 'submit' && id != 'SearchString') {
+                        if (type == 'select-one') {
+                            $(insideElement[i]).siblings('.nice-select').addClass("disabled");
+                            $(insideElement[i]).val("");
+                        } else {
+                            $(insideElement[i]).prop("disabled", true);
+                        }
+                    }
+                }
+            }
+
+        });
+    });
 	</script>
 	<jsp:include page="../footer.jsp" />
 </body>

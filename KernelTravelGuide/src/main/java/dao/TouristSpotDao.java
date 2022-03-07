@@ -82,7 +82,7 @@ public class TouristSpotDao extends BaseConnection {
 
 		conn = getConnection();
 		StringBuilder sql = new StringBuilder();
-		sql.append("  SELECT * FROM TRAVELGUIDE.DBO.TOURIST_SPOTS AS T");
+		sql.append("  SELECT COUNT(*) FROM TRAVELGUIDE.DBO.TOURIST_SPOTS AS T");
 		sql.append("  INNER JOIN TRAVELGUIDE.DBO.CITY AS C");
 		sql.append("  ON T.ID_CITY = C.ID_CITY");
 		sql.append("  WHERE 1 = 1 ");
@@ -96,9 +96,8 @@ public class TouristSpotDao extends BaseConnection {
 		}
 		if (quality != null && !quality.isEmpty()) {
 
-			sql.append(" AND T.QUALITY_TOURISTSPOT  = ? ");
+			sql.append(" AND T.QUALITY_TOURISTSPOT  >= ? ");
 		}
-		sql.append("  ORDER BY T.ID_TOURISTSPOT");
 		try (PreparedStatement stmt = conn.prepareStatement(sql.toString());) {
 
 			int index = 1;
@@ -143,7 +142,7 @@ public class TouristSpotDao extends BaseConnection {
 		}
 		if (quality != null && !quality.isEmpty()) {
 
-			sql.append(" AND T.QUALITY_TOURISTSPOT  = ? ");
+			sql.append(" AND T.QUALITY_TOURISTSPOT  >= ? ");
 		}
 		sql.append("  ORDER BY T.ID_TOURISTSPOT");
 		sql.append("  OFFSET ? ROWS");

@@ -18,9 +18,9 @@
 								<div class="col-md-3">
 									<div class="blog_info text-right">
 										<ul class="blog_meta list_style">
-											<li>
-												<a href="#"><c:out value="${restaurant.nameRestaurant}" /></a>
-											</li>
+											<c:if test="${restaurant.available eq 1}">
+												<li><a href="#"><div class="btn btn-success">Available</div></a></li>
+											</c:if>
 											<li>
 												<a href="#"><c:out value="${restaurant.addressRestaurant}" /><i class="lnr lnr-home"></i></a>
 											</li>
@@ -62,40 +62,67 @@
 					<nav class="blog-pagination justify-content-center d-flex">
 						<div class="pagination-container">
 							<ul class="pagination">
-
-
+								<c:url value="showAllRestaurant" var="myURL">
+									<c:if test="${not empty requestScope.quality or not empty requestScope.SearchString}">
+										<c:param name="SearchString" value="${SearchString}"></c:param>
+										<c:param name="city" value="${city}" />
+										<c:if test="${not empty requestScope.available}">
+											<c:param name="available" value="${available}" />
+										</c:if>
+										<c:if test="${not empty requestScope.quality}">
+											<c:param name="quality" value="${quality}" />
+											<c:param name="minPrice" value="${minPrice}" />
+											<c:param name="maxPrice" value="${maxPrice}" />
+										</c:if>
+										<c:if test="${not empty requestScope.discount}">
+											<c:param name="discount" value="${discount}" />
+										</c:if>
+									</c:if>
+								</c:url>
 								<c:forEach var="pageId" items="${listPaging}"
 									varStatus="pageIndex">
-
 									<c:if test="${pageIndex.first and pageId > 3}">
+										<c:url value="${myURL}" var="myURLL">
+											<c:param name="currentPage" value="${pageId - 1}" />
+										</c:url>
 										<li class="page-item"><a
-											href="showAllRestaurant?currentPage=${pageId - 1}"
+											href="${myURLL}"
 											class="page-link">&laquo;</a></li>
 									</c:if>
 									<c:choose>
+										
 										<c:when test="${fn:length(listPaging) gt 1}">
+											<c:url value="${myURL}" var="myURLL">
+													<c:param name="currentPage" value="${pageId}" />
+											</c:url>
 											<c:choose>
 												<c:when test="${ currentPage eq pageId }">
-													<li class="page-item active"><a
-														href="showAllRestaurant?currentPage=${pageId}"
+														<li class="page-item active"><a
+														href="${myURLL}"
 														class="page-link">${pageId}</a></li>
 												</c:when>
 												<c:otherwise>
 													<li class="page-item"><a
-														href="showAllRestaurant?currentPage=${pageId}"
-														class="page-link"> ${pageId} </a></li>
+														href="${myURLL}"
+														class="page-link">${pageId}</a></li>
 												</c:otherwise>
 											</c:choose>
 											<c:if test="${pageIndex.last and pageId < totalPage}">
+												<c:url value="${myURL}" var="myURLL">
+													<c:param name="currentPage" value="${pageId+1}" />
+												</c:url>
 												<li class="page-item"><a
-													href="showAllRestaurant?currentPage=${pageId + 1}"
+													href="${myURLL}"
 													class="page-link">&raquo;</a></li>
 											</c:if>
 										</c:when>
 										<c:when
 											test="${(fn:length(listPaging) eq 1) and (pageId gt 3)}">
+											<c:url value="${myURL}" var="myURLL">
+													<c:param name="currentPage" value="${pageId}" />
+												</c:url>
 											<li class="page-item active"><a
-												href="showAllRestaurant?currentPage=${pageId}"
+												href="${myURLL}"
 												class="page-link">${pageId}</a></li>
 										</c:when>
 									</c:choose>
@@ -113,7 +140,7 @@
 							<aside class="single_sidebar_widget search_widget">
 								<div class="input-group">
 									<input id="SearchString" name="SearchString" type="text"
-										value="" /> <span class="input-group-btn">
+										value="<c:out value="${requestScope.SearchString}"/>" /> <span class="input-group-btn">
 										<button class="btn btn-default submitButton" type="submit">
 											<i class="lnr lnr-magnifier"></i>
 										</button>
@@ -146,7 +173,7 @@
 														<select name="city">
 															<option value="">City</option>
 															<c:forEach var="nameCity" items="${nameCityList}">
-																<option value="${nameCity}">${nameCity}</option>
+																<option value="${nameCity}"<c:if test="${nameCity eq requestScope.city}">selected="selected"</c:if>>${nameCity}</option>
 															</c:forEach>
 														</select>
 													</div>
@@ -160,7 +187,7 @@
 													<label> Available </label>
 													<div class="confirm-switch">
 														<input type="checkbox" name="available"
-															id="confirm-switch" value="true" checked disabled>
+															id="confirm-switch" value="true" <c:if test="${'true' eq requestScope.available}">checked disabled</c:if>>
 														<label for="confirm-switch"></label>
 													</div>
 												</div>
@@ -171,10 +198,19 @@
 												<div class="switch-wrap d-flex justify-content-between"
 													style="margin-top: 20px;">
 													<label for="formControlRange">Quality</label> <input
-														type="range" min="1" max="10" value="" class="slider"
+														type="range" min="1" max="10" value="<c:out value="${requestScope.quality}"/>" class="slider"
 														name="quality" id="quality" style="margin-left: 10px;"
 														disabled> <input type="text" id="resultRange"
-														value="6"
+														
+															<c:choose>
+																<c:when test="${empty requestScope.quality}">
+																	value="6"
+																</c:when>
+																<c:otherwise>
+																	value="<c:out value="${requestScope.quality}"/>"
+																</c:otherwise>
+															</c:choose>
+															
 														style="width: 30px; margin-left: 10px; margin-right: 10px"
 														disabled />/10 <i class="lnr lnr-star"></i>
 												</div>
@@ -185,10 +221,10 @@
 												<div class="switch-wrap d-flex justify-content-between"
 													style="margin-top: 20px;">
 													<label>Price</label> <input class="form-control"
-														type="number" name="minPrice" id="minPrice" value="0"
+														type="number" name="minPrice" id="minPrice" value="<c:out value="${requestScope.minPrice}"/>"
 														style="width: 75px" disabled> <label>To</label> <input
 														class="form-control" type="number" name="maxPrice"
-														id="maxPrice" value="0" style="width: 75px" disabled>
+														id="maxPrice" value="<c:out value="${requestScope.maxPrice}"/>" style="width: 75px" disabled>
 												</div>
 											</div>
 										</div>
@@ -199,7 +235,7 @@
 													<label>Discount</label>
 													<div class="primary-checkbox text-left">
 														<input type="checkbox" name="discount"
-															id="primary-checkbox" value="true" checked disabled>
+															id="primary-checkbox" value="true" <c:if test="${'true' eq requestScope.discount}">checked disabled</c:if>>
 														<label for="primary-checkbox"></label>
 													</div>
 												</div>
@@ -266,6 +302,7 @@
                     if (type != 'submit' && id != 'SearchString') {
                         if (type == 'select-one') {
                             $(insideElement[i]).siblings('.nice-select').addClass("disabled");
+                            $(insideElement[i]).val("");
                         } else {
                             $(insideElement[i]).prop("disabled", true);
                         }
